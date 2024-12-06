@@ -1,0 +1,32 @@
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+
+}
+
+tbody {
+    tr {
+        table {
+            border: none;
+            thead {
+                th {
+                    padding: 10px 5px;
+                    font-size: 14px;
+                }
+            }
+
+            tbody {
+                tr {
+                    p {
+                        font-size: 13px;
+                        color: #000;
+                    }
+                }
+            }
+        }
+    }
+}

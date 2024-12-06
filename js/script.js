@@ -51,48 +51,9 @@ function sumFields(fieldIds) {
     }, 0);
 }
 
-// Funktion zur Überprüfung der Felder vor dem Absenden des Formulars
-function validateForm(event) {
-    let hasErrors = false;
-    const errorMessages = [];
-
-    const fieldsToCheck = [
-        'owner_name',      
-        'owner_street',    
-        'owner_postalcode',
-        'owner_place',
-        'operator_name',
-        'operator_street',
-        'operator_postalcode',
-        'operator_place'
-    ];
-
-    fieldsToCheck.forEach(function(id) {
-        const field = document.getElementById(id);
-        if (field) {
-            const value = field.value.trim();
-            if (!value) {
-                hasErrors = true;
-                field.classList.add('error');
-                errorMessages.push(`Das Feld "${field.placeholder}" muss ausgefüllt werden.`);
-            } else {
-                field.classList.remove('error');
-            }
-        }
-    });
-
-    if (hasErrors) {
-        event.preventDefault();
-        alert("Bitte fülle alle erforderlichen Felder aus:\n" + errorMessages.join('\n'));
-    }
-}
 
 // Initialisierung beim Laden der Seite
-window.onload = function() {
-    // Füge den Event-Listener für das Formular hinzu
-    const form = document.querySelector('form');
-    form.addEventListener('submit', validateForm);
-
+window.onload = function () {
     // Initiale Berechnung der Gesamtsummen
     calculateTotal();
     calculate_BI_Total();
@@ -106,31 +67,128 @@ window.onload = function() {
             alert('Das Datum darf nicht in der Vergangenheit liegen.');
         }
     });
+};
 
-    // Setze das "required"-Attribut nur für sichtbare Felder (Aktuelles Problem: Es werden ALLE der folgenden Felder als sichtbar erkannt, daher wird auch bei den ausgeblendeten das required Feld gesetzt)
-    const formElements = [
-        'owner_name',       
-        'owner_street',     
-        'owner_postalcode', 
-        'owner_place',
-        'operator_name',
-        'operator_street',
-        'operator_postalcode',
-        'operator_place'       
-    ];
 
-    formElements.forEach(function(id) {
+// Function to toggle 'required' attribute for a group of form fields
+const toggleRequiredAttributes = (fieldIds, isRequired) => {
+    fieldIds.forEach((id) => {
         const element = document.getElementById(id);
-        if (element && isElementVisible(element)) {
-            element.setAttribute('required', 'true');
+        if (element) {
+            // Add or remove the 'required' attribute based on the visibility state
+            if (isRequired) {
+                element.setAttribute('required', 'true');
+            } else {
+                element.removeAttribute('required');
+            }
         }
     });
-
-    // Überprüfen, ob das Element sichtbar ist
-    function isElementVisible(el) {
-        const style = window.getComputedStyle(el);
-        return style.display !== 'none' && style.visibility !== 'hidden';
-    }
-
-    console.log("Seite geladen, Standardoptionen gesetzt");
 };
+
+// Define form element IDs for "owner" scenario
+const ownerFormFields = ['owner_name', 'owner_street', 'owner_postalcode', 'owner_place'];
+
+// Define form element IDs for "operator" scenario
+const operatorFormFields = ['operator_name', 'operator_street', 'operator_postalcode', 'operator_place'];
+
+// Add event listeners to all radio buttons for toggling required attributes
+document.querySelectorAll('input[name="relation_to_plant"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedRelation = event.target.value; // Current selected radio button value
+
+        // Handle the "operator_foreign_plant" scenario
+        if (selectedRelation === 'operator_foreign_plant') {
+            toggleRequiredAttributes(ownerFormFields, true); // Make owner fields required
+        } else {
+            toggleRequiredAttributes(ownerFormFields, false); // Remove required from owner fields
+        }
+
+        // Handle the "owner_only" scenario
+        if (selectedRelation === 'owner_only') {
+            toggleRequiredAttributes(operatorFormFields, true); // Make operator fields required
+        } else {
+            toggleRequiredAttributes(operatorFormFields, false); // Remove required from operator fields
+        }
+    });
+});
+
+
+// Define form fields for the "Address" scenario
+const addressFormFields = ['address_street', 'address_postalcode', 'address_place'];
+
+// Define form fields for the "Coordinates" scenario
+const coordinatesFormFields = ['coordinates'];
+
+// Add event listeners to radio buttons for toggling required attributes
+document.querySelectorAll('input[name="address_or_coordinates"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value; // Get the selected radio button value
+
+        // Handle the "Address" option
+        if (selectedOption === 'address') {
+            toggleRequiredAttributes(addressFormFields, true); // Make address fields required
+            toggleRequiredAttributes(coordinatesFormFields, false); // Remove required from coordinates fields
+        }
+
+        // Handle the "Coordinates" option
+        if (selectedOption === 'coordinates') {
+            toggleRequiredAttributes(coordinatesFormFields, true); // Make coordinates fields required
+            toggleRequiredAttributes(addressFormFields, false); // Remove required from address fields
+        }
+    });
+});
+
+
+// Define form fields for the "Ausland" (Other Country) scenario
+const otherCountryFields = ['name_other_land', 'applicant_share_50'];
+
+// Add event listeners to radio buttons for toggling required attributes
+document.querySelectorAll('input[name="insured_land"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value; // Get the selected radio button value
+        // Handle the "Ausland" (Other Country) option
+        if (selectedOption === 'Ausland') {
+            toggleRequiredAttributes(otherCountryFields, true); // Make other country fields required
+        }else {
+            toggleRequiredAttributes(otherCountryFields, false); // Make other country fields required
+        }
+    });
+});
+
+
+// Define form fields for the "Ja" (Yes) scenario
+const businessInterruptionFields = ['BI_annual_feed', 'BI_feed_in_tariff'];
+
+// Add event listeners to radio buttons for toggling required attributes
+document.querySelectorAll('input[name="business_interruption"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value; // Get the selected radio button value
+
+        if (selectedOption === 'Ja') {
+            // If "Ja" is selected, make the fields required
+            toggleRequiredAttributes(businessInterruptionFields, true);
+        } else {
+            // If "Nein" is selected, remove the required attribute
+            toggleRequiredAttributes(businessInterruptionFields, false);
+        }
+    });
+});
+
+
+// Define form fields for the "Ja" (Yes) scenario
+const selfConsumptionFields = ['BI_annual_self_consumption', 'BI_self_consumption_tariff'];
+
+// Add event listeners to radio buttons for toggling required attributes
+document.querySelectorAll('input[name="self_consumption"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value; // Get the selected radio button value
+
+        if (selectedOption === 'Ja') {
+            // If "Ja" is selected, make the fields required
+            toggleRequiredAttributes(selfConsumptionFields, true);
+        } else {
+            // If "Nein" is selected, remove the required attribute
+            toggleRequiredAttributes(selfConsumptionFields, false);
+        }
+    });
+});
