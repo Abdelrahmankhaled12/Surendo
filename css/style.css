@@ -1,0 +1,418 @@
+/* Allgemeine Styles für den Body */
+
+body {  
+
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0;
+    text-align: left;
+    color: #333333;
+}
+
+.small-text-red {
+    font-size: 12px;
+    color: #FF0000;
+    margin: 0px;      
+}
+
+.small-text-foreword {
+    font-size: 12px;
+    color: #000;
+    margin: 0px;      
+}
+
+.small-text {
+    font-size: 12px;
+    color: #000;
+    margin: 0px;      
+}
+
+#total, #BI_total { /* Fomatierung der Gesamt-Versicherungsumme */
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold; /* Schrift fett machen */
+    text-align: left;
+    margin-top: 10px; /* Abstand nach oben hinzufügen */
+}
+
+/* Formatierung des h1 tags */
+h1 {
+    font-size: 20px; 
+    font-family: 'Arial', sans-serif; 
+    font-style: normal;
+    white-space: pre-wrap; /* Erhält Leerzeichen und bricht Zeilen bei Bedarf */
+    font-style: normal;
+    color: #113388; /* Schriftfarbe dunkelblau */
+    text-align: center;
+}
+
+h2 {
+    font-size: 20px; 
+    font-family: 'Arial', sans-serif; 
+    font-style: normal;
+    white-space: pre-wrap; /* Erhält Leerzeichen und bricht Zeilen bei Bedarf */
+    color: #000;
+    text-align: left;
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+/* graue Schriftfarbe */
+.black-text {
+    color: #000; /* Dunkelgrau */;       
+}
+
+/* Link Styling */
+a {
+    display: inline-block;
+    color: #0071e3;
+    margin: 0 auto;
+    padding: 0px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Formatierung des Formulars */
+form {
+    background-color: white; /* Setzt die Hintergrundfarbe des Formulars auf weiß */
+    padding: 20px; /* Fügt einen Innenabstand von 20 Pixeln um den Inhalt hinzu */
+    /* border-radius: 12px; /* Rundet die Ecken des Formulars mit einem Radius von 12 Pixeln */
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */ /* Optionaler Schatteneffekt, der hier auskommentiert ist */
+    max-width: 600px; /* Begrenzt die maximale Breite des Formulars auf 650 Pixel */
+    margin: 0 auto; /* Zentriert das Formular horizontal in der Mitte des Containers */
+}
+
+/* Input-Feld Text Styling */
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+input[type="text"]:hover, input[type="email"]:hover {
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+    background-color: #EEF5F6; /* Ändert den Hintergrund */
+}
+
+
+input:focus, textarea:focus {
+    border-color: #0071e3; /* Fokus-Border */
+    c
+    box-shadow: none; /* Optional: Box-Schatten entfernen, wenn gewünscht */
+}
+
+select:focus {
+    border-color: #0071e3; /* Fokus-Border */
+    outline: auto; /* Hingegen "none" entfernt den Standard-Fokus-Rahmen und somit den Fehler bei Safari bei Toggle-Bereichen */
+    box-shadow: none; /* Optional: Box-Schatten entfernen, wenn gewünscht */
+}
+
+/* Flexbox nur für Input-Feld zahlen damit diese linksbündig ausgerichtet werden */
+.form-container {
+    display: flex;        /* Flexbox aktivieren */
+    flex-direction: column; /* Elemente untereinander anordnen */
+}
+
+/* Input-Feld Zahlen Styling */
+input[type="number"] {
+    width: 50%;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    text-align: left;
+    float: left;
+}
+
+input[type="number"]:hover {
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+    background-color: #EEF5F6; /* Ändert den Hintergrund */
+}
+
+select {
+    width: 100%; /* Das Dropdown erstreckt sich über die volle Breite des Containers */
+    padding: 15px; /* Innenabstand innerhalb des Dropdowns */
+    margin: 8px 0; /* Abstand oben und unten */
+    box-sizing: border-box; /* Padding und Border werden in die Breite mit eingerechnet */
+    border: 1px solid #ccc; /* Grauer Rand um das Dropdown */
+    border-radius: 8px; /* Runde Ecken mit einem Radius von 12px */
+    height: 50px; /* Höhe des Dropdowns */
+    text-align: left; /* Text wird linksbündig ausgerichtet */
+    font-family: Arial, sans-serif;
+    font-size: 15px; 
+    white-space: normal; /* Textumbruch für lange Optionen im Dropdown aktiviert */
+}
+
+select:hover {
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+}
+
+.custom-dropdown { /* Wenn mehrzeilige Dropdowns notwendig sind */
+    width: 100%; /* Das Dropdown erstreckt sich über die volle Breite des Containers */
+    padding: 15px; /* Innenabstand innerhalb des Dropdowns */
+    margin: 8px 0; /* Abstand oben und unten */
+    box-sizing: border-box; /* Padding und Border werden in die Breite mit eingerechnet */
+    border: 1px solid #ccc; /* Grauer Rand um das Dropdown */
+    border-radius: 8px; /* Runde Ecken mit einem Radius von 4px */
+    height: 75px; /* Höhe des Dropdowns */
+    text-align: left; /* Text wird linksbündig ausgerichtet */
+    font-family: Arial, sans-serif; /* Schriftart Arial oder eine ähnliche sans-serif Schriftart */
+    font-size: 15px; /* Schriftgröße 16px */
+    white-space: normal; /* Textumbruch für lange Optionen im Dropdown aktiviert */
+}
+
+.custom-dropdown:hover {
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+    background-color: #EEF5F6; /* Ändert den Hintergrund */
+}
+
+/* Formatierung des Submit-Buttons */
+    input[type="submit"] {
+        background-color: #0071e3;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: block;
+        margin: 10px auto; /* zentrieren */
+        margin-bottom: 3px;
+        font-size: 16px;
+    }
+
+    input[type="date"] {
+        padding: 8px;
+        font-size: 15px;
+        width: 50%;
+        text-align: left;
+        float: left;
+    }
+
+    input[type="date"]:hover {
+        border-color: #0071e3; /* Ändert die Rahmenfarbe */
+    }
+
+/* Formatierung des Haupt-Logos */
+img {
+    width: 250px;
+    height: auto;
+    display: block;
+    margin: 50px auto 0 auto;
+}
+
+.label-classic {
+    display: block; /* Jedes Label in einer eigenen Zeile */
+    text-align: left; /* Text linksbündig ausrichten */
+    margin-bottom: 0px; /* Abstand unter den Labels */
+}
+
+/* Richtet die Radiobuttons in der Container-Klasse linksbündig aus */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Abstand zwischen den Radio-Buttons */
+}
+.radio-item {
+    display: flex;
+    align-items: center; /* Vertikal zentrieren */
+}
+
+.center {
+    text-align: center;
+}
+
+.relation_to_plant_style {
+    background-color: #F5F5F7; /* Hintergrundfarbe grau */
+    padding: 15px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
+    margin: 10px 0; /* Abstand oben und unten */
+    text-align: left; /* Text linksbündig */
+    color: #000;
+}
+
+.subsection {
+    background-color: #cfe9ee7c; /* Hintergrundfarbe blau pastell */
+    padding: 15px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: left; /* Text linksbündig */
+    color: #000;
+}
+
+.subsection-save {
+    background-color: #cfe9ee7c;
+    padding: 15px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center; /* Text zentriert */
+    color: #000;
+    font-size: 14px;
+}
+
+.save-btn {
+    background-color: #0071e3;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin-top: 10px;   
+    margin: 10px auto; /* Zentrierung der Buttons */
+    margin-bottom: 2px; /* Abstand zwischen Unterseite Button und Container */
+    font-size: 14px;
+}
+
+.box_foreword {
+    background-color: #cfe9ee7c; /* Hintergrundfarbe Pastellblau */
+    padding: 5px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
+    margin-top: 3px;
+    margin-bottom: 3px;
+    text-align: left; /* Text linksbündig */
+}
+
+.box_headline {
+    background-color: #cfe9ee7c; /* Hintergrundfarbe Pastellblau */
+    padding: 15px; /* Optional: fügt etwas Innenabstand hinzu */
+    border-radius: 4px; /* Optional: abgerundete Ecken */
+    margin: 10px 0; /* Optional: fügt einen Abstand nach oben und unten hinzu */
+}
+
+/* Styling für die blaue Linie */
+.blue-line {
+    border: none; /* Standardrahmen des <hr> entfernen */
+    border-top: 3px solid #13A0D3; /* Eine blaue, 3px dicke Linie  hinzufügen */
+    width: 100%; /* Linie auf die volle Breite setzen */
+    margin: 10px 0; /* Abstand oben und unten */
+}
+
+.error {
+    border: 2px solid red; /* Roter Rahmen für fehlerhafte Felder */
+}
+
+/* TOGGLE bzw. VERSTECKEN */
+
+        /* Versteckt die Radio-Buttons */
+        input[type="radio"] {
+            display: none;
+        }
+
+        /* Styling für die Labels */
+        .toggle-label {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 5px;
+            margin-right: 5px;
+
+        }
+
+        /* Styling für den aktiven Zustand */
+        input[type="radio"]:checked + .toggle-label {
+            background-color: #0071e3;
+            border: 1px solid #0071e3;
+            color: white;
+        }
+
+        #nein:checked + .toggle-label {
+            background-color: #0071e3;
+        }
+
+/* 1. Antragsteller/in im Verhältnis zur Anlage */
+
+        /* Inhalte anzeigen/verstecken */
+        .toggle-content-applicant {
+            display: none;
+            margin-top: 10px;
+        }
+
+         /* Inhalt basierend auf "Betreiber einer fremden Anlage" anzeigen */
+         #option2:checked ~ .content-operator-foreign-plant { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+        /* Inhalt basierend auf "Nur Eigentümer" anzeigen */
+        #option3:checked ~ .content-owner-only { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+/* VO ADRESSE ODER KOORDINATEN */
+
+        /* Inhalte anzeigen/verstecken */
+        .toggle-content-address-coordinates {
+            display: none;
+            margin-top: 10px;
+        }
+
+         /* Inhalt basierend auf "Adresse" anzeigen */
+        #option1_address:checked ~ .content-address { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+         /* Inhalt basierend auf "Koordinaten" anzeigen */
+         #option2_coordinates:checked ~ .content-coordinates { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+/* VO LAND */
+
+        /* Inhalte anzeigen/verstecken (VO LAND) */
+        .toggle-content-insured-land {
+            display: none;
+            margin-top: 10px;
+        }
+
+         /* Inhalt basierend auf "Ja" anzeigen */
+         #option2_insured_land:checked ~ .toggle-content-insured-land { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+/* BU STROM-VERKAUF */    
+
+         /* Inhalte anzeigen/verstecken (BU Strom-Verkauf) */
+         .toggle-content-bi-sale {
+            display: none;
+            margin-top: 10px;
+        }
+
+        /* Inhalt basierend auf "Ja" anzeigen */
+        #yes-sale:checked ~ .toggle-content-bi-sale { /* muss mit ID übereinstimmen */
+            display: block;
+        }
+
+
+/* BU EIGENVERBRAUCH */
+
+        /* Inhalte anzeigen/verstecken (BU Eigenverbrauch) */
+        .toggle-content-bi-self {
+            display: none;
+            margin-top: 10px;
+        }
+
+         /* Inhalt basierend auf "Ja" anzeigen */
+         #yes-self:checked ~ .toggle-content-bi-self { /* muss mit ID übereinstimmen */
+            display: block;
+        }
