@@ -84,25 +84,33 @@ if (isset($_SESSION["logged_in"])) {
                         </td>
                         <td>
                             <div class="box">
-                                <?php if() {?>
-                                <div class="subsection"><b>Address- oder Koordinateneingabe</b></div>
-                                <p><strong> Straße und Hausnummer:</strong> <?php echo $row["applicant"] ?></p>
-                                <p><strong> Postleitzahl:</strong> <?php echo $row["applicant"] ?></p>
-                                <p><strong> Ort:</strong> <?php echo $row["applicant"] ?></p>
-                                <div class="subsection"><b>Land</b></div>
-
-                                <p><strong> Land:</strong> <?php echo $row["applicant"] ?></p>
+                            <div class="subsection"><b>Address- oder Koordinateneingabe</b></div>
+                                <?php if(($row["address_or_coordinates"] == "address")) {?>
+                                <p><strong> Straße und Hausnummer:</strong> <?php echo $row["address_street"] ?></p>
+                                <p><strong> Postleitzahl:</strong> <?php echo $row["address_postalcode"] ?></p>
+                                <p><strong> Ort:</strong> <?php echo $row["address_place"] ?></p>
+                                <?php } else { ?>
+                                    <p><strong>Ost/Nord-Koordinaten (Dezimalgrad z.B. 2.17403 41.40338): </strong> <?php echo $row["business_interrcoordinatesuption"] ?></p>
                                 <?php } ?>
+                                <div class="subsection"><b>Land</b></div>
+                                <?php if(($row["insured_land"] == "Ausland")) {?>
+                                <p><strong> Land:</strong> <?php echo $row["insured_land"] ?></p>
+                                <p><strong> Name des Landes:</strong> <?php echo $row["name_other_land"] ?></p>
+                                <p><strong> Die Gesellschaft des Antragssteller/-s/-in befindet sich zu mindestens 50% in österreichischem Besitz (direkt oder indirekt):</strong> <?php echo $row["applicant_share_50"] ?></p>
+                                <?php } else { ?>
+                                    <p><strong> Land:</strong> <?php echo $row["insured_land"] ?></p>
+                                <?php } ?>
+                                
                                 <div class="subsection"><b>Sonstige Fragen</b></div>
-                                <p><strong>Wurde die PV-Anlage in/ auf Gewässern errichtet:</strong> <?php echo $row["applicant"] ?></p>
-                                <p><strong>Sind die PV-Module im österreichischen Hagelschutzregister eingetragen:</strong> <?php echo $row["applicant"] ?>
+                                <p><strong>Wurde die PV-Anlage in/ auf Gewässern errichtet:</strong> <?php echo $row["water"] ?></p>
+                                <p><strong>Sind die PV-Module im österreichischen Hagelschutzregister eingetragen:</strong> <?php echo $row["hagelregister"] ?>
                                 </p>
-                                <p><strong>Ist die PV-Anlage betriebsfertig:</strong> <?php echo $row["applicant"] ?></p>
+                                <p><strong>Ist die PV-Anlage betriebsfertig:</strong> <?php echo $row["in_operation"] ?></p>
                                 <p><strong>Fällt irgendwo Schatten auf die Module der Anlage? Durch die (Teil)- Verschattung ist
-                                        die Bildung von Hot-Spots möglich:</strong> <?php echo $row["applicant"] ?></p>
-                                <p><strong>Sind die Module sonnenstandsnachgeführt? ("Tracker"):</strong> <?php echo $row["applicant"] ?></p>
+                                        die Bildung von Hot-Spots möglich:</strong> <?php echo $row["shadowed"] ?></p>
+                                <p><strong>Sind die Module sonnenstandsnachgeführt? ("Tracker"):</strong> <?php echo $row["tracker"] ?></p>
                                 <p><strong>st der Zustand des Untergrunds der PV-Anlage (Dachflächen, Grund und Boden) frei von
-                                        bekannten Schäden, Mängeln, Schadstoffen oder Umwelt-Altlasten:</strong> <?php echo $row["applicant"] ?></p>
+                                        bekannten Schäden, Mängeln, Schadstoffen oder Umwelt-Altlasten:</strong> <?php echo $row["ground_condition"] ?></p>
                             </div>
                         </td>
                         <td>
