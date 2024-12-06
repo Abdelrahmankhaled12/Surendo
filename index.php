@@ -450,6 +450,18 @@ if (isset($_SESSION['success_message'])) {
 
     </div>
 
+    <div class="showPass hidePass" id="showPass">
+        <div class="closeModel" id="closeModel"></div>
+        <div class="content">
+            <div>
+                <h1>Your request has been saved</h1>
+                <p><strong>Email: </strong>abdelrahman.khaled1086@gmail.com</p>
+                <p><strong>Password: </strong>#84765asfA</p>
+                <button id="closeModelButton">Ok</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Hier binden wir die externe JavaScript-Datei ein -->
     <script src="js/script.js?v=2.8"></script>
 

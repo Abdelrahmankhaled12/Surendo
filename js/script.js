@@ -192,3 +192,13 @@ document.querySelectorAll('input[name="self_consumption"]').forEach((radioButton
         }
     });
 });
+
+
+document.getElementById("closeModel").addEventListener("click" , () => {
+    document.getElementById("showPass").classList.add("hidePass")
+})
+
+
+document.getElementById("closeModelButton").addEventListener("click" , () => {
+    document.getElementById("showPass").classList.add("hidePass")
+})
