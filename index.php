@@ -402,12 +402,12 @@
                 <label>kWh an Jahres-Einspeisung</label>
                 <input type="number" id="BI_annual_feed" name="BI_annual_feed" step="0.01"
                     oninput="calculate_BI_Total()"
-                    value="<?php echo isset($_POST['BI_annual_feed']) ? number_format($_POST['BI_annual_feed'], 2, ',', '.') : ''; ?>">
+                    value="<?php echo isset($_POST['BI_annual_feed']) ? number_format($_POST['BI_annual_feed'], 2, ',', '.') : 0; ?>">
 
                 <label>x Einspeisevergütung gemäß EVU-Vertrag in € / kWh</label>
                 <input type="number" id="BI_feed_in_tariff" name="BI_feed_in_tariff" step="0.01"
                     oninput="calculate_BI_Total()"
-                    value="<?php echo isset($_POST['BI_feed_in_tariff']) ? number_format($_POST['BI_feed_in_tariff'], 2, ',', '.') : ''; ?>">
+                    value="<?php echo isset($_POST['BI_feed_in_tariff']) ? number_format($_POST['BI_feed_in_tariff'], 2, ',', '.') : 0; ?>">
             </div>
         </div>
         <br>
@@ -432,12 +432,12 @@
                 <label class="label-classic">kWh an Jahres-Eigenverbrauch</label>
                 <input type="number" id="BI_annual_self_consumption" name="BI_annual_self_consumption" step="0.01"
                     oninput="calculate_BI_Total()"
-                    value="<?php echo isset($_POST['BI_annual_self_consumption']) ? number_format($_POST['BI_annual_self_consumption'], 2, ',', '.') : ''; ?>">
+                    value="<?php echo isset($_POST['BI_annual_self_consumption']) ? number_format($_POST['BI_annual_self_consumption'], 2, ',', '.') : 0; ?>">
 
                 <label class="label-classic">x Einspeisevergütung gemäß EVU-Vertrag in € / kWh</label>
                 <input type="number" id="BI_self_consumption_tariff" name="BI_self_consumption_tariff" step="0.01"
                     oninput="calculate_BI_Total()"
-                    value="<?php echo isset($_POST['BI_self_consumption_tariff']) ? number_format($_POST['BI_self_consumption_tariff'], 2, ',', '.') : ''; ?>">
+                    value="<?php echo isset($_POST['BI_self_consumption_tariff']) ? number_format($_POST['BI_self_consumption_tariff'], 2, ',', '.') : 0; ?>">
             </div>
         </div>
         <br><br>

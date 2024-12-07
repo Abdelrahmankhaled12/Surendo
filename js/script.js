@@ -199,12 +199,12 @@ document.querySelectorAll('input[name="self_consumption"]').forEach((radioButton
     });
 });
 
+if (document.getElementById("closeModel"))
+    document.getElementById("closeModel").addEventListener("click", () => {
+        document.getElementById("showPass").classList.add("hidePass")
+    })
 
-document.getElementById("closeModel").addEventListener("click", () => {
-    document.getElementById("showPass").classList.add("hidePass")
-})
-
-
-document.getElementById("closeModelButton").addEventListener("click", () => {
-    document.getElementById("showPass").classList.add("hidePass")
-})
+if (document.getElementById("closeModelButton"))
+    document.getElementById("closeModelButton").addEventListener("click", () => {
+        document.getElementById("showPass").classList.add("hidePass")
+    })
