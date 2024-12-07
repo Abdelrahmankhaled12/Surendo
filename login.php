@@ -12,7 +12,7 @@
 <br>
 <br>
 
-<form method="post" action="">
+<form method="post" action="login_logic.php">
 
 <div class="box_headline"><h1>Allrisk- inkl. Ertragsausfallversicherung <br>für Photovoltaikanlagen</h1></div>
 
@@ -24,10 +24,10 @@
 <div class="form-container"> <!-- Container damit Input-Felder Date linksbündig angeordnet wird --> 
 
     <label class="label-classic">E-Mail</label>
-    <input type="email" name="applicant_email" required> <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
+    <input type="email" name="email" required> <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
 
     <label class="label-classic">Passwort</label>
-    <input type="password" name="password_load" required>
+    <input type="password" name="password" required>
 
     <label class="label-classic"><a href="password.php">Passwort vergessen?</a></label>
     <br>&nbsp;
