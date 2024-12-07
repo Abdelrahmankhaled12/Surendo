@@ -4,10 +4,15 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Verbindung zur MySQL-Datenbank herstellen
-$servername = "nl1-cl8-its1.a2hosting.com";
-$username = "surendoc_Thomas";      
-$password = "XmrT1859!!!!";
-$dbname = "surendoc_users";
+// $servername = "nl1-cl8-its1.a2hosting.com";
+// $username = "surendoc_Thomas";      
+// $password = "XmrT1859!!!!";
+// $dbname = "surendoc_users";
+
+$servername = "localhost:3306";
+$username = "root";
+$password = "";
+$dbname = "surrendoc";
 
 // Verbindung herstellen
 $conn = new mysqli($servername, $username, $password, $dbname);
