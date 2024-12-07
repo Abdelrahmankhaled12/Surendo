@@ -1,8 +1,7 @@
 <?php
 require "user-forms.php";
-session_start();
 if (isset($_SESSION["logged_in"])) {
-    require "user_forms.php";
+    require "user-forms.php";
 } else {
     die("You must be logged in.");
 }
@@ -24,7 +23,7 @@ if (isset($_SESSION["logged_in"])) {
     <br>
     <br>
     <div>
-        <?php foreach ($result as $row) { ?>
+        <?php while ($row = $result->fetch_assoc()) { ?>
 
             <div class="top">
                 <p><strong>Versicherungsbeginn:</strong> <?php echo $row["date_commencement"] ?></p>
@@ -33,9 +32,12 @@ if (isset($_SESSION["logged_in"])) {
                         <div class="status uncompleted">
                             uncompleted
                         </div>
-                        <div class="buttons">
-                            <button>Submit</button>
-                        </div>
+                        <form method="POST" action="update-form.php">
+                            <input type="hidden" name="form_id" value="<?php echo htmlspecialchars($row['id']); ?>">
+                            <div class="buttons">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
                     <?php } ?>
 
                     <?php if ($row["is_completed"]) { ?>
@@ -84,23 +86,23 @@ if (isset($_SESSION["logged_in"])) {
                         </td>
                         <td>
                             <div class="box">
-                            <div class="subsection"><b>Address- oder Koordinateneingabe</b></div>
-                                <?php if(($row["address_or_coordinates"] == "address")) {?>
-                                <p><strong> Straße und Hausnummer:</strong> <?php echo $row["address_street"] ?></p>
-                                <p><strong> Postleitzahl:</strong> <?php echo $row["address_postalcode"] ?></p>
-                                <p><strong> Ort:</strong> <?php echo $row["address_place"] ?></p>
+                                <div class="subsection"><b>Address- oder Koordinateneingabe</b></div>
+                                <?php if (($row["address_or_coordinates"] == "address")) { ?>
+                                    <p><strong> Straße und Hausnummer:</strong> <?php echo $row["address_street"] ?></p>
+                                    <p><strong> Postleitzahl:</strong> <?php echo $row["address_postalcode"] ?></p>
+                                    <p><strong> Ort:</strong> <?php echo $row["address_place"] ?></p>
                                 <?php } else { ?>
                                     <p><strong>Ost/Nord-Koordinaten (Dezimalgrad z.B. 2.17403 41.40338): </strong> <?php echo $row["business_interrcoordinatesuption"] ?></p>
                                 <?php } ?>
                                 <div class="subsection"><b>Land</b></div>
-                                <?php if(($row["insured_land"] == "Ausland")) {?>
-                                <p><strong> Land:</strong> <?php echo $row["insured_land"] ?></p>
-                                <p><strong> Name des Landes:</strong> <?php echo $row["name_other_land"] ?></p>
-                                <p><strong> Die Gesellschaft des Antragssteller/-s/-in befindet sich zu mindestens 50% in österreichischem Besitz (direkt oder indirekt):</strong> <?php echo $row["applicant_share_50"] ?></p>
+                                <?php if (($row["insured_land"] == "Ausland")) { ?>
+                                    <p><strong> Land:</strong> <?php echo $row["insured_land"] ?></p>
+                                    <p><strong> Name des Landes:</strong> <?php echo $row["name_other_land"] ?></p>
+                                    <p><strong> Die Gesellschaft des Antragssteller/-s/-in befindet sich zu mindestens 50% in österreichischem Besitz (direkt oder indirekt):</strong> <?php echo $row["applicant_share_50"] ?></p>
                                 <?php } else { ?>
                                     <p><strong> Land:</strong> <?php echo $row["insured_land"] ?></p>
                                 <?php } ?>
-                                
+
                                 <div class="subsection"><b>Sonstige Fragen</b></div>
                                 <p><strong>Wurde die PV-Anlage in/ auf Gewässern errichtet:</strong> <?php echo $row["water"] ?></p>
                                 <p><strong>Sind die PV-Module im österreichischen Hagelschutzregister eingetragen:</strong> <?php echo $row["hagelregister"] ?>
@@ -159,7 +161,7 @@ if (isset($_SESSION["logged_in"])) {
                                         (€):</strong> <?php echo $row["eur_transformer"] ?>
                                 </p>
                                 <p>
-                                    <strong>Tragkonstruktion (€):</strong> <?php echo $row["eur_supporting_structure "] ?>
+                                    <strong>Tragkonstruktion (€):</strong> <?php echo $row["eur_supporting_structure"] ?>
                                 </p>
                                 <p>
                                     <strong>24/7-Videoüberwachung mit Bewegungsmelder (€):</strong> <?php echo $row["eur_video"] ?>
@@ -192,7 +194,7 @@ if (isset($_SESSION["logged_in"])) {
                                     <p><strong>Soll der Ertragsausfall des eingespeisten (verkauften) Stroms versichert
                                             werden: </strong> <?php echo $row["business_interruption"] ?></p>
                                 <?php } ?>
-        
+
                                 <div class="subsection"><b>Strom-Zukauf (Eigenverbrauch)</b></div>
                                 <?php if ($row["self_consumption"] == "Ja") { ?>
                                     <p><strong>Soll der Ertragsausfall des Strom-Eigenverbrauchs versichert werden: </strong> <?php echo $row["self_consumption"] ?></p>
