@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Allrisk-Versicherung Photovoltaikanlagen - Neuer Antrag</title>
-    <link rel="stylesheet" href="css/style.css?v=3.2">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
-    <img src="/gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+
+    <div class="icons-container">
+        <a href="login.php" class="login-link">
+            <button class="login-btn">
+                <i class="fa-regular fa-user"></i>
+            </button>
+        </a>
+    </div>
+
+    <img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
     <br>
+
     <?php
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -445,28 +456,34 @@
             <input type="submit" value="Senden" name="completed"><br>
 
     </form>
+
     <div class="center">
         <a href="index.php">Formular leeren</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="load.php">Gespeicherten Antrag
             forsetzen</a>
     </div>
-
-    </div>
+    
     <?php if (isset($_SESSION["password"]) && $_SESSION["email"]) { ?>
-        <div class="showPass" id="showPass">
-            <div class="closeModel" id="closeModel"></div>
-            <div class="content">
-                <div>
-                    <h1>Your request has been saved</h1>
-                    <p><strong>Email: </strong><?php echo $_SESSION["email"]; ?></p>
-                    <p><strong>Password: </strong><?php echo $_SESSION["password"]; ?></p>
-                    <button id="closeModelButton">Ok</button>
-                </div>
+    <div class="showPass" id="showPass">
+        <div class="closeModel" id="closeModel"></div>
+        <div class="content">
+            <div>
+                <h1>Your request has been saved</h1>
+                <p><strong>Email: </strong>
+                    <?php echo $_SESSION["email"]; ?>
+                </p>
+                <p><strong>Password: </strong>
+                    <?php echo $_SESSION["password"]; ?>
+                </p>
+                <button id="closeModelButton">Ok</button>
             </div>
         </div>
-        <?php }
+    </div>
+
+    <?php }
     unset($_SESSION["email"], $_SESSION["password"]); ?>;
-        <!-- Hier binden wir die externe JavaScript-Datei ein -->
-        <script src="js/script.js?v=2.8"></script>
+    <!-- Hier binden wir die externe JavaScript-Datei ein -->
+
+    <script src="js/script.js?v=2.8"></script>
 
 </body>
 

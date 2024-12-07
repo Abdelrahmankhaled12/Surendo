@@ -1,13 +1,11 @@
 /* Allgemeine Styles für den Body */
 
 body {
-
     font-family: Arial, sans-serif;
     font-size: 14px;
     background-color: #ffffff;
     padding: 20px;
     margin: 0;
-    text-align: left;
     color: #333333;
 }
 
@@ -77,13 +75,26 @@ h2 {
 a {
     display: inline-block;
     color: #0071e3;
-    margin: 0 auto;
     padding: 0px;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+/* Formatierung des Containers der Icons ganz oben */
+.icons-container {
+    max-width: 600px;
+    /* Begrenzt die maximale Breite des Formulars auf 600 Pixel */
+    margin: 0 auto;
+    /* Zentriert den Container horizontal in der Mitte des Containers */
+    display: flex;
+    /* Flexbox aktivieren */
+    justify-content: flex-end;
+    /* Elemente nach rechts ausrichten */
+    text-align: unset;
+    /* Verhindert, dass text-align den Flex-Layout beeinflusst */
 }
 
 /* Formatierung des Formulars */
@@ -96,7 +107,7 @@ form {
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     /* Optionaler Schatteneffekt, der hier auskommentiert ist */
     max-width: 600px;
-    /* Begrenzt die maximale Breite des Formulars auf 650 Pixel */
+    /* Begrenzt die maximale Breite des Formulars auf 600 Pixel */
     margin: 0 auto;
     /* Zentriert das Formular horizontal in der Mitte des Containers */
 }
@@ -264,12 +275,17 @@ img {
 }
 
 .label-classic {
-    display: block;
-    /* Jedes Label in einer eigenen Zeile */
     text-align: left;
     /* Text linksbündig ausrichten */
-    margin-bottom: 0px;
+}
+
+.label-classic-bi-button {
+    text-align: left;
+    /* Text linksbündig ausrichten */
+    margin-bottom: 10px;
     /* Abstand unter den Labels */
+    display: block;
+    /* Label als Block-Element, damit der Abstand zum nächsten Element funktioniert */
 }
 
 /* Richtet die Radiobuttons in der Container-Klasse linksbündig aus */
@@ -394,6 +410,8 @@ img {
 /* Versteckt die Radio-Buttons */
 input[type="radio"] {
     display: none;
+    margin-bottom: 5px;
+    /* Abstand zwischen den Buttons */
 }
 
 /* Styling für die Labels */
@@ -504,6 +522,47 @@ input[type="radio"]:checked+.toggle-label {
 #yes-self:checked~.toggle-content-bi-self {
     /* muss mit ID übereinstimmen */
     display: block;
+}
+
+/* Link um den Button */
+.login-link {
+    display: inline-block;
+    /* Link wird nicht blocklevel und vergrößert sich nicht */
+}
+
+/* Grundstil für den Login-Button */
+.login-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cfe9ee7c;
+    /* Hintergrundfarbe */
+    color: #0071e3;
+    /* Schriftfarbe */
+    padding: 8px 8px;
+    /* Kleine Polsterung */
+    border: none;
+    /* Kein Rand */
+    border-radius: 8px;
+    /* Abgerundete Ecken */
+    font-size: 14px;
+    /* Kleine Schriftgröße */
+    cursor: pointer;
+    /* Zeigt den Pointer-Cursor an */
+}
+
+/* Icon-Styling */
+.login-btn i {
+    font-size: 16px;
+    /* Größe des Icons */
+}
+
+/* Hover-Effekt */
+.login-btn:hover {
+    color: #FFF;
+    /* Schriftfarbe */
+    background-color: #0071e3;
+    /* Etwas dunklerer Grünton */
 }
 
 .showPass {

@@ -1,3 +1,14 @@
+
+.formBox {
+    border-bottom: 2px solid #00000018;
+    margin-bottom: 10px;
+    padding: 0px 40px 30px;
+}
+
+.formBox .subsection {
+    margin-top: 0px !important;
+}
+
 .top {
     display: flex;
     justify-content: space-between;
@@ -5,11 +16,12 @@
 }
 
 .top p {
-    font-size: 20px;
+    font-size: 22px;
     color: #0071e3;
 }
 
 .top p strong {
+    font-size: 18px;
     color: #000;
 }
 
@@ -53,13 +65,6 @@
     background-color: transparent;
 }
 
-
-
-
-
-
-
-
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
@@ -67,29 +72,25 @@ table, th, td {
 
 table {
     width: 100%;
+}
 
-    thead {
-        th {
-            padding: 10px 5px;
-            font-size: 15px;
-        }
-    }
+table thead th {
+    padding: 10px 5px;
+    font-size: 15px;
+}
 
-    tbody {
-        tr {
-            td {
-                width: 25%;
-                align-content: start;
-                padding: 10px;
-            }
-            p {
-                font-size: 15px;
-                color: #0071e3;
-                strong {
-                    font-size: 13px;
-                    color: #000;
-                }
-            }
-        }
-    }
+table tbody tr td {
+    width: 25%;
+    align-content: start;
+}
+
+table tbody tr p {
+    font-size: 16px;
+    color: #0071e3;
+    padding: 4px 10px;
+}
+
+table tbody tr p strong {
+    font-size: 14px;
+    color: #000;
 }

@@ -6,9 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Allrisk-Versicherung Photovoltaikanlagen - Login</title>
     <link rel="stylesheet" href="css/style.css?v=1.1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<img src="/gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+<div class="icons-container">
+    <a href="login.php" class="login-link"><button class="login-btn"><i class="fa-regular fa-user"></i></button></a>
+</div>
+
+<img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
 <br>
 <br>
 
