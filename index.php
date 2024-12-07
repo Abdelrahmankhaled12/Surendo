@@ -13,16 +13,18 @@
     <img src="/gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
     <br>
     <?php
-session_start(); // Session starten
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    } // Session starten
 
-// Erfolgsnachricht anzeigen, falls vorhanden
-if (isset($_SESSION['success_message'])) {
-    echo "<div class='center'>"; // Container für die Erfolgsnachricht
-    echo "<p>" . $_SESSION['success_message'] . "</p>";
-    echo "</div>"; // Ende des Containers
-    unset($_SESSION['success_message']); // Lösche die Nachricht nach der Anzeige
-}
-?>
+    // Erfolgsnachricht anzeigen, falls vorhanden
+    if (isset($_SESSION['success_message'])) {
+        echo "<div class='center'>"; // Container für die Erfolgsnachricht
+        echo "<p>" . $_SESSION['success_message'] . "</p>";
+        echo "</div>"; // Ende des Containers
+        unset($_SESSION['success_message']); // Lösche die Nachricht nach der Anzeige
+    }
+    ?>
     <br>
 
 
@@ -440,7 +442,7 @@ if (isset($_SESSION['success_message'])) {
                 Durch Absenden dieses Formulars wird bestätigt, dass sämtliche Fragen wahrheitsgetreu beantwortet
                 wurden. Unrichtige Angaben können einen Deckungsverlust zur Folge haben.</span>
 
-            <input type="submit" value="Senden"><br>
+            <input type="submit" value="Senden" name="completed"><br>
 
     </form>
     <div class="center">
@@ -449,21 +451,22 @@ if (isset($_SESSION['success_message'])) {
     </div>
 
     </div>
-
-    <div class="showPass hidePass" id="showPass">
-        <div class="closeModel" id="closeModel"></div>
-        <div class="content">
-            <div>
-                <h1>Your request has been saved</h1>
-                <p><strong>Email: </strong>abdelrahman.khaled1086@gmail.com</p>
-                <p><strong>Password: </strong>#84765asfA</p>
-                <button id="closeModelButton">Ok</button>
+    <?php if (isset($_SESSION["password"]) && $_SESSION["email"]) { ?>
+        <div class="showPass" id="showPass">
+            <div class="closeModel" id="closeModel"></div>
+            <div class="content">
+                <div>
+                    <h1>Your request has been saved</h1>
+                    <p><strong>Email: </strong><?php echo $_SESSION["email"]; ?></p>
+                    <p><strong>Password: </strong><?php echo $_SESSION["password"]; ?></p>
+                    <button id="closeModelButton">Ok</button>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!-- Hier binden wir die externe JavaScript-Datei ein -->
-    <script src="js/script.js?v=2.8"></script>
+        <?php }
+    unset($_SESSION["email"], $_SESSION["password"]); ?>;
+        <!-- Hier binden wir die externe JavaScript-Datei ein -->
+        <script src="js/script.js?v=2.8"></script>
 
 </body>
 
