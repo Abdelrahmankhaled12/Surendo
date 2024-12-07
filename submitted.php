@@ -1,5 +1,7 @@
 <?php
-session_start(); // Session starten
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}; // Session starten
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -8,7 +10,8 @@ ini_set('display_errors', 1);
 require 'db_connection.php'; // Stellt die Verbindung zu $conn her
 
 // Funktion zur sicheren Konvertierung von Eingaben in Dezimalwerte
-function convertToDecimal($value) {
+function convertToDecimal($value)
+{
     if (!is_numeric(str_replace(',', '.', $value))) {
         return 0.00; // Standardwert, falls ungültige Eingabe
     }
@@ -79,6 +82,10 @@ $BI_feed_in_tariff = $_POST['BI_feed_in_tariff'] ?? '';
 $BI_annual_self_consumption = $_POST['BI_annual_self_consumption'] ?? '';
 $BI_self_consumption_tariff = $_POST['BI_self_consumption_tariff'] ?? '';
 $self_consumption = $_POST['self_consumption'] ?? '';
+//Generate user password
+$password = '';
+$userRow = null;
+$isCompleted = isset($_POST["completed"]) ? '1' : '0';
 
 
 if (!empty($date_commencement)) {
@@ -115,35 +122,141 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
+    //Handle user
+    $selectUserSql = "SELECT * FROM users WHERE email = ? LIMIT 1";
+    $selectUserStmt = $conn->prepare($selectUserSql);
+    if (!$selectUserStmt) {
+        die("Error preparing SELECT statement: " . $conn->error);
+    }
+    $selectUserStmt->bind_param("s", $_POST['applicant_email']);
+    if (!$selectUserStmt->execute()) {
+        $selectUserStmt->close();
+        die("Error executing SELECT statement: " . $selectUserStmt->error);
+    }
+    $user = $selectUserStmt->get_result();
+    if (!$user) {
+        $selectUserStmt->close();
+        die("Error retrieving result: " . $selectUserStmt->error);
+    }
+
+    if ($user->num_rows > 0) {
+        // User exists, update their password
+        $userRow = $user->fetch_assoc();
+        $selectUserStmt->close();
+
+    } else {
+        $selectUserStmt->close(); // Close the SELECT statement before creating a new user
+
+        // User does not exist, insert a new user
+        $password = substr(bin2hex(random_bytes(5)), 0, 10);
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $createUserSql = "INSERT INTO `users`(`email`, `password`) VALUES (?,?)";
+        $createUserStmt = $conn->prepare($createUserSql);
+        if (!$createUserStmt) {
+            die("Error preparing INSERT statement: " . $conn->error);
+        }
+        $createUserStmt->bind_param('ss', $_POST['applicant_email'], $hashedPassword);
+        if (!$createUserStmt->execute()) {
+            $createUserStmt->close();
+            die("Error executing INSERT statement: " . $createUserStmt->error);
+        }
+        $newUserId = $conn->insert_id;
+        $retrieveUserSql = "SELECT `id`, `email` FROM `users` WHERE `id` = ?";
+        $retrieveUserStmt = $conn->prepare($retrieveUserSql);
+
+        if (!$retrieveUserStmt) {
+            die("Error preparing SELECT statement: " . $conn->error);
+        }
+        $retrieveUserStmt->bind_param('i', $newUserId);
+
+        if (!$retrieveUserStmt->execute()) {
+            $retrieveUserStmt->close();
+            die("Error executing SELECT statement: " . $retrieveUserStmt->error);
+        }
+
+        $userRow = $retrieveUserStmt->get_result()->fetch_assoc();
+
+        $createUserStmt->close();
+    }
+
     // SQL-Statement erweitern
-    $sql = "INSERT INTO pv_plants (applicant, street, postalcode, place, applicant_email, relation_to_plant, owner_name, owner_street, owner_postalcode, owner_place, operator_name, operator_street, operator_postalcode, operator_place, address_or_coordinates, address_street, address_postalcode, address_place, coordinates, insured_land, name_other_land, applicant_share_50, water, hagelregister, in_operation, shadowed, tracker, ground_condition, panel_manufacturer, panel_type, panel_amount, output_per_panel, output_total, area, inverter_manufacturer, inverter_type, inverter_amount, output_per_inverter, eur_panels, eur_inverter, eur_transformer, eur_supporting_structure, eur_video, eur_fence, eur_miscellaneous, date_commencement, business_interruption, BI_annual_feed, BI_feed_in_tariff, BI_annual_self_consumption, BI_self_consumption_tariff, self_consumption) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO pv_plants (applicant, street, postalcode, place, user_id, relation_to_plant, owner_name, owner_street, owner_postalcode, owner_place, operator_name, operator_street, operator_postalcode, operator_place, address_or_coordinates, address_street, address_postalcode, address_place, coordinates, insured_land, name_other_land, applicant_share_50, water, hagelregister, in_operation, shadowed, tracker, ground_condition, panel_manufacturer, panel_type, panel_amount, output_per_panel, output_total, area, inverter_manufacturer, inverter_type, inverter_amount, output_per_inverter, eur_panels, eur_inverter, eur_transformer, eur_supporting_structure, eur_video, eur_fence, eur_miscellaneous, date_commencement, business_interruption, BI_annual_feed, BI_feed_in_tariff, BI_annual_self_consumption, BI_self_consumption_tariff, self_consumption, is_completed) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
         die("Fehler bei der SQL-Vorbereitung: " . $conn->error);
     }
 
-    if (!$stmt->bind_param("ssssssssssssssssssssssssssssssssssssssssssssssssssss", 
-        $applicant, $street, $postalcode, $place, $applicant_email, $relation_to_plant, 
-        $owner_name, $owner_street, $owner_postalcode, $owner_place, $operator_name, 
-        $operator_street, $operator_postalcode, $operator_place, $address_or_coordinates, 
-        $address_street, $address_postalcode, $address_place, $coordinates, $insured_land, 
-        $name_other_land, $applicant_share_50, $water, $hagelregister, $in_operation, 
-        $shadowed, $tracker, $ground_condition, $panel_manufacturer, $panel_type, 
-        $panel_amount, $output_per_panel, $output_total, $area, $inverter_manufacturer, 
-        $inverter_type, $inverter_amount, $output_per_inverter, $eur_panels, $eur_inverter, 
-        $eur_transformer, $eur_supporting_structure, $eur_video, $eur_fence, $eur_miscellaneous, 
-        $date_commencement, $business_interruption, $BI_annual_feed, $BI_feed_in_tariff, $BI_annual_self_consumption, $BI_self_consumption_tariff, $self_consumption)) {
+    if (!$stmt->bind_param(
+        "sssssssssssssssssssssssssssssssssssssssssssssssssssss",
+        $applicant,
+        $street,
+        $postalcode,
+        $place,
+        $userRow['id'], // Change the applicant id by adding user_id instead of it.
+        $relation_to_plant,
+        $owner_name,
+        $owner_street,
+        $owner_postalcode,
+        $owner_place,
+        $operator_name,
+        $operator_street,
+        $operator_postalcode,
+        $operator_place,
+        $address_or_coordinates,
+        $address_street,
+        $address_postalcode,
+        $address_place,
+        $coordinates,
+        $insured_land,
+        $name_other_land,
+        $applicant_share_50,
+        $water,
+        $hagelregister,
+        $in_operation,
+        $shadowed,
+        $tracker,
+        $ground_condition,
+        $panel_manufacturer,
+        $panel_type,
+        $panel_amount,
+        $output_per_panel,
+        $output_total,
+        $area,
+        $inverter_manufacturer,
+        $inverter_type,
+        $inverter_amount,
+        $output_per_inverter,
+        $eur_panels,
+        $eur_inverter,
+        $eur_transformer,
+        $eur_supporting_structure,
+        $eur_video,
+        $eur_fence,
+        $eur_miscellaneous,
+        $date_commencement,
+        $business_interruption,
+        $BI_annual_feed,
+        $BI_feed_in_tariff,
+        $BI_annual_self_consumption,
+        $BI_self_consumption_tariff,
+        $self_consumption,
+        $isCompleted
+    )) {
         die("Fehler beim Binden der Parameter: " . $stmt->error);
     }
 
     if ($stmt->execute()) {
         $last_id = $conn->insert_id;
         $_SESSION['success_message'] = "Daten erfolgreich übermittelt. Ihre Eintrags-ID lautet: <strong>$last_id</strong>";
-        
+        if (!(empty($password))) {
+            $_SESSION['password'] = $password;
+            $_SESSION['email'] = $applicant_email;
+        }
         // Session speichern und schließen
         session_write_close();
-        
+
         // Weiterleitung zur Startseite
         header("Location: index.php");
         exit();
@@ -155,4 +268,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 $conn->close();
-?>
