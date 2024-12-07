@@ -22,22 +22,28 @@ function calculateTotal() {
 
 // Funktion zur Berechnung der Gesamtsumme aus den Eingabefeldern (Ertragsausfall- und BU-Versicherung)
 function calculate_BI_Total() {
-    const fields = {
-        feedAmount: 'BI_annual_feed',
-        feedTariff: 'BI_feed_in_tariff',
-        consumptionAmount: 'BI_annual_self_consumption',
-        consumptionTariff: 'BI_self_consumption_tariff'
-    };
+    let feedAmount = document.getElementById('BI_annual_feed');
+    let feedTariff = document.getElementById('BI_feed_in_tariff');
+    let consumptionAmount = document.getElementById('BI_annual_self_consumption');
+    let consumptionTariff = document.getElementById('BI_self_consumption_tariff');
 
-    const total = sumFields(Object.values(fields));
+    feedAmount = parseFloat(feedAmount.value.replace(',', '.')) || 0;
+    feedTariff = parseFloat(feedTariff.value.replace(',', '.')) || 0;
+    consumptionAmount = parseFloat(consumptionAmount.value.replace(',', '.')) || 0;
+    consumptionTariff = parseFloat(consumptionTariff.value.replace(',', '.')) || 0;
+
+    const total = (feedAmount * feedTariff) + (consumptionAmount * consumptionTariff);
 
     const formatter = new Intl.NumberFormat('de-DE', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
     });
 
-    document.getElementById('BI_total').textContent = formatter.format(total) + ' €';
+    document.getElementById('BI_total').textContent = total > 0
+        ? total + ' €'
+        : formatter.format(0) + ' €';
 }
+
 
 // Gemeinsame Funktion zur Berechnung der Summe der angegebenen Felder
 function sumFields(fieldIds) {
@@ -149,7 +155,7 @@ document.querySelectorAll('input[name="insured_land"]').forEach((radioButton) =>
         // Handle the "Ausland" (Other Country) option
         if (selectedOption === 'Ausland') {
             toggleRequiredAttributes(otherCountryFields, true); // Make other country fields required
-        }else {
+        } else {
             toggleRequiredAttributes(otherCountryFields, false); // Make other country fields required
         }
     });
@@ -194,11 +200,11 @@ document.querySelectorAll('input[name="self_consumption"]').forEach((radioButton
 });
 
 
-document.getElementById("closeModel").addEventListener("click" , () => {
+document.getElementById("closeModel").addEventListener("click", () => {
     document.getElementById("showPass").classList.add("hidePass")
 })
 
 
-document.getElementById("closeModelButton").addEventListener("click" , () => {
+document.getElementById("closeModelButton").addEventListener("click", () => {
     document.getElementById("showPass").classList.add("hidePass")
 })
