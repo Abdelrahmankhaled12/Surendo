@@ -4,32 +4,187 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_POST["form_id"])) {
-    $completed = 1;
-    $formId = $_POST["form_id"];
-
-    $sql = 'UPDATE `pv_plants` SET `is_completed` = ? WHERE `id` = ?';
-    $stmt = $conn->prepare($sql);
-
-    if (!$stmt) {
-        die("Error preparing UPDATE statement: " . $conn->error);
-    }
-
-    $stmt->bind_param('ii', $completed, $formId);
-
-    if (!$stmt->execute()) {
-        $stmt->close();
-        die("Error executing UPDATE statement: " . $stmt->error);
-    }
-
-    if ($stmt->affected_rows > 0) {
-        header("Location: http://localhost/Surendo/home.php");
-    } else {
-        die("No record was updated. Please check if the ID exists.");
-    }
-
-    // Close the statement
-    $stmt->close();
-} else {
-    die("No form_id provided in the GET request.");
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Datenbankverbindung einbinden
+require 'db_connection.php'; // Stellt die Verbindung zu $conn her
+
+// Funktion zur sicheren Konvertierung von Eingaben in Dezimalwerte
+function convertToDecimal($value)
+{
+    if (!is_numeric(str_replace(',', '.', $value))) {
+        return 0.00; // Standardwert, falls ungültige Eingabe
+    }
+    return number_format((float)str_replace(',', '.', $value), 2, '.', '');
+}
+// Daten aus dem Formular abrufen
+$id = $_POST['form_id']; // ID to identify which record to update
+$applicant = $_POST['applicant'] ?? '';
+$street = $_POST['street'] ?? '';
+$postalcode = $_POST['postalcode'] ?? '';
+$place = $_POST['place'] ?? '';
+$applicant_email = $_POST['applicant_email'] ?? '';
+
+$relation_to_plant = $_POST['relation_to_plant'] ?? '';
+$owner_name = $_POST['owner_name'] ?? '';
+$owner_street = $_POST['owner_street'] ?? '';
+$owner_postalcode = $_POST['owner_postalcode'] ?? '';
+$owner_place = $_POST['owner_place'] ?? '';
+
+$operator_name = $_POST['operator_name'] ?? '';
+$operator_street = $_POST['operator_street'] ?? '';
+$operator_postalcode = $_POST['operator_postalcode'] ?? '';
+$operator_place = $_POST['operator_place'] ?? '';
+$address_or_coordinates = $_POST['address_or_coordinates'] ?? '';
+
+$address_street = $_POST['address_street'] ?? '';
+$address_postalcode = $_POST['address_postalcode'] ?? '';
+$address_place = $_POST['address_place'] ?? '';
+$coordinates = $_POST['coordinates'] ?? '';
+$insured_land = $_POST['insured_land'] ?? '';
+
+$name_other_land = $_POST['name_other_land'] ?? '';
+$applicant_share_50 = $_POST['applicant_share_50'] ?? '';
+$water = $_POST['water'] ?? '';
+$hagelregister = $_POST['hagelregister'] ?? '';
+$in_operation = $_POST['in_operation'] ?? '';
+
+$shadowed = $_POST['shadowed'] ?? '';
+$tracker = $_POST['tracker'] ?? '';
+$ground_condition = $_POST['ground_condition'] ?? '';
+
+$panel_manufacturer = $_POST['panel_manufacturer'] ?? '';
+$panel_type = $_POST['panel_type'] ?? '';
+$panel_amount = $_POST['panel_amount'] ?? 0;
+$output_per_panel = convertToDecimal($_POST['output_per_panel'] ?? '');
+$output_total = convertToDecimal($_POST['output_total'] ?? '');
+$area = convertToDecimal($_POST['area'] ?? '');
+
+$inverter_manufacturer = $_POST['inverter_manufacturer'] ?? '';
+$inverter_type = $_POST['inverter_type'] ?? '';
+
+$inverter_amount = $_POST['inverter_amount'] ?? 0;
+$output_per_inverter = convertToDecimal($_POST['output_per_inverter'] ?? '');
+
+$eur_panels = convertToDecimal($_POST['eur_panels'] ?? '');
+$eur_inverter = convertToDecimal($_POST['eur_inverter'] ?? '');
+$eur_transformer = convertToDecimal($_POST['eur_transformer'] ?? '');
+$eur_supporting_structure = convertToDecimal($_POST['eur_supporting_structure'] ?? '');
+$eur_video = convertToDecimal($_POST['eur_video'] ?? '');
+$eur_fence = convertToDecimal($_POST['eur_fence'] ?? '');
+$eur_miscellaneous = convertToDecimal($_POST['eur_miscellaneous'] ?? '');
+
+$date_commencement = $_POST['date_commencement'] ?? null;
+
+$business_interruption = $_POST['business_interruption'] ?? '';
+$BI_annual_feed = $_POST['BI_annual_feed'] ?? '';
+$BI_feed_in_tariff = $_POST['BI_feed_in_tariff'] ?? '';
+$BI_annual_self_consumption = $_POST['BI_annual_self_consumption'] ?? '';
+$BI_self_consumption_tariff = $_POST['BI_self_consumption_tariff'] ?? '';
+$self_consumption = $_POST['self_consumption'] ?? '';
+$isCompleted = isset($_POST["completed"]) ? '1' : '0';
+
+// Validate if ID is provided
+if (!$id) {
+    die("No ID provided for the update.");
+}
+
+// Update SQL query
+$sql = "UPDATE `pv_plants` 
+        SET `applicant` = ?, `street` = ?, `postalcode` = ?, `place` = ?, `tracker` = ?, 
+            `relation_to_plant` = ?, `owner_name` = ?, `owner_street` = ?, `owner_postalcode` = ?, 
+            `owner_place` = ?, `operator_name` = ?, `operator_street` = ?, `operator_postalcode` = ?, 
+            `operator_place` = ?, `address_or_coordinates` = ?, `address_street` = ?, 
+            `address_postalcode` = ?, `address_place` = ?, `coordinates` = ?, `insured_land` = ?, 
+            `name_other_land` = ?, `applicant_share_50` = ?, `water` = ?, `hagelregister` = ?, 
+            `in_operation` = ?, `shadowed` = ?, `ground_condition` = ?,`panel_manufacturer` = ?,
+            `panel_type` = ?, `panel_amount` = ?, `output_per_panel` = ?, 
+            `output_total` = ?, `area` = ?, `inverter_manufacturer` = ?, `inverter_type` = ?, 
+            `inverter_amount` = ?, `output_per_inverter` = ?, `eur_panels` = ?, `eur_inverter` = ?, 
+            `eur_transformer` = ?, `eur_supporting_structure` = ?, `eur_video` = ?, `eur_fence` = ?, 
+            `eur_miscellaneous` = ?, `date_commencement` = ?, `business_interruption` = ?, 
+            `BI_annual_feed` = ?, `BI_feed_in_tariff` = ?, `BI_annual_self_consumption` = ?, 
+            `BI_self_consumption_tariff` = ?, `self_consumption` = ?, `is_completed` = ? 
+        WHERE `id` = ?";
+
+$stmt = $conn->prepare($sql);
+
+if ($stmt === false) {
+    die("Fehler bei der SQL-Vorbereitung: " . $conn->error);
+}
+
+if (!$stmt->bind_param(
+    "ssssssssssssssssssssssssssssssssssssssssssssssssssssi",
+    $applicant,
+    $street,
+    $postalcode,
+    $place,
+    $tracker,
+    $relation_to_plant,
+    $owner_name,
+    $owner_street,
+    $owner_postalcode,
+    $owner_place,
+    $operator_name,
+    $operator_street,
+    $operator_postalcode,
+    $operator_place,
+    $address_or_coordinates,
+    $address_street,
+    $address_postalcode,
+    $address_place,
+    $coordinates,
+    $insured_land,
+    $name_other_land,
+    $applicant_share_50,
+    $water,
+    $hagelregister,
+    $in_operation,
+    $shadowed,
+    $ground_condition,
+    $panel_manufacturer,
+    $panel_type,
+    $panel_amount,
+    $output_per_panel,
+    $output_total,
+    $area,
+    $inverter_manufacturer,
+    $inverter_type,
+    $inverter_amount,
+    $output_per_inverter,
+    $eur_panels,
+    $eur_inverter,
+    $eur_transformer,
+    $eur_supporting_structure,
+    $eur_video,
+    $eur_fence,
+    $eur_miscellaneous,
+    $date_commencement,
+    $business_interruption,
+    $BI_annual_feed,
+    $BI_feed_in_tariff,
+    $BI_annual_self_consumption,
+    $BI_self_consumption_tariff,
+    $self_consumption,
+    $isCompleted,
+    $id
+)) {
+    die("Fehler beim Binden der Parameter: " . $stmt->error);
+}
+
+if ($stmt->execute()) {
+    $_SESSION['success_message'] = "Daten erfolgreich aktualisiert.";
+    session_write_close();
+    header("Location: home.php");
+    exit();
+} else {
+    die("Fehler beim Aktualisieren der Daten: " . $stmt->error);
+}
+
+$stmt->close();
+$conn->close();

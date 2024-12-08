@@ -32,10 +32,10 @@ if (isset($_SESSION["logged_in"])) {
                             <div class="status uncompleted">
                                 uncompleted
                             </div>
-                            <form method="POST" action="update-form.php">
+                            <form method="POST" action="complete-form.php">
                                 <input type="hidden" name="form_id" value="<?php echo htmlspecialchars($row['id']); ?>">
                                 <div class="buttons">
-                                    <button type="submit">Submit</button>
+                                    <button type="submit">Complete</button>
                                 </div>
                             </form>
                         <?php } ?>
