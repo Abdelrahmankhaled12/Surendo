@@ -88,7 +88,7 @@ if (isset($_SESSION["logged_in"])) {
                                         <p><strong> Postleitzahl:</strong> <?php echo $row["address_postalcode"] ?></p>
                                         <p><strong> Ort:</strong> <?php echo $row["address_place"] ?></p>
                                     <?php } else { ?>
-                                        <p><strong>Ost/Nord-Koordinaten (Dezimalgrad z.B. 2.17403 41.40338): </strong> <?php echo $row["business_interrcoordinatesuption"] ?></p>
+                                        <p><strong>Ost/Nord-Koordinaten (Dezimalgrad z.B. 2.17403 41.40338): </strong> <?php echo $row["coordinates"] ?></p>
                                     <?php } ?>
                                     <div class="subsection"><b>Land</b></div>
                                     <?php if (($row["insured_land"] == "Ausland")) { ?>
