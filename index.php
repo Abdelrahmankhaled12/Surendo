@@ -276,7 +276,7 @@
         <div class="subsection-save">
             <span class="small-text">Sichern Sie den aktuellen Stand Ihrer Eingaben, z.B. um zu einem späteren Zeitpunkt
                 damit fortzufahren.</span>
-            <button class="save-btn">Speichern</button>
+            <button class="save-btn" id="save-btn">Speichern</button>
         </div>
         <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
 
@@ -461,29 +461,29 @@
         <a href="index.php">Formular leeren</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="load.php">Gespeicherten Antrag
             forsetzen</a>
     </div>
-    
+
     <?php if (isset($_SESSION["password"]) && $_SESSION["email"]) { ?>
-    <div class="showPass" id="showPass">
-        <div class="closeModel" id="closeModel"></div>
-        <div class="content">
-            <div>
-                <h1>Your request has been saved</h1>
-                <p><strong>Email: </strong>
-                    <?php echo $_SESSION["email"]; ?>
-                </p>
-                <p><strong>Password: </strong>
-                    <?php echo $_SESSION["password"]; ?>
-                </p>
-                <button id="closeModelButton">Ok</button>
+        <div class="showPass" id="showPass">
+            <div class="closeModel" id="closeModel"></div>
+            <div class="content">
+                <div>
+                    <h1>Your request has been saved</h1>
+                    <p><strong>Email: </strong>
+                        <?php echo $_SESSION["email"]; ?>
+                    </p>
+                    <p><strong>Password: </strong>
+                        <?php echo $_SESSION["password"]; ?>
+                    </p>
+                    <button id="closeModelButton">Ok</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <?php }
+        <?php }
     unset($_SESSION["email"], $_SESSION["password"]); ?>;
-    <!-- Hier binden wir die externe JavaScript-Datei ein -->
+        <!-- Hier binden wir die externe JavaScript-Datei ein -->
 
-    <script src="js/script.js?v=2.8"></script>
+        <script src="js/script.js?v=2.8"></script>
 
 </body>
 

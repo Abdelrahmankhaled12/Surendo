@@ -208,3 +208,35 @@ if (document.getElementById("closeModelButton"))
     document.getElementById("closeModelButton").addEventListener("click", () => {
         document.getElementById("showPass").classList.add("hidePass")
     })
+
+
+document.getElementById("save-btn").addEventListener("click", () => {
+    const fields = ['panel_manufacturer',
+        'panel_type',
+        'panel_amount',
+        'output_per_panel',
+        'output_total',
+        'area',
+        'inverter_manufacturer',
+        'inverter_type',
+        'inverter_amount',
+        'output_per_inverter',
+        'eur_panels',
+        'eur_inverter',
+        'eur_transformer',
+        'eur_supporting_structure',
+        'eur_video',
+        'eur_fence',
+        'eur_miscellaneous',
+        'panel_type',
+        'panel_type',
+        'panel_type',
+    ]
+
+    fields.forEach((field) => {
+        const element = document.querySelector(`input[name=${field}]`);
+        if (element) {
+            element.removeAttribute('required');
+        }
+    });
+})
