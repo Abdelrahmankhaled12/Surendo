@@ -1,10 +1,22 @@
 <?php
-require "user-forms.php";
-if (isset($_SESSION["logged_in"])) {
-    require "user-forms.php";
+require "db_connection.php";
+session_start();
+
+if (isset($_SESSION["user_id"])) {
+    $sql = 'SELECT * FROM `pv_plants` WHERE `user_id` = ? ORDER BY `is_completed` ASC, `id` DESC';
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('s', $_SESSION["user_id"]);
+    if (!$stmt->execute()) {
+        $stmt->close();
+        die("Error executing SELECT statement: " . $stmt->error);
+    }
+
+    $result = $stmt->get_result();
+    $stmt->close();
 } else {
-    die("You must be logged in.");
+    die('you must log in first!');
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
