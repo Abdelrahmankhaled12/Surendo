@@ -1,5 +1,11 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="de">
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +13,60 @@
     <title>Allrisk-Versicherung Photovoltaikanlagen - Passwort vergessen</title>
     <link rel="stylesheet" href="css/style.css?v=1.1">
 </head>
+
 <body>
-<img src="/gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
-<br>
-<br>
+    <img src="/gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+    <br><br>
 
-<form method="post" action="">
+    <form method="post" action="forget-password.php"> <!-- Action points to the PHP script that handles submission -->
 
-<div class="box_headline"><h1>Allrisk- inkl. Ertragsausfallversicherung <br>für Photovoltaikanlagen</h1></div>
-
-<br>
-
-<hr class="blue-line"> <!-- Blaue Linie eingefügt -->
-
-<div><h2>Passwort vergessen</h2></div>
-<div class="form-container"> <!-- Container damit Input-Felder Date linksbündig angeordnet wird --> 
-
-    <label class="label-classic">E-Mail</label>
-    <input type="email" name="applicant_email" required> <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
-    <br>&nbsp;
-    <br>
-</div>
-<hr class="blue-line"> <!-- Blaue Linie eingefügt -->
-
-<div class="subsection-save">
-    
-        <input type="submit" value="Passwort senden"><br>
-
-        </form>
-
-        <div class="center">
-        <a href="index.php">Neuer Antrag</a>
+        <div class="box_headline">
+            <h1>Allrisk- inkl. Ertragsausfallversicherung <br>für Photovoltaikanlagen</h1>
         </div>
-</div>
 
+        <br>
 
+        <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
+
+        <div>
+            <h2>Passwort vergessen</h2>
+        </div>
+
+        <div class="form-container"> <!-- Container to align input fields -->
+            <label class="label-classic" for="applicant_email">E-Mail</label>
+            <input type="email" id="applicant_email" name="email" required>
+            <br>&nbsp;<br>
+        </div>
+
+        <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
+
+        <div class="subsection-save">
+            <input type="submit" value="Passwort senden">
+        </div>
+
+    </form>
+
+    <div class="center">
+        <a href="index.php">Neuer Antrag</a>
+    </div>
+    <?php if (isset($_SESSION["password-reset"])) { ?>
+        <div class="showPass" id="showPass">
+            <div class="closeModel" id="closeModel"></div>
+            <div class="content">
+                <div style="text-align: center;">
+                    <h1>An email has been sent with a new password</h1>
+                    <p style="font-weight: bold; font-size: 1.5em; margin: 20px 0;">
+                        <?php echo htmlspecialchars($_SESSION["password-reset"]); ?>
+                    </p>
+                    <button id="closeModelButton">Ok</button>
+                </div>
+            </div>
+        </div>
+    <?php }
+    unset($_SESSION["password-reset"]); ?>
+
+    <script src="js/script.js?v=2.8"></script>
 </body>
+<!-- Hier binden wir die externe JavaScript-Datei ein -->
+
 </html>
