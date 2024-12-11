@@ -51,8 +51,8 @@ if (isset($_POST["email"])) {
         $mail->isSMTP();
         $mail->Host = 'mail.surendo.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'service@surendo.com';
-        $mail->Password = '(Gxtb9Me51Xq';
+        $mail->Username = '';
+        $mail->Password = '';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
         $mail->setFrom('office@surendo.com');
