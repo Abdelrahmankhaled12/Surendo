@@ -4,9 +4,9 @@ require "db_connection.php";
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -51,32 +51,35 @@ if (isset($_POST["email"])) {
         $mail->isSMTP();
         $mail->Host = 'mail.surendo.com';
         $mail->SMTPAuth = true;
-        $mail->Username = '';
-        $mail->Password = '';
+        $mail->Username = 'office@surendo.com';
+        $mail->Password = '(Gxtb9Me51Xq';
         $mail->SMTPSecure = 'ssl';
         $mail->Port = 465;
-        $mail->setFrom('office@surendo.com');
+        $mail->setFrom('service@surendo.com');
         $mail->addAddress($_POST["email"]);
         $mail->isHTML(true);
-        $mail->Subject = 'Surendo reset password mail';
+        $mail->CharSet = 'UTF-8'; // Sicherstellen, dass UTF-8 verwendet wird
+        // Betreff der E-Mail
+        $mail->Subject = 'Surendo.com – Ihr Passwort wurde erfolgreich geändert – Sie können sich jetzt anmelden';
         $mail->Body =
+        // Inhalt der E-Mail
             '
-                <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; border: 1px solid #ddd; border-radius: 10px; max-width: 500px; margin: 0 auto;">
-                    <h2 style="color: #4CAF50; text-align: center;">Password Reset Successful!</h2>
+                <div style="font-family: Arial, sans-serif; background-color: #cfe9ee7c; padding: 20px; border: 0px; border-radius: 12px; max-width: 500px; margin: 0 auto;">
+                    <h2 style="color: #113388; text-align: center;">Ihr neues Passwort wurde erfolgreich erstellt</h2>
                     <p style="font-size: 16px; color: #333; text-align: center;">
-                        Your new password is:
+                        Ihr neues Passwort lautet:
                     </p>
-                    <p style="font-size: 24px; color: #FF5722; font-weight: bold; text-align: center;">
+                    <p style="font-size: 24px; color: #333; font-weight: bold; text-align: center;">
                         ' . htmlspecialchars($password) . '
                     </p>
-                    <p style="font-size: 14px; color: #777; text-align: center;">
-                        Please keep this password safe and consider changing it after logging in.
+                    <p style="font-size: 14px; color: #333; text-align: center;">
+                        Bitte bewahren Sie dieses Passwort sicher auf.
                     </p>
                 </div>
             ';
         $mail->send();
 
-        $_SESSION['password-reset'] = 'Password reset mail sent successfully.';
+        $_SESSION['password-reset'] = 'Bitte rufen Sie Ihre E-Mails ab.';
         header('Location: password.php');
     } else {
         die("Failed to update password: " . $updateStmt->error);
