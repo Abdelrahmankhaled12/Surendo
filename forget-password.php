@@ -32,11 +32,12 @@ if (isset($_POST["email"])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // If no user is found with this email
     if ($result->num_rows === 0) {
-        die("No user found with this email.");
+        $_SESSION['invalid_email'] = true;
+        header('Location: password.php');
+        exit();
     }
-
+    die('out');
     // User exists, update the password
     $updateSql = 'UPDATE users SET `password` = ? WHERE `email` = ?';
     $updateStmt = $conn->prepare($updateSql);
@@ -81,6 +82,7 @@ if (isset($_POST["email"])) {
 
         $_SESSION['password-reset'] = 'Bitte rufen Sie Ihre E-Mails ab.';
         header('Location: password.php');
+        exit();
     } else {
         die("Failed to update password: " . $updateStmt->error);
     }

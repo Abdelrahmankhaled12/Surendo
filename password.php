@@ -65,6 +65,25 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php }
     unset($_SESSION["password-reset"]); ?>
 
+    <?php if (isset($_SESSION["invalid_email"])) { ?>
+        <div class="showPass" id="showPass">
+            <div class="closeModel" id="closeModel"></div>
+            <div class="content">
+
+                <div class="center">
+
+                    <h1>Kein Benutzer mit dieser E-Mail-Adresse gefunden</h1>
+                    <br>
+                    Bitte überprüfen Sie Ihre E-Mail-Adresse.<br>&nbsp;<br>
+                    <button id="closeModelButton">OK</button>
+
+                </div>
+
+            </div>
+        </div>
+    <?php }
+    unset($_SESSION["invalid_email"]); ?>
+
     <script src="js/script.js?v=2.8"></script>
 </body>
 <!-- Hier binden wir die externe JavaScript-Datei ein -->
