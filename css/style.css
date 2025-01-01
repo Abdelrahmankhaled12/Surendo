@@ -68,7 +68,7 @@ h2 {
 .black-text {
     color: #000;
     /* Dunkelgrau */
-    ;
+;
 }
 
 /* Link Styling */
@@ -275,17 +275,25 @@ img {
 }
 
 .label-classic {
-    text-align: left;
-    /* Text linksbündig ausrichten */
+    text-align: left; /* Text linksbündig ausrichten */
+}
+
+.label-classic-twolined { /* für zweizeilige Titel */
+    text-align: left; /* Text linksbündig ausrichten */
+    line-height: 1.5; /* Vergrößert den Zeilenabstand */
+    margin-bottom: -7px;
+}
+
+.label-classic_v2 { /* z.B. für Abschnitt Ertragsausfallversicherung */
+    text-align: left; /* Text linksbündig ausrichten */
+    margin-bottom: 12px;
+    display: block; /* Erzwingt Block-Level-Verhalten (dadurch wird margin-bottom erst wirksam) */
 }
 
 .label-classic-bi-button {
-    text-align: left;
-    /* Text linksbündig ausrichten */
-    margin-bottom: 10px;
-    /* Abstand unter den Labels */
-    display: block;
-    /* Label als Block-Element, damit der Abstand zum nächsten Element funktioniert */
+    text-align: left; /* Text linksbündig ausrichten */
+    margin-bottom: 10px; /* Abstand unter den Labels */
+    display: block;  /* Label als Block-Element, damit der Abstand zum nächsten Element funktioniert */
 }
 
 /* Richtet die Radiobuttons in der Container-Klasse linksbündig aus */
@@ -317,6 +325,15 @@ img {
     /* Abstand oben und unten */
     text-align: left;
     /* Text linksbündig */
+    color: #000;
+}
+
+.grey_bg_toggle {
+    background-color: #F5F5F7; /* Hintergrundfarbe grau */
+    padding: 15px; /* Innenabstand */
+    border-radius: 4px; /* Runde Ecken */
+    margin: 10px 0; /* Abstand oben und unten */
+    text-align: left; /* Text linksbündig */
     color: #000;
 }
 
@@ -565,76 +582,82 @@ input[type="radio"]:checked+.toggle-label {
     /* Etwas dunklerer Grünton */
 }
 
+/* Der Hauptcontainer für das Pop-up, der den gesamten Bildschirm abdeckt.
+   Es hat einen halbtransparenten Hintergrund, um den Fokus auf den Inhalt zu legen. */
 .showPass {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.224);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 1;
-    transition: 0.5s;
-    z-index: 10000000;
+    height: 100vh; /* Die Höhe nimmt den gesamten Viewport ein */
+    background-color: rgba(0, 0, 0, 0.224); /* Ein halbtransparenter schwarzer Hintergrund */
+    position: fixed; /* Fixiert die Position relativ zum Viewport */
+    top: 0; /* Beginnt oben im Viewport */
+    left: 0; /* Beginnt links im Viewport */
+    width: 100%; /* Deckt die gesamte Breite des Viewports ab */
+    opacity: 1; /* Vollständig sichtbar */
+    transition: 0.5s; /* Sanfter Übergang für Sichtbarkeitsänderungen */
+    z-index: 10000000; /* Sehr hoher Stapelwert, um sicherzustellen, dass es über anderen Elementen liegt */
 }
 
+/* Styling für den Zustand, in dem das Pop-up versteckt wird */
 .showPass.hidePass {
-    opacity: 0;
-    z-index: -1;
+    opacity: 0; /* Macht das Pop-up unsichtbar */
+    z-index: -1; /* Bringt es hinter andere Elemente */
 }
 
+/* Der unsichtbare Overlay-Hintergrund, der Klicks abfangen kann,
+   wenn das Pop-up geöffnet ist. */
 .showPass .closeModel {
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.224);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
+    height: 100vh; /* Gleiche Höhe wie das übergeordnete .showPass */
+    background-color: rgba(0, 0, 0, 0.224); /* Halbtransparenter schwarzer Hintergrund */
+    position: absolute; /* Absolute Positionierung innerhalb von .showPass */
+    top: 0; /* Beginnt oben im Container */
+    left: 0; /* Beginnt links im Container */
+    width: 100%; /* Deckt die gesamte Breite ab */
+    z-index: 1; /* Liegt unterhalb des Inhalts, aber über anderen Seitenelementen */
 }
 
+/* Der Container für den tatsächlichen Inhalt des Pop-ups */
 .showPass .content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    max-width: 500px;
-    width: 93%;
-    padding: 20px 15px;
-    border-radius: 20px;
-    z-index: 2;
+    position: absolute; /* Absolute Positionierung innerhalb von .showPass */
+    top: 50%; /* Zentriert vertikal */
+    left: 50%; /* Zentriert horizontal */
+    transform: translate(-50%, -50%); /* Verschiebt das Element um die Hälfte seiner Breite und Höhe, um es perfekt zu zentrieren */
+    background-color: #ffffff; /* Weißer Hintergrund für den Inhalt */
+    max-width: 500px; /* Maximale Breite des Containers */
+    width: 93%; /* Breite in Relation zum Viewport (vermeidet, dass es zu breit wird) */
+    padding: 20px 15px; /* Innenabstand um den Inhalt */
+    border-radius: 12px; /* Abgerundete Ecken */
+    z-index: 2; /* Liegt über dem Overlay-Hintergrund */
 }
 
+/* Zentriert den inneren Inhalt */
 .showPass .content div {
-    width: fit-content;
-    margin: auto;
+    width: fit-content; /* Passt die Breite an den Inhalt an */
+    margin: auto; /* Zentriert das Element horizontal */
 }
 
+/* Styling für die Überschrift im Pop-up */
 .showPass .content div h1 {
-    text-align: center !important;
-    font-size: 30px;
+    text-align: center !important; /* Zentriert den Text */
+    font-size: 20px; /* Schriftgröße der Überschrift */
 }
 
+/* Styling für die Absätze im Pop-up */
 .showPass .content div p {
-    margin: 25px 0px !important;
-    font-size: 20px;
+    margin: 25px 0px !important; /* Abstand oberhalb und unterhalb der Absätze */
+    font-size: 16px; /* Schriftgröße für den Text */
 }
 
+/* Styling für den Button im Pop-up */
 .showPass .content div button {
-    display: block;
-    margin: 20px auto 0px;
-    padding: 8px 25px;
-    font-size: 16px;
-    font-weight: 600;
-    border-radius: 8px;
-    border: 1px solid #0071e3;
     background-color: #0071e3;
-    color: #ffffff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: 0.5s;
+    display: block;
+    margin: 10px auto;
+    /* zentrieren */
+    margin-bottom: 3px;
+    font-size: 16px;
 }
 
-.showPass .content div button:hover {
-    color: #0071e3;
-    background-color: transparent;
-}
