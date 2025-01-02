@@ -54,16 +54,35 @@ if (session_status() === PHP_SESSION_NONE) {
             <div class="closeModel" id="closeModel"></div>
             <div class="content">
                 <div style="text-align: center;">
-                    <h1>An email has been sent with a new password</h1>
-                    <p style="font-weight: bold; font-size: 1.5em; margin: 20px 0;">
-                        <?php echo htmlspecialchars($_SESSION["password-reset"]); ?>
-                    </p>
+                    <h1>Ein neues Passwort wurde an Ihre E-Mail-Adresse gesendet</h1>
+                    <br>
+                        <?php echo htmlspecialchars($_SESSION["password-reset"]); ?><br>&nbsp;<br>
+                    
                     <button id="closeModelButton">Ok</button>
                 </div>
             </div>
         </div>
     <?php }
     unset($_SESSION["password-reset"]); ?>
+
+    <?php if (isset($_SESSION["invalid_email"])) { ?>
+        <div class="showPass" id="showPass">
+            <div class="closeModel" id="closeModel"></div>
+            <div class="content">
+
+                <div class="center">
+
+                    <h1>Kein Benutzer mit dieser E-Mail-Adresse gefunden</h1>
+                    <br>
+                    Bitte überprüfen Sie Ihre E-Mail-Adresse.<br>&nbsp;<br>
+                    <button id="closeModelButton">OK</button>
+
+                </div>
+
+            </div>
+        </div>
+    <?php }
+    unset($_SESSION["invalid_email"]); ?>
 
     <script src="js/script.js?v=2.8"></script>
 </body>
