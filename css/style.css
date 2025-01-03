@@ -124,6 +124,21 @@ input[type="text"], input[type="email"], input[type="password"] {
     font-size: 15px;
 }
 
+/* textarea-Feld Text Styling */
+textarea {
+    display: block;
+    width: 100%;
+    height: 150px;
+    resize: horizontal;
+    padding: 15px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
 input[type="text"]:hover, input[type="email"]:hover {
     border-color: #0071e3;
     /* Ändert die Rahmenfarbe */
@@ -661,3 +676,31 @@ input[type="radio"]:checked+.toggle-label {
     font-size: 16px;
 }
 
+
+.toggle-content-predamage {
+    display: none;
+    margin-top: 10px;
+}
+
+#yes-predamage:checked~.toggle-content-predamage  {
+    display: block;
+}
+
+
+.toggle-content-hold {
+    display: none;
+    margin-top: 10px;
+}
+
+#yes-hold:checked~.toggle-content-hold  {
+    display: block;
+}
+
+.toggle-content-coinsured {
+    display: none;
+    margin-top: 10px;
+}
+
+#yes-coinsured:checked~.toggle-content-coinsured  {
+    display: block;
+}
