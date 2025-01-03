@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 session_write_close();
 
-                header("Location: https://surendo.com//home.php");
+                header("Location: home.php");
 
                 exit();
 
