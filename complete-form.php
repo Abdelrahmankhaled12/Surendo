@@ -970,143 +970,129 @@
 
         <label class="label-classic-twolined">Wurde die Anlage von einem Fachbetrieb nach den anerkannten Regeln der Technik installiert und gesamtheitlich abgenommen (keine Selbstmontage)?</label>
         <select name="risk_description_expert" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_expert'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_expert'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Sind alle Komponenten erprobt und seriengefertigt (d.h. es handelt sich nicht um Erstkonstruktionen, Prototypen, Sonderanfertigungen oder Nullserien)?</label>
         <select name="risk_description_prototype" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_prototype'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_prototype'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Wurde die Anlage nach dem Stand der Technik, den einschlägigen Normen, Richtlinien und Behördenvorschriften (z.B. mit Elektro-Erstprüfungsprotokoll) ausgeführt und abgenommen? Wird die Anlage gemäß Herstellervorgaben regelmäßig gewartet?</label>
         <select name="risk_description_maintenance" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_maintenance'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_maintenance'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Entsprechen Blitz-, Überspannungs- und Überstromschutzeinrichtungen dem aktuellen Stand der Technik/ den einschlägigen Normen (z.B. EN 62305), wurden sie auf die Anlage abgestimmt und durch einen autorisierten Fachkundigen abgenommen?</label>
         <select name="risk_description_lightning" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)">Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Ja" <?php echo $result['risk_description_lightning'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_lightning'] == 'Nein (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined_v2">Sind der/ die Wechselrichter durch Überdachung, Bauart (oder da im Gebäude-Inneren befindlich) vor Witterungseinflüssen (z.B. Sturm, Hagel, Regen, Sonne, Schnee und Eis) geschützt?</label>
         
         <!-- Begin Buttons, but without Toggle-function -->
-        <input type="radio" id="yes-risk_description_inverter_protection" name="risk_description_inverter_protection" value="Ja" checked>
+        <input type="radio" id="yes-risk_description_inverter_protection" name="risk_description_inverter_protection" value="Ja" <?php echo $result['risk_description_inverter_protection'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-risk_description_inverter_protection" class="toggle-label">Ja</label>
 
-        <input type="radio" id="no-risk_description_inverter_protection" name="risk_description_inverter_protection" value="Nein">
+        <input type="radio" id="no-risk_description_inverter_protection" name="risk_description_inverter_protection" value="Nein" <?php echo $result['risk_description_inverter_protection'] == 'Nein' ? 'checked' : ''?>>
         <label for="no-risk_description_inverter_protection" class="toggle-label">Nein</label>
         <!-- End Buttons, but without Toggle-function -->
         <br><br>
 
         <label class="label-classic-twolined">Sind der/ die Wechselrichter und/ oder PV-Module direkt auf brennbarem Unterbau/ Untergrund montiert?</label>
         <select name="risk_description_combustible_substructure" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)">Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)"  <?php echo $result['risk_description_combustible_substructure'] == 'Ja (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Nein" <?php echo $result['risk_description_combustible_substructure'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Befindet sich die Anlage in einem unbewohnten Gebiet?</label>
         <select name="risk_description_uninhabited_area" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_uninhabited_area'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_uninhabited_area'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die PV-Anlage auf oder an Gebäuden oder in der Nachbarschaft (in 30 m Umkreis) von folgenden Betrieben?</label>
         <select name="risk_description_fire_exposed_area" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Nein - kein Betrieb oder Betriebsart ist zutreffend.">Nein - kein Betrieb oder Betriebsart ist zutreffend.</option>
-            <option value="Bergbau">Bergbau</option>
-            <option value="Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)">Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)</option>
-            <option value="Erdöl oder Erdgas">Erdöl oder Erdgas</option>
-            <option value="Gummi- oder Kunststoffindustrie">Gummi- oder Kunststoffindustrie</option>
-            <option value="Handel mit Waren aller Art (ohne Kenntnis der Warenart)">Handel mit Waren aller Art (ohne Kenntnis der Warenart)</option>
-            <option value="Holzbetriebe">Holzbetriebe</option>
-            <option value="Metallerzeugende Industrie">Metallerzeugende Industrie</option>
-            <option value="Müllsammlung oder Recycling">Müllsammlung oder Recycling</option>
-            <option value="Papier- oder Zellstofferzeugung">Papier- oder Zellstofferzeugung</option>
-            <option value="Pharmazeutische Industrie">Pharmazeutische Industrie</option>
+            <option value="Nein - kein Betrieb oder Betriebsart ist zutreffend." <?php echo $result['risk_description_fire_exposed_area'] == 'Nein - kein Betrieb oder Betriebsart ist zutreffend.' ? 'selected' : ''?>>Nein - kein Betrieb oder Betriebsart ist zutreffend.</option>
+            <option value="Bergbau" <?php echo $result['risk_description_fire_exposed_area'] == 'Bergbau' ? 'selected' : ''?>>Bergbau</option>
+            <option value="Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)" <?php echo $result['risk_description_fire_exposed_area'] == 'Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)' ? 'selected' : ''?>>Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)</option>
+            <option value="Erdöl oder Erdgas" <?php echo $result['risk_description_fire_exposed_area'] == 'Erdöl oder Erdgas' ? 'selected' : ''?>>Erdöl oder Erdgas</option>
+            <option value="Gummi- oder Kunststoffindustrie" <?php echo $result['risk_description_fire_exposed_area'] == 'Gummi- oder Kunststoffindustrie' ? 'selected' : ''?>>Gummi- oder Kunststoffindustrie</option>
+            <option value="Handel mit Waren aller Art (ohne Kenntnis der Warenart)" <?php echo $result['risk_description_fire_exposed_area'] == 'Handel mit Waren aller Art (ohne Kenntnis der Warenart)' ? 'selected' : ''?>>Handel mit Waren aller Art (ohne Kenntnis der Warenart)</option>
+            <option value="Holzbetriebe" <?php echo $result['risk_description_fire_exposed_area'] == 'Holzbetriebe' ? 'selected' : ''?>>Holzbetriebe</option>
+            <option value="Metallerzeugende Industrie" <?php echo $result['risk_description_fire_exposed_area'] == 'Metallerzeugende Industrie' ? 'selected' : ''?>>Metallerzeugende Industrie</option>
+            <option value="Müllsammlung oder Recycling" <?php echo $result['risk_description_fire_exposed_area'] == 'Müllsammlung oder Recycling' ? 'selected' : ''?>>Müllsammlung oder Recycling</option>
+            <option value="Papier- oder Zellstofferzeugung" <?php echo $result['risk_description_fire_exposed_area'] == 'Papier- oder Zellstofferzeugung' ? 'selected' : ''?>>Papier- oder Zellstofferzeugung</option>
+            <option value="Pharmazeutische Industrie" <?php echo $result['risk_description_fire_exposed_area'] == 'Pharmazeutische Industrie' ? 'selected' : ''?>>Pharmazeutische Industrie</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die Anlage in einem wald-/ steppenbrandgefährdetem Gebiet? (Wenn ja, bitte Vorlage des Brandschutzkonzepts)</label>
         <select name="risk_description_wildfire" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)">Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_wildfire'] == 'Ja (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Nein" <?php echo $result['risk_description_wildfire'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Ist die PV-Anlage leicht erreichbar? (bzw. im Brandfall müssen keine Behelfsstraßen, etc. errichtet werden)</label>
         <select name="risk_description_accessibility" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja, die Anlage ist leicht erreichbar">Ja, die Anlage ist leicht erreichbar</option>
-            <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)">Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Ja, die Anlage ist leicht erreichbar" <?php echo $result['risk_description_accessibility'] == 'Ja, die Anlage ist leicht erreichbar' ? 'selected' : ''?>>Ja, die Anlage ist leicht erreichbar</option>
+            <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_accessibility'] == 'Nein (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die PV-Anlage in unmittelbarer Nähe einer Windkraftanlage oder eines Flughafens? (Risiko des Eiswurfs)</label>
         <select name="risk_description_windpower" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_windpower'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_windpower'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic_v2"><b>Gibt es behördliche Wiederaufbau- oder Betriebsbeschränkungen?</b></label>
-        <input type="radio" id="yes-restriction" name="risk_description_official_restriction" value="Ja">
+        <input type="radio" id="yes-restriction" name="risk_description_official_restriction" value="Ja" <?php echo $result['risk_description_official_restriction'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-restriction" class="toggle-label">Ja</label>
-        <input type="radio" id="no-restriction" name="risk_description_official_restriction" value="Nein" checked>
+        <input type="radio" id="no-restriction" name="risk_description_official_restriction" value="Nein" <?php echo $result['risk_description_official_restriction'] == 'Nein' ? 'checked' : ''?>>
         <label for="no-restriction" class="toggle-label">Nein</label>
         <br><br>
         <label class="label-classic">In welcher Form?</label>
-        <input type="text" name="risk_description_official_restriction_details">
+        <input type="text" name="risk_description_official_restriction_details" value=<?php echo $result['risk_description_official_restriction_details']?>>
         <br><br>
 
         <label class="label-classic-twolined">Ist die Systemstatik des Tragsystems der PV-Module für die Umgebungsbedingungen (Schnee- und Windlasten u.a.) nach den anerkannten Regeln der Technik (z.B. Euro Code 1 und 7, DIN 1055 oder gleichwertige Normen) nachgewiesen und eingehalten?</label>
         <select name="risk_description_statics" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_statics'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_statics'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Sind die Module nach IEC 61215, IEC 61646 oder gleichwertigen Normen zertifiziert?</label>
         <select name="risk_description_certified" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_certified'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_certified'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Besitzt die PV-Anlage flexible Dünnschichtmodule?</label>
         <select name="risk_description_flexible_modules" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja (Keine Deckung von Hagel)">Ja (Keine Deckung von Hagel)</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja (Keine Deckung von Hagel)" <?php echo $result['risk_description_flexible_modules'] == 'Ja' ? 'selected' : ''?>>Ja (Keine Deckung von Hagel)</option>
+            <option value="Nein" <?php echo $result['risk_description_flexible_modules'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Wurden die Kabelstränge in Kabelschächten oder Leerrohren innerhalb und außerhalb der Anlage diebstahlsicher fixiert und verschlossen? (dies gilt insbesondere für Schachtöffnungen und Revisionsklappen)</label>
         <select name="risk_description_cable" required>
-            <option value="" disabled selected hidden>Bitte wählen</option>
-            <option value="Ja">Ja</option>
-            <option value="Nein">Nein</option>
+            <option value="Ja" <?php echo $result['risk_description_cable'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+            <option value="Nein" <?php echo $result['risk_description_cable'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
@@ -1127,21 +1113,20 @@
 
         <!-- Toggle-Buttons YES/NO -->
 
-        <input type="radio" id="yes-predamage" name="predamage" value="Ja">
+        <input type="radio" id="yes-predamage" name="predamage" value="Ja" <?php echo $result['predamage'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-predamage" class="toggle-label">Ja</label>
 
-        <input type="radio" id="no-predamage" name="predamage" value="Nein" checked>
+        <input type="radio" id="no-predamage" name="predamage" value="Nein" <?php echo $result['predamage'] == 'Nein' ? 'checked' : ''?>>
         <label for="no-predamage" class="toggle-label">Nein</label>
         <div class="toggle-content-predamage">
             <br>
             <label class="label-classic">Art, Anzahl, Zeitpunkt, Ursache und Aufwendung der Schäden sind anzugeben:</label>
-            <textarea name="predamage_details" id="predamage_details" rows="4" cols="1" maxlength="500"></textarea>
+            <textarea name="predamage_details" id="predamage_details" rows="4" cols="1" maxlength="500"><?php echo $result['predamage_details']?></textarea>
             <br>
             <label class="label-classic-twolined">Wurde die Versicherung der Anlage in der Vergangenheit von Allianz oder einem anderen Versicherer abgelehnt?</label>
             <select name="predamage_refusal"  id="predamage_refusal">
-                <option value="" disabled selected hidden>Bitte wählen</option>
-                <option value="Ja">Ja</option>
-                <option value="Nein">Nein</option>
+                <option value="Ja" <?php echo $result['predamage_refusal'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein" <?php echo $result['predamage_refusal'] == 'Nein' ? 'selected' : ''?>>Nein</option>
             </select>
         </div>
 
@@ -1159,30 +1144,30 @@
 
         <!-- Toggle-Buttons YES/NO -->
 
-        <input type="radio" id="yes-hold" name="hold" value="Ja">
+        <input type="radio" id="yes-hold" name="hold" value="Ja" <?php echo $result['hold'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-hold" class="toggle-label">Ja</label>
 
-        <input type="radio" id="no-hold" name="hold" value="Nein" checked>
+        <input type="radio" id="no-hold" name="hold" value="Nein" <?php echo $result['hold'] == 'Nein' ? 'checked' : ''?>>
         <label for="no-hold" class="toggle-label">Nein</label>
         <div class="toggle-content-hold">
             <br>
-            <label class="label-classic">Gläubiger gemäß Firmenbuch (z.B. Bank, Leasingfirma)</label>
-            <input type="text" name="hold_creditor" id="hold_creditor">
+            <label class="label-classic" for="hold_street">Gläubiger gemäß Firmenbuch (z.B. Bank, Leasingfirma)</label>
+            <input type="text" name="hold_creditor" id="hold_creditor" value=<?php echo $result['hold_creditor']?>>
             <br>
-            <label class="label-classic">Straße und Hausnummer</label>
-            <input type="text" name="hold_street" id="hold_street">
+            <label class="label-classic" for="hold_street">Straße und Hausnummer</label>
+            <input type="text" name="hold_street" id="hold_street" value=<?php echo $result['hold_street']?>>
             <br>
-            <label class="label-classic">Postleitzahl</label>
-            <input type="text" name="hold_postalcode"  id="hold_postalcode" maxlength="8">
+            <label class="label-classic" for="hold_postalcode">Postleitzahl</label>
+            <input type="text" name="hold_postalcode"  id="hold_postalcode" maxlength="8" value=<?php echo $result['hold_postalcode']?>>
             <br>
-            <label class="label-classic">Ort</label>
-            <input type="text" name="hold_place" id="hold_place">
+            <label class="label-classic" for="hold_place">Ort</label>
+            <input type="text" name="hold_place" id="hold_place" value=<?php echo $result['hold_place']?>>
             <br>
-            <label class="label-classic">Kontaktperson</label>
-            <input type="text" name="hold_contact" id="hold_contact">
+            <label class="label-classic" for="hold_contact">Kontaktperson</label>
+            <input type="text" name="hold_contact" id="hold_contact" value=<?php echo $result['hold_contact']?>>
             <br>
-            <label class="label-classic">E-Mail</label>
-            <input type="email" name="hold_email" id="hold_email">
+            <label class="label-classic" for="hold_email">E-Mail</label>
+            <input type="email" name="hold_email" id="hold_email" value=<?php echo $result['hold_email']?>>
             <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
         </div>
 
@@ -1198,10 +1183,10 @@
         <label class="label-classic_v2"><b>Wird die Mitversicherung eines Unternehmens gewünscht?</b><br></label>
 
         <!-- Toggle-Buttons YES/NO -->
-        <input type="radio" id="yes-coinsured" name="coinsured" value="Ja">
+        <input type="radio" id="yes-coinsured" name="coinsured" value="Ja" <?php echo $result['coinsured'] == 'Ja' ? 'checked' : '' ?>>
         <label for="yes-coinsured" class="toggle-label">Ja</label>
 
-        <input type="radio" id="no-coinsured" name="coinsured" value="Nein" checked>
+        <input type="radio" id="no-coinsured" name="coinsured" value="Nein" <?php echo $result['coinsured'] == 'Nein' ? 'checked' : '' ?>>
         <label for="no-coinsured" class="toggle-label">Nein</label>
         <br>
 
@@ -1210,19 +1195,19 @@
             </div>
             <br>
             <label class="label-classic">Name des Unternehmens</label>
-            <input type="text" name="coinsured_company" id="coinsured_company">
+            <input type="text" name="coinsured_company" id="coinsured_company" value=<?php echo  $result['coinsured_company']?>>
             <br>
             <label class="label-classic">Straße und Hausnummer</label>
-            <input type="text" name="coinsured_street"  id="coinsured_street">
+            <input type="text" name="coinsured_street"  id="coinsured_street" value=<?php echo  $result['coinsured_street']?>>
             <br>
             <label class="label-classic">Postleitzahl</label>
-            <input type="text" name="coinsured_postalcode"  id="coinsured_postalcode" maxlength="8">
+            <input type="text" name="coinsured_postalcode"  id="coinsured_postalcode" maxlength="8" value=<?php echo  $result['coinsured_postalcode']?>>
             <br>
             <label class="label-classic">Ort</label>
-            <input type="text" name="coinsured_place" id="coinsured_place">
+            <input type="text" name="coinsured_place" id="coinsured_place" value=<?php echo  $result['coinsured_place']?>>
             <br>
             <label class="label-classic">In der Eigenschaft als</label>
-            <input type="text" name="coinsured_function" id="coinsured_function">
+            <input type="text" name="coinsured_function" id="coinsured_function" value=<?php echo  $result['coinsured_function']?>>
         </div>
 
 

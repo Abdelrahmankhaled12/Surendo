@@ -1,35 +1,1 @@
-<?php
-require "db_connection.php";
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
-
-if (isset($_SESSION["form_id"])) {
-    $form_id = $_SESSION["form_id"];
-
-    $sql = "SELECT * FROM `pv_plants` WHERE `id` = ?";
-    $stmt = $conn->prepare($sql);
-
-    if (!$stmt) {
-        die("Error preparing statement: " . $conn->error);
-    }
-
-    $stmt->bind_param('i', $form_id);
-
-    if (!$stmt->execute()) {
-        $stmt->close();
-        die("Error executing statement: " . $stmt->error);
-    }
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        $result = $result->fetch_assoc();
-    } else {
-        echo "No record found with the provided form_id.";
-    }
-
-    $stmt->close();
-} else {
-    die("No form_id provided in the session.");
-}
-
-?>
+<?phprequire "db_connection.php";if (session_status() === PHP_SESSION_NONE) {    session_start();}if (isset($_SESSION["form_id"])) {    $form_id = $_SESSION["form_id"];    // Retrieve data from `pv_plants`    $sql1 = "SELECT * FROM `pv_plants` WHERE `id` = ?";    $stmt1 = $conn->prepare($sql1);    if (!$stmt1) {        die("Error preparing statement for pv_plants: " . $conn->error);    }    $stmt1->bind_param('i', $form_id);    if (!$stmt1->execute()) {        $stmt1->close();        die("Error executing statement for pv_plants: " . $stmt1->error);    }    $result1 = $stmt1->get_result();    $data1 = [];    if ($result1->num_rows > 0) {        $data1 = $result1->fetch_assoc();    } else {        die("No record found in pv_plants with the provided form_id.");    }    $stmt1->close();    // Retrieve data from `pv_plants_1`    $sql2 = "SELECT * FROM `pv_plants_1` WHERE `pv_plant_id` = ?";    $stmt2 = $conn->prepare($sql2);    if (!$stmt2) {        die("Error preparing statement for pv_plants_1: " . $conn->error);    }    $stmt2->bind_param('i', $form_id);    if (!$stmt2->execute()) {        $stmt2->close();        die("Error executing statement for pv_plants_1: " . $stmt2->error);    }    $result2 = $stmt2->get_result();    $data2 = [];    if ($result2->num_rows > 0) {        $data2 = $result2->fetch_assoc();    }    $stmt2->close();    // Merge results into a single array    $result = array_merge($data1, $data2);    $result['id'] = $form_id;} else {    die("No form_id provided in the session.");}
