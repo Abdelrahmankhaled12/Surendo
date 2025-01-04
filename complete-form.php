@@ -653,13 +653,13 @@
 
     <label class="label-classic">Hersteller</label>
 
-    <input type="text" name="panel_manufacturer" value="<?= $result["panel_manufacturer"] ?>" required>
+    <input type="text" name="panel_manufacturer" id="panel_manufacturer" value="<?= $result["panel_manufacturer"] ?>" required>
 
     <br>
 
     <label class="label-classic">Type</label>
 
-    <input type="text" name="panel_type" value="<?= $result["panel_type"] ?>" required>
+    <input type="text" name="panel_type" id="panel_type" value="<?= $result["panel_type"] ?>" required>
 
     <br>
 
@@ -669,25 +669,25 @@
 
         <label class="label-classic">Anzahl der Module</label>
 
-        <input type="number" name="panel_amount" value="<?= $result["panel_amount"] ?>" required>
+        <input type="number" name="panel_amount" id="panel_amount" value="<?= $result["panel_amount"] ?>" required>
 
 
 
         <label class="label-classic">Leistung je Modul (Wp)</label>
 
-        <input type="number" name="output_per_panel" value="<?= $result["output_per_panel"] ?>" step="0.01" required>
+        <input type="number" name="output_per_panel" id="output_per_panel" value="<?= $result["output_per_panel"] ?>" step="0.01" required>
 
 
 
         <label class="label-classic">Nennleistung gesamt bzw. aller Module (kWp)</label>
 
-        <input type="number" name="output_total" value="<?= $result["output_total"] ?>" step="0.01" required>
+        <input type="number" name="output_total" id="output_total" value="<?= $result["output_total"] ?>" step="0.01" required>
 
 
 
         <label class="label-classic">Gesamtfläche (m²)</label>
 
-        <input type="number" name="area" value="<?= $result["area"] ?>" step="0.01">
+        <input type="number" name="area"  id="area" value="<?= $result["area"] ?>" step="0.01">
 
         <br>
 
@@ -699,13 +699,13 @@
 
     <label class="label-classic">Hersteller</label>
 
-    <input type="text" name="inverter_manufacturer" value="<?= $result["inverter_manufacturer"] ?>" required>
+    <input type="text" name="inverter_manufacturer" id="inverter_manufacturer" value="<?= $result["inverter_manufacturer"] ?>" required>
 
 
 
     <label class="label-classic">Type</label>
 
-    <input type="text" name="inverter_type" value="<?= $result["inverter_type"] ?>" required>
+    <input type="text" name="inverter_type" id="inverter_type" value="<?= $result["inverter_type"] ?>" required>
 
 
 
@@ -713,13 +713,13 @@
 
         <label class="label-classic">Anzahl der Wechselrichter</label>
 
-        <input type="number" name="inverter_amount" value="<?= $result["inverter_amount"] ?>" required>
+        <input type="number" name="inverter_amount" id="inverter_amount" value="<?= $result["inverter_amount"] ?>" required>
 
 
 
         <label class="label-classic">Leistung je Wechselrichter (kVA)</label>
 
-        <input type="number" name="output_per_inverter" value="<?= $result["output_per_inverter"] ?>" step="0.01">
+        <input type="number" name="output_per_inverter" id="output_per_inverter" value="<?= $result["output_per_inverter"] ?>" step="0.01">
 
     </div>
 
@@ -969,28 +969,28 @@
         </div>
 
         <label class="label-classic-twolined">Wurde die Anlage von einem Fachbetrieb nach den anerkannten Regeln der Technik installiert und gesamtheitlich abgenommen (keine Selbstmontage)?</label>
-        <select name="risk_description_expert" required>
+        <select  name="risk_description_expert" id="risk_description_expert" required>
             <option value="Ja" <?php echo $result['risk_description_expert'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_expert'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Sind alle Komponenten erprobt und seriengefertigt (d.h. es handelt sich nicht um Erstkonstruktionen, Prototypen, Sonderanfertigungen oder Nullserien)?</label>
-        <select name="risk_description_prototype" required>
+        <select name="risk_description_prototype" id="risk_description_prototype" required>
             <option value="Ja" <?php echo $result['risk_description_prototype'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_prototype'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Wurde die Anlage nach dem Stand der Technik, den einschlägigen Normen, Richtlinien und Behördenvorschriften (z.B. mit Elektro-Erstprüfungsprotokoll) ausgeführt und abgenommen? Wird die Anlage gemäß Herstellervorgaben regelmäßig gewartet?</label>
-        <select name="risk_description_maintenance" required>
+        <select name="risk_description_maintenance" id="risk_description_maintenance" required>
             <option value="Ja" <?php echo $result['risk_description_maintenance'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_maintenance'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Entsprechen Blitz-, Überspannungs- und Überstromschutzeinrichtungen dem aktuellen Stand der Technik/ den einschlägigen Normen (z.B. EN 62305), wurden sie auf die Anlage abgestimmt und durch einen autorisierten Fachkundigen abgenommen?</label>
-        <select name="risk_description_lightning" required>
+        <select name="risk_description_lightning"  id="risk_description_lightning" required>
             <option value="Ja" <?php echo $result['risk_description_lightning'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_lightning'] == 'Nein (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
         </select>
@@ -1008,21 +1008,21 @@
         <br><br>
 
         <label class="label-classic-twolined">Sind der/ die Wechselrichter und/ oder PV-Module direkt auf brennbarem Unterbau/ Untergrund montiert?</label>
-        <select name="risk_description_combustible_substructure" required>
+        <select name="risk_description_combustible_substructure"  id="risk_description_combustible_substructure"  required>
             <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)"  <?php echo $result['risk_description_combustible_substructure'] == 'Ja (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
             <option value="Nein" <?php echo $result['risk_description_combustible_substructure'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Befindet sich die Anlage in einem unbewohnten Gebiet?</label>
-        <select name="risk_description_uninhabited_area" required>
+        <select name="risk_description_uninhabited_area" id="risk_description_uninhabited_area" required>
             <option value="Ja" <?php echo $result['risk_description_uninhabited_area'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_uninhabited_area'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die PV-Anlage auf oder an Gebäuden oder in der Nachbarschaft (in 30 m Umkreis) von folgenden Betrieben?</label>
-        <select name="risk_description_fire_exposed_area" required>
+        <select name="risk_description_fire_exposed_area" id="risk_description_fire_exposed_area"  required>
             <option value="Nein - kein Betrieb oder Betriebsart ist zutreffend." <?php echo $result['risk_description_fire_exposed_area'] == 'Nein - kein Betrieb oder Betriebsart ist zutreffend.' ? 'selected' : ''?>>Nein - kein Betrieb oder Betriebsart ist zutreffend.</option>
             <option value="Bergbau" <?php echo $result['risk_description_fire_exposed_area'] == 'Bergbau' ? 'selected' : ''?>>Bergbau</option>
             <option value="Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)" <?php echo $result['risk_description_fire_exposed_area'] == 'Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)' ? 'selected' : ''?>>Chemische Industrie (mit leicht entflammbaren, brennbaren oder explosiven Stoffen)</option>
@@ -1038,21 +1038,21 @@
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die Anlage in einem wald-/ steppenbrandgefährdetem Gebiet? (Wenn ja, bitte Vorlage des Brandschutzkonzepts)</label>
-        <select name="risk_description_wildfire" required>
+        <select name="risk_description_wildfire" id="risk_description_wildfire"  required>
             <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_wildfire'] == 'Ja (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
             <option value="Nein" <?php echo $result['risk_description_wildfire'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Ist die PV-Anlage leicht erreichbar? (bzw. im Brandfall müssen keine Behelfsstraßen, etc. errichtet werden)</label>
-        <select name="risk_description_accessibility" required>
+        <select name="risk_description_accessibility" id="risk_description_accessibility"  required>
             <option value="Ja, die Anlage ist leicht erreichbar" <?php echo $result['risk_description_accessibility'] == 'Ja, die Anlage ist leicht erreichbar' ? 'selected' : ''?>>Ja, die Anlage ist leicht erreichbar</option>
             <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['risk_description_accessibility'] == 'Nein (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Befindet sich die PV-Anlage in unmittelbarer Nähe einer Windkraftanlage oder eines Flughafens? (Risiko des Eiswurfs)</label>
-        <select name="risk_description_windpower" required>
+        <select name="risk_description_windpower"  id="risk_description_windpower" required>
             <option value="Ja" <?php echo $result['risk_description_windpower'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_windpower'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
@@ -1071,28 +1071,28 @@
         <br><br>
 
         <label class="label-classic-twolined">Ist die Systemstatik des Tragsystems der PV-Module für die Umgebungsbedingungen (Schnee- und Windlasten u.a.) nach den anerkannten Regeln der Technik (z.B. Euro Code 1 und 7, DIN 1055 oder gleichwertige Normen) nachgewiesen und eingehalten?</label>
-        <select name="risk_description_statics" required>
+        <select name="risk_description_statics" id="risk_description_statics" required>
             <option value="Ja" <?php echo $result['risk_description_statics'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_statics'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Sind die Module nach IEC 61215, IEC 61646 oder gleichwertigen Normen zertifiziert?</label>
-        <select name="risk_description_certified" required>
+        <select name="risk_description_certified" id="risk_description_certified" required>
             <option value="Ja" <?php echo $result['risk_description_certified'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_certified'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic">Besitzt die PV-Anlage flexible Dünnschichtmodule?</label>
-        <select name="risk_description_flexible_modules" required>
+        <select name="risk_description_flexible_modules" id="risk_description_flexible_modules" required>
             <option value="Ja (Keine Deckung von Hagel)" <?php echo $result['risk_description_flexible_modules'] == 'Ja' ? 'selected' : ''?>>Ja (Keine Deckung von Hagel)</option>
             <option value="Nein" <?php echo $result['risk_description_flexible_modules'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
 
         <label class="label-classic-twolined">Wurden die Kabelstränge in Kabelschächten oder Leerrohren innerhalb und außerhalb der Anlage diebstahlsicher fixiert und verschlossen? (dies gilt insbesondere für Schachtöffnungen und Revisionsklappen)</label>
-        <select name="risk_description_cable" required>
+        <select name="risk_description_cable" id="risk_description_cable" required>
             <option value="Ja" <?php echo $result['risk_description_cable'] == 'Ja' ? 'selected' : ''?>>Ja</option>
             <option value="Nein" <?php echo $result['risk_description_cable'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
