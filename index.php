@@ -588,9 +588,12 @@
         <label for="yes-restriction" class="toggle-label">Ja</label>
         <input type="radio" id="no-restriction" name="risk_description_official_restriction" value="Nein" checked>
         <label for="no-restriction" class="toggle-label">Nein</label>
-        <br><br>
-        <label class="label-classic">In welcher Form?</label>
-        <input type="text" name="risk_description_official_restriction_details">
+        <div class="toggle-content-restriction">
+            <br>
+            <label class="label-classic">In welcher Form?</label>
+            <input type="text" name="risk_description_official_restriction_details" id="risk_description_official_restriction_details">
+        </div>
+
         <br><br>
 
         <label class="label-classic-twolined">Ist die Systemstatik des Tragsystems der PV-Module für die Umgebungsbedingungen (Schnee- und Windlasten u.a.) nach den anerkannten Regeln der Technik (z.B. Euro Code 1 und 7, DIN 1055 oder gleichwertige Normen) nachgewiesen und eingehalten?</label>
@@ -651,14 +654,15 @@
             <br>
             <label class="label-classic">Art, Anzahl, Zeitpunkt, Ursache und Aufwendung der Schäden sind anzugeben:</label>
             <textarea name="predamage_details" id="predamage_details" rows="4" cols="1" maxlength="500"></textarea>
-            <br>
-            <label class="label-classic-twolined">Wurde die Versicherung der Anlage in der Vergangenheit von Allianz oder einem anderen Versicherer abgelehnt?</label>
-            <select name="predamage_refusal"  id="predamage_refusal">
-                <option value="" disabled selected hidden>Bitte wählen</option>
-                <option value="Ja">Ja</option>
-                <option value="Nein">Nein</option>
-            </select>
         </div>
+        <br>
+        <br>
+        <label class="label-classic-twolined">Wurde die Versicherung der Anlage in der Vergangenheit von Allianz oder einem anderen Versicherer abgelehnt?</label>
+        <select name="predamage_refusal"  id="predamage_refusal" required>
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
 
 
         <hr class="blue-line"> <!-- Blaue Linie eingefügt -->

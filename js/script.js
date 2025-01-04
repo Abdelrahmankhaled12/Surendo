@@ -398,7 +398,23 @@ document.querySelectorAll('input[name="self_consumption"]').forEach((radioButton
 
 });
 
-const predamageFields = ['predamage_details', 'predamage_refusal'];
+
+
+const restrictionFields = ['risk_description_official_restriction_details'];
+
+document.querySelectorAll('input[name="restriction"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value; 
+        if (selectedOption === 'Ja') {
+            toggleRequiredAttributes(restrictionFields, true);
+        } else {
+            toggleRequiredAttributes(restrictionFields, false);
+        }
+    });
+});
+
+
+const predamageFields = ['predamage_details'];
 
 document.querySelectorAll('input[name="predamage"]').forEach((radioButton) => {
     radioButton.addEventListener('change', (event) => {
@@ -439,6 +455,8 @@ document.querySelectorAll('input[name="coinsured"]').forEach((radioButton) => {
         }
     });
 });
+
+
 
 
 
@@ -527,6 +545,11 @@ document.getElementById("save-btn").addEventListener("click", () => {
         'risk_description_flexible_modules',
 
         'risk_description_cable',
+
+        'risk_description_official_restriction_details',
+        
+        'predamage_refusal',
+
     ]
 
 
