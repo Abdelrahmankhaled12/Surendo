@@ -761,45 +761,45 @@
     <div class="form-container"> <!-- Container damit Input-Felder Zahlen linksbündig angeordnet werden -->
         <label class="label-classic">Module (€)</label>
         <input type="number" id="eur_panels" name="eur_panels" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_panels']) ? number_format($_POST['eur_panels'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_panels']; ?>"
             required>
             <br>
 
         <label class="label-classic">Wechselrichter (€)</label>
         <input type="number" id="eur_inverter" name="eur_inverter" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_inverter']) ? number_format($_POST['eur_inverter'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_inverter'] ?>"
             required>
             <br>
 
         <label class="label-classic">Transformator NUR für die PV-Anlage; nur dann ist der Trafo versicherbar
             (€)</label>
         <input type="number" id="eur_transformer" name="eur_transformer" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_transformer']) ? number_format($_POST['eur_transformer'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_transformer']; ?>"
             required>
             <br>
 
         <label class="label-classic">Tragkonstruktion (€)</label>
         <input type="number" id="eur_supporting_structure" name="eur_supporting_structure" step="0.01"
             oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_supporting_structure']) ? number_format($_POST['eur_supporting_structure'], 2, ',', '.') : ''; ?>"
+            value="<?php echo  $result['eur_supporting_structure']; ?>"
             required>
             <br>
 
         <label class="label-classic">24/7-Videoüberwachung mit Bewegungsmelder (€)</label>
         <input type="number" id="eur_video" name="eur_video" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_video']) ? number_format($_POST['eur_video'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_video']; ?>"
             required>
             <br>
 
         <label class="label-classic">Zaun/ Umzäunung; kein Mobilzaun! (€)</label>
         <input type="number" id="eur_fence" name="eur_fence" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_fence']) ? number_format($_POST['eur_fence'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_fence']; ?>"
             required>
         <!-- BEGIN TOGGLE VALUE CHARGING STATION - -->
         <div class="toggle-content-charging_station">
             <label class="label-classic">E-Ladestation (€)</label>
             <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01" oninput="calculateTotal()"
-                value="<?php echo isset($_POST['eur_charging_station']) ? number_format($_POST['eur_charging_station'], 2, ',', '.') : ''; ?>">
+                value="<?php echo $result['eur_charging_station']; ?>">
         </div>
         <!-- END TOGGLE VALUE CHARGING STATION - -->
 
@@ -807,14 +807,14 @@
         <div class="toggle-content-battery_storage">
         <label class="label-classic">Batteriespeicher (€)</label>
         <input type="number" id="eur_battery_storage" name="eur_battery_storage" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_battery_storage']) ? number_format($_POST['eur_battery_storage'], 2, ',', '.') : ''; ?>">
+            value="<?php echo $result['eur_battery_storage']; ?>">
         </div>
         <!-- END TOGGLE VALUE BATTERY STORAGE - -->
         <br>
 
         <label class="label-classic">Sonstige bzw. Sammelposition für zuvor nicht genannte Komponenten (€)</label>
         <input type="number" id="eur_miscellaneous" name="eur_miscellaneous" step="0.01" oninput="calculateTotal()"
-            value="<?php echo isset($_POST['eur_miscellaneous']) ? number_format($_POST['eur_miscellaneous'], 2, ',', '.') : ''; ?>"
+            value="<?php echo $result['eur_miscellaneous']; ?>"
             required>
     </div>
     <br>
