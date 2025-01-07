@@ -722,108 +722,109 @@
         <input type="number" name="output_per_inverter" id="output_per_inverter" value="<?= $result["output_per_inverter"] ?>" step="0.01">
 
     </div>
-
+    
     <br>
 
+    <!-- BEGIN SECTION CHARGING STATION & BATTERY STORAGE -->
+    <div class="subsection"><b>Batteriespeicher und E-Ladestationen</b></div>
 
+    <label class="label-classic_v2">Ist eine E-Ladestation vorhanden?</label>
+
+    <!-- Begin Toggle-Buttons YES/NO for CHARGING STATION -->
+    <input type="radio" id="yes-charging_station" name="charging_station" value="Ja"> <!-- name = DB-Name -->
+    <label for="yes-charging_station" class="toggle-label">Ja</label>
+
+    <input type="radio" id="no-charging_station" name="charging_station" value="Nein" checked>
+    <label for="no-charging_station" class="toggle-label">Nein</label>
+    <!-- End Toggle-Buttons YES/NO for CHARGING STATION -->
+    <br><br>
+
+    <label class="label-classic_v2">Ist ein Batteriespeicher vorhanden?</label>
+
+    <!-- Begin Toggle-Buttons YES/NO for BATTERY STORAGE -->
+    <input type="radio" id="yes-battery_storage" name="battery_storage" value="Ja"> <!-- name = DB-Name -->
+    <label for="yes-battery_storage" class="toggle-label">Ja</label>
+
+    <input type="radio" id="no-battery_storage" name="battery_storage" value="Nein" checked>
+    <label for="no-battery_storage" class="toggle-label">Nein</label>
+    <!-- End Toggle-Buttons YES/NO for BATTERY STORAGE -->
+    <br>
+    </div>
+    <!-- END SECTION CHARGING STATION & BATTERY STORAGE -->
+    <br>
 
     <div class="subsection"><b>Neuwert in € (ohne Preisnachlässe)</b>
-
         <br>
-
         <span class="small-text">Bitte "0" eingeben, wenn Komponente nicht Bestandteil der Anlage ist</span>
-
     </div>
-
-
-
+    <br>
     <div class="form-container"> <!-- Container damit Input-Felder Zahlen linksbündig angeordnet werden -->
-
         <label class="label-classic">Module (€)</label>
-
         <input type="number" id="eur_panels" name="eur_panels" step="0.01" oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_panels']) ? number_format($_POST['eur_panels'], 2, ',', '.') : $result["eur_panels"]; ?>"
-
-               required>
-
-
+            value="<?php echo isset($_POST['eur_panels']) ? number_format($_POST['eur_panels'], 2, ',', '.') : ''; ?>"
+            required>
+            <br>
 
         <label class="label-classic">Wechselrichter (€)</label>
-
         <input type="number" id="eur_inverter" name="eur_inverter" step="0.01" oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_inverter']) ? number_format($_POST['eur_inverter'], 2, ',', '.') : $result["eur_inverter"]; ?>"
-
-               required>
-
-
+            value="<?php echo isset($_POST['eur_inverter']) ? number_format($_POST['eur_inverter'], 2, ',', '.') : ''; ?>"
+            required>
+            <br>
 
         <label class="label-classic">Transformator NUR für die PV-Anlage; nur dann ist der Trafo versicherbar
-
             (€)</label>
-
         <input type="number" id="eur_transformer" name="eur_transformer" step="0.01" oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_transformer']) ? number_format($_POST['eur_transformer'], 2, ',', '.') : $result["eur_transformer"]; ?>"
-
-               required>
-
-
+            value="<?php echo isset($_POST['eur_transformer']) ? number_format($_POST['eur_transformer'], 2, ',', '.') : ''; ?>"
+            required>
+            <br>
 
         <label class="label-classic">Tragkonstruktion (€)</label>
-
         <input type="number" id="eur_supporting_structure" name="eur_supporting_structure" step="0.01"
-
-               oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_supporting_structure']) ? number_format($_POST['eur_supporting_structure'], 2, ',', '.') : $result["eur_supporting_structure"]; ?>"
-
-               required>
-
-
+            oninput="calculateTotal()"
+            value="<?php echo isset($_POST['eur_supporting_structure']) ? number_format($_POST['eur_supporting_structure'], 2, ',', '.') : ''; ?>"
+            required>
+            <br>
 
         <label class="label-classic">24/7-Videoüberwachung mit Bewegungsmelder (€)</label>
-
         <input type="number" id="eur_video" name="eur_video" step="0.01" oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_video']) ? number_format($_POST['eur_video'], 2, ',', '.') : $result["eur_video"]; ?>"
-
-               required>
-
-
+            value="<?php echo isset($_POST['eur_video']) ? number_format($_POST['eur_video'], 2, ',', '.') : ''; ?>"
+            required>
+            <br>
 
         <label class="label-classic">Zaun/ Umzäunung; kein Mobilzaun! (€)</label>
-
         <input type="number" id="eur_fence" name="eur_fence" step="0.01" oninput="calculateTotal()"
+            value="<?php echo isset($_POST['eur_fence']) ? number_format($_POST['eur_fence'], 2, ',', '.') : ''; ?>"
+            required>
+        <!-- BEGIN TOGGLE VALUE CHARGING STATION - -->
+        <div class="toggle-content-charging_station">
+            <label class="label-classic">E-Ladestation (€)</label>
+            <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01" oninput="calculateTotal()"
+                value="<?php echo isset($_POST['eur_charging_station']) ? number_format($_POST['eur_charging_station'], 2, ',', '.') : ''; ?>">
+        </div>
+        <!-- END TOGGLE VALUE CHARGING STATION - -->
 
-               value="<?php echo isset($_POST['eur_fence']) ? number_format($_POST['eur_fence'], 2, ',', '.') : $result["eur_fence"]; ?>"
-
-               required>
-
-
+        <!-- BEGIN TOGGLE VALUE BATTERY STORAGE - -->
+        <div class="toggle-content-battery_storage">
+        <label class="label-classic">Batteriespeicher (€)</label>
+        <input type="number" id="eur_battery_storage" name="eur_battery_storage" step="0.01" oninput="calculateTotal()"
+            value="<?php echo isset($_POST['eur_battery_storage']) ? number_format($_POST['eur_battery_storage'], 2, ',', '.') : ''; ?>">
+        </div>
+        <!-- END TOGGLE VALUE BATTERY STORAGE - -->
+        <br>
 
         <label class="label-classic">Sonstige bzw. Sammelposition für zuvor nicht genannte Komponenten (€)</label>
-
         <input type="number" id="eur_miscellaneous" name="eur_miscellaneous" step="0.01" oninput="calculateTotal()"
-
-               value="<?php echo isset($_POST['eur_miscellaneous']) ? number_format($_POST['eur_miscellaneous'], 2, ',', '.') : $result["eur_miscellaneous"]; ?>"
-
-               required>
-
+            value="<?php echo isset($_POST['eur_miscellaneous']) ? number_format($_POST['eur_miscellaneous'], 2, ',', '.') : ''; ?>"
+            required>
     </div>
-
-
-
-    <label class="label-classic"><b>Gesamtversicherungssumme der PV-Anlage (exkl. E-Ladestationen):</b></label>
-
-    <div class="subsection"><span id="total"></span></div>
-
     <br>
 
+    <label class="label-classic"><b>Gesamtversicherungssumme der PV-Anlage (exkl. E-Ladestationen):</b></label>
+    <div class="subsection"><span id="total"></span></div>
+    <br>
 
+<hr class="blue-line"> <!-- Blaue Linie eingefügt -->
 
-    <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
 
 
 
@@ -1097,9 +1098,56 @@
             <option value="Nein" <?php echo $result['risk_description_cable'] == 'Nein' ? 'selected' : ''?>>Nein</option>
         </select>
         <br><br>
+        <div class="toggle-content-charging_station">
+            <!-- BEGIN RISK QUESTIONS CHARGING STATION -->
+            <div class="subsection"><b>E-Ladestation(en)</b></div>
+            <label class="label-classic">Handelt es sich um erprobte Typen, Konstruktionen (keine Prototypen)?</label>
+            <select name="risk_description_charging_station_prototype" id="risk_description_charging_station_prototype">
+                <option value="" <?php echo $result['risk_description_charging_station_prototype'] == '' ? 'selected' : ''?>>Bitte wählen</option>x^
+                <option value="Ja" <?php echo $result['risk_description_charging_station_prototype'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein - Keine Deckung für Ladestationen" <?php echo $result['risk_description_charging_station_prototype'] == 'Nein - Keine Deckung für Ladestationen' ? 'selected' : ''?> >Nein - Keine Deckung für Ladestationen</option>
+            </select>
+            <br><br>
 
+            <label class="label-classic-twolined">Erfolgte die Errichtung und Einbindung der Ladepunkte in das Verteilnetz nach den aktuellen, einschlägigen Normen und Verordnungen (z. B. DIN VDE 0100-722, IEC 63110)?</label>
+            <select name="risk_description_charging_station_point" id="risk_description_charging_station_point">
+                <option value="" <?php echo $result['risk_description_charging_station_point'] == '' ? 'selected' : ''?>>Bitte wählen</option>x^
+                <option value="Ja" <?php echo $result['risk_description_charging_station_point'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein - Keine Deckung für Ladestationen" <?php echo $result['risk_description_charging_station_point'] == 'Nein - Keine Deckung für Ladestationen' ? 'selected' : ''?> >Nein - Keine Deckung für Ladestationen</option>
+            </select>
+            <br><br>
+
+            <label class="label-classic-twolined">Wurde die Erstprüfung bei Errichtung bzw. Inbetriebnahme sowie regelmäßigen Wiederholungsprüfungen gemäß aktuellen einschlägigen Normen und Verordnungen durchgeführt?</label>
+            <select name="risk_description_charging_station_standards" id="risk_description_charging_station_standards">
+                <option value=""  <?php echo $result['risk_description_charging_station_standards'] == '' ? 'selected' : ''?>>Bitte wählen</option>x^
+                <option value="Ja"  <?php echo $result['risk_description_charging_station_standards'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein - Keine Deckung für Ladestationen"  <?php echo $result['risk_description_charging_station_standards'] == 'Nein - Keine Deckung für Ladestationen' ? 'selected' : ''?>>Nein - Keine Deckung für Ladestationen</option>
+            </select>
+            <br><br>
+
+            <label class="label-classic-twolined">Wurden die Ladepunkte auf Fahrebenen-Niveau konstruktiv mit einem wirksamen Anfahr-, Kollisions- bzw. Rammschutz versehen? (z. B. Rammschutzbügel, mindestens 50cm zurückversetzt auf einer Plattform mit Schramm- oder Hochboard)</label>
+            <select name="risk_description_charging_station_protection" id="risk_description_charging_station_protection">
+                <option value="" <?php echo $result['risk_description_charging_station_protection'] == '' ? 'selected' : ''?>>Bitte wählen</option>x^
+                <option value="Ja" <?php echo $result['risk_description_charging_station_protection'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein - Keine Deckung für Ladestationen" <?php echo $result['risk_description_charging_station_protection'] == '"Nein - Keine Deckung für Ladestationen' ? 'selected' : ''?>>Nein - Keine Deckung für Ladestationen</option>
+            </select>
+
+            <!-- END RISK QUESTIONS CHARGING STATION -->
+            <br><br>
+        </div>
+        <div class="toggle-content-battery_storage">
+            <!-- BEGIN RISK QUESTIONS BATTERY STORAGE -->
+            <div class="subsection"><b>Batteriespeicher</b></div>
+            <label class="label-classic-twolined">Verfügt der Batteriespeicher über einen Tiefentladungsschutz und ist keine Unterschreitung der max. Entladetiefe gemäß Herstellervorgaben möglich? Wird die Anzahl der Ladezyklen dokumentiert bzw. aufgezeichnet?</label>
+            <select name="risk_description_battery_storage_discharge_protection" id="risk_description_battery_storage_discharge_protection">
+                <option value="" <?php echo $result['risk_description_battery_storage_discharge_protection'] == '' ? 'selected' : ''?>>Bitte wählen</option>
+                <option value="Ja" <?php echo $result['risk_description_battery_storage_discharge_protection'] == 'Ja' ? 'selected' : ''?>>Ja</option>
+                <option value="Nein - Keine Deckung für Batteriespeicher" <?php echo $result['risk_description_battery_storage_discharge_protection'] == 'Nein - Keine Deckung für Batteriespeicher' ? 'selected' : ''?>>Nein - Keine Deckung für Batteriespeicher</option>
+            </select>
+            <!-- END RISK QUESTIONS BATTERY STORAGE -->
+            <br><br>
+        </div>
         <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
-
         <!-- END SECTION RISK DESCRIPTION -->
 
         <!-- BEGIN SECTION PREDAMAGE -->
