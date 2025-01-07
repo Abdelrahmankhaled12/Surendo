@@ -1,5 +1,3 @@
-
-text/x-generic index_milestone1_v3.php ( HTML document, UTF-8 Unicode text, with CRLF line terminators )
 <!DOCTYPE html>
 <html lang="de">
 
