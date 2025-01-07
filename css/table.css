@@ -121,3 +121,7 @@ table tbody tr p strong {
     font-size: 14px;
     color: #000;
 }
+
+form {
+    margin: 0 !important;
+}
