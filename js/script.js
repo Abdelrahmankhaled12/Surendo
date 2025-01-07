@@ -16,7 +16,11 @@ function calculateTotal() {
 
         'eur_fence',
 
-        'eur_miscellaneous'
+        'eur_miscellaneous',
+
+        'eur_battery_storage',
+
+        'eur_charging_station'
 
     ];
 
@@ -404,7 +408,7 @@ const restrictionFields = ['risk_description_official_restriction_details'];
 
 document.querySelectorAll('input[name="restriction"]').forEach((radioButton) => {
     radioButton.addEventListener('change', (event) => {
-        const selectedOption = event.target.value; 
+        const selectedOption = event.target.value;
         if (selectedOption === 'Ja') {
             toggleRequiredAttributes(restrictionFields, true);
         } else {
@@ -418,7 +422,7 @@ const predamageFields = ['predamage_details'];
 
 document.querySelectorAll('input[name="predamage"]').forEach((radioButton) => {
     radioButton.addEventListener('change', (event) => {
-        const selectedOption = event.target.value; 
+        const selectedOption = event.target.value;
         if (selectedOption === 'Ja') {
             toggleRequiredAttributes(predamageFields, true);
         } else {
@@ -432,7 +436,7 @@ const holdFields = ['hold_creditor', 'hold_street', 'hold_postalcode', 'hold_pla
 
 document.querySelectorAll('input[name="hold"]').forEach((radioButton) => {
     radioButton.addEventListener('change', (event) => {
-        const selectedOption = event.target.value; 
+        const selectedOption = event.target.value;
         if (selectedOption === 'Ja') {
             toggleRequiredAttributes(holdFields, true);
         } else {
@@ -447,7 +451,7 @@ const coinsuredFields = ['coinsured_company', 'coinsured_street', 'coinsured_pos
 
 document.querySelectorAll('input[name="coinsured"]').forEach((radioButton) => {
     radioButton.addEventListener('change', (event) => {
-        const selectedOption = event.target.value; 
+        const selectedOption = event.target.value;
         if (selectedOption === 'Ja') {
             toggleRequiredAttributes(coinsuredFields, true);
         } else {
@@ -456,6 +460,35 @@ document.querySelectorAll('input[name="coinsured"]').forEach((radioButton) => {
     });
 });
 
+const battery_storageFields = ['eur_battery_storage', 'risk_description_battery_storage_discharge_protection'];
+
+document.querySelectorAll('input[name="battery_storage"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value;
+        if (selectedOption === 'Ja') {
+            toggleRequiredAttributes(battery_storageFields, true);
+        } else {
+            toggleRequiredAttributes(battery_storageFields, false);
+            document.getElementById("eur_battery_storage").value = ""
+            calculateTotal()
+        }
+    });
+});
+
+const charging_stationeFields = ['eur_charging_station', 'risk_description_charging_station_protection', 'risk_description_charging_station_standards', 'risk_description_charging_station_point', 'risk_description_charging_station_prototype'];
+
+document.querySelectorAll('input[name="charging_station"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value;
+        if (selectedOption === 'Ja') {
+            toggleRequiredAttributes(battery_storageFields, true);
+        } else {
+            toggleRequiredAttributes(battery_storageFields, false);
+            document.getElementById("eur_charging_station").value = ""
+            calculateTotal()
+        }
+    });
+});
 
 
 
@@ -471,17 +504,12 @@ if (document.getElementById("closeModel"))
 
 if (document.getElementById("closeModelButton"))
     document.getElementById("closeModelButton").addEventListener("click", () => {
-
         document.getElementById("showPass").classList.add("hidePass")
-
     })
 
 
 
-
-
 document.getElementById("save-btn").addEventListener("click", () => {
-
     const fields = ['panel_manufacturer',
 
         'panel_type',
@@ -547,12 +575,10 @@ document.getElementById("save-btn").addEventListener("click", () => {
         'risk_description_cable',
 
         'risk_description_official_restriction_details',
-        
+
         'predamage_refusal',
 
     ]
-
-
     fields.forEach((field) => {
         const element = document.getElementById(field);
         if (element) {
