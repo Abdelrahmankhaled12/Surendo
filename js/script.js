@@ -554,7 +554,7 @@ document.getElementById("save-btn").addEventListener("click", () => {
 
 
     fields.forEach((field) => {
-        const element = document.querySelector(`input[name=${field}]`);
+        const element = document.getElementById(field);
         if (element) {
             element.removeAttribute('required');
         }
