@@ -722,7 +722,7 @@
         <input type="number" name="output_per_inverter" id="output_per_inverter" value="<?= $result["output_per_inverter"] ?>" step="0.01">
 
     </div>
-    
+
     <br>
 
     <!-- BEGIN SECTION CHARGING STATION & BATTERY STORAGE -->
@@ -798,7 +798,7 @@
         <!-- BEGIN TOGGLE VALUE CHARGING STATION - -->
         <div class="toggle-content-charging_station">
             <label class="label-classic">E-Ladestation (€)</label>
-            <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01" oninput="calculateTotal()"
+            <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01"
                 value="<?php echo $result['eur_charging_station']; ?>">
         </div>
         <!-- END TOGGLE VALUE CHARGING STATION - -->

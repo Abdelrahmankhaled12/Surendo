@@ -432,7 +432,7 @@ if (isset($_SESSION['success_message'])) {
         <!-- BEGIN TOGGLE VALUE CHARGING STATION - -->
         <div class="toggle-content-charging_station">
             <label class="label-classic">E-Ladestation (€)</label>
-            <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01" oninput="calculateTotal()"
+            <input type="number" id="eur_charging_station" name="eur_charging_station" step="0.01" 
                 value="<?php echo isset($_POST['eur_charging_station']) ? number_format($_POST['eur_charging_station'], 2, ',', '.') : ''; ?>">
         </div>
         <!-- END TOGGLE VALUE CHARGING STATION - -->

@@ -19,9 +19,6 @@ function calculateTotal() {
         'eur_miscellaneous',
 
         'eur_battery_storage',
-
-        'eur_charging_station'
-
     ];
 
 
@@ -485,7 +482,6 @@ document.querySelectorAll('input[name="charging_station"]').forEach((radioButton
         } else {
             toggleRequiredAttributes(battery_storageFields, false);
             document.getElementById("eur_charging_station").value = ""
-            calculateTotal()
         }
     });
 });
