@@ -280,7 +280,7 @@ if (isset($_SESSION['success_message'])) {
     <div class="subsection"><b>Allgemeine Fragen</b></div>
 
     <label class="label-classic-twolined"><b>Alter der Anlage (bei älteren Anlagen ist das Schaden-Rendement des Vorversicherers zu übermitteln)</b></label>
-    <select name="age" required>
+    <select name="age" id="age"  required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Neue Anlage mit erstmaliger Inbetriebnahme">Neue Anlage mit erstmaliger Inbetriebnahme</option>
         <option value="Gebrauchte Anlage (nicht älter als 3 Jahre)">Gebrauchte Anlage (nicht älter als 3 Jahre)</option>
@@ -289,7 +289,7 @@ if (isset($_SESSION['success_message'])) {
     <br><br>
 
     <label class="label-classic-twolined"><b>Ist eine 24/7-Videoüberwachung mit Bewegungsmelder über den gesamten Anlagenbereich vorhanden? Wird zusätzlich ein automatischer Alarm an eine ständig besetzte Stelle (z.B. Polizei oder privater Sicherheitsdienst) ausgelöst?</b></label>
-    <select name="theft_video" required>
+    <select name="theft_video"  id="theft_video" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Ja">Ja</option>
         <option value="Nein">Nein</option>
@@ -297,151 +297,147 @@ if (isset($_SESSION['success_message'])) {
     <br><br>
 
     <label class="label-classic-twolined"><b>Wird der Versicherungsort vollständig mit einem lückenlosen und standsicheren, mind. 1,8 m hohen Zaun (kein Mobilzaun) mit Übersteigschutz eingegrenzt und sind sämtliche Zugänge versperrt?</b></label>
-    <select name="theft_fence" required>
+    <select name="theft_fence" id="theft_fence" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Ja - oder mit Hochstellung von max. 20cm über der Geländeorberkante">Ja - oder mit Hochstellung von max. 20cm über der Geländeorberkante</option>
         <option value="Ja, aber mit Hochstellung von mehr als 20cm über der Geländeorberkante">Ja, aber mit Hochstellung von mehr als 20cm über der Geländeorberkante</option>
         <option value="Nein">Nein</option>
     </select>
-    <br><br>
+    <br>
 
     <!-- Begin SPECIAL QUESTIONS PV PLANTS ON THE GROUND -->
+    <div class="toggle-content-bodenanlage">
+        <div class="subsection"><b>Spezielle Fragen zur Bodenanlage</b></div>
+        <label class="label-classic"><b>Ist die Bodenanlage aufgeständert?</b></label>
+        <select name="ground_plant_elevated" id="ground_plant_elevated">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <div class="subsection"><b>Spezielle Fragen zur Bodenanlage</b></div>
-    <label class="label-classic"><b>Ist die Bodenanlage aufgeständert?</b></label>
-    <select name="ground_plant_elevated">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
-
-    <label class="label-classic-twolined"><b>Ist die Anlage auf setzungsempfindlichem Untergrund (z.B. Deponie, Tagebau, Halde, Sumpf- und Torfgebiet, etc.) gebaut und/ oder befindet sich in einer Hanglage (> 30 % Hangneigung)?</b></label>
-    <select name="ground_plant_underground">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
+        <label class="label-classic-twolined"><b>Ist die Anlage auf setzungsempfindlichem Untergrund (z.B. Deponie, Tagebau, Halde, Sumpf- und Torfgebiet, etc.) gebaut und/ oder befindet sich in einer Hanglage (> 30 % Hangneigung)?</b></label>
+        <select name="ground_plant_underground" id="ground_plant_underground">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
+    </div>
 
     <!-- End SPECIAL QUESTIONS PV PLANTS ON THE GROUND -->
+    <div class="toggle-content-dachanlage">
+        <div class="subsection"><b>Spezielle Fragen zur Auf-Dachanlage</b></div>
+        <label class="label-classic-twolined"><b>"Contracting" (Die Anlage befindet sich auf dem Gebäude eines Dritten)</b></label>
+        <select name="roof_plant_contracting" id="roof_plant_contracting">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <br><br>
+        <label class="label-classic"><b>Auf wievielen Gebäuden befinden sich PV-Module?</b></label>
+        <select name="roof_plant_amount_buildings" id="roof_plant_amount_buildings">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+        <br><br>
 
-    <!-- Begin SPECIAL QUESTIONS PV PLANTS ON THE ROOF -->
+        <label class="label-classic">Wie wird das Gebäude genutzt? (z.B. Wohngebäude, Landwirtschaftliches Gebäude, Lager)</label>
+        <input type="text" name="roof_plant_usage" id="roof_plant_usage" maxlength="250">
+        <br><br>
 
-    <div class="subsection"><b>Spezielle Fragen zur Auf-Dachanlage</b></div>
+        <label class="label-classic"><b>Traufhöhe (in Meter) des höchsten Gebäudes</b></label>
+        <select name="roof_plant_eaves_height" id="roof_plant_eaves_height">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)">< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)</option>
+            <option value="≥ 3 m < 15 m">≥ 3 m < 15 m</option>
+            <option value="≥ 15 m">≥ 15 m</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic-twolined"><b>"Contracting" (Die Anlage befindet sich auf dem Gebäude eines Dritten)</b></label>
-    <select name="roof_plant_contracting">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Gebäude mit nicht harter Bedachung (z.B. Holz, Ried, Hartfaserplatten, Kunststoffe, PVC-Folien, etc.)</b></label>
+        <select name="roof_plant_soft_roofing" id="roof_plant_soft_roofing">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja (Nicht harte Bedachung vorhanden)">Ja (Nicht harte Bedachung vorhanden)</option>
+            <option value="Nein (Harte Bedachung vorhanden)">Nein (Harte Bedachung vorhanden)</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic"><b>Auf wievielen Gebäuden befinden sich PV-Module?</b></label>
-    <select name="roof_plant_amount_buildings">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-        <option value="9">9</option>
-        <option value="10">10</option>
-        <option value="11">11</option>
-        <option value="12">12</option>
-        <option value="13">13</option>
-        <option value="14">14</option>
-        <option value="15">15</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Gebäude mit nicht-massiven Außenwänden (Holz, Kunststoff oder leicht bis normal-entflammbar klassifizierte Sandwich-Paneele)</b></label>
+        <select name="roof_plant_soft_walls" id="roof_plant_soft_walls">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja (Nicht massive Außenwänden vorhanden)">Ja (Nicht massive Außenwänden vorhanden)</option>
+            <option value="Nein (Außenwände sind massiv)">Nein (Außenwände sind massiv)</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic">Wie wird das Gebäude genutzt? (z.B. Wohngebäude, Landwirtschaftliches Gebäude, Lager)</label>
-    <input type="text" name="roof_plant_usage" id="roof_plant_usage" maxlength="250">
-    <br><br>
+        <label class="label-classic-twolined"><b>Sind die Modulrahmen der Auf-Dachanlage mit mechanischen Sicherungen (z. B. Spezialverschraubung, Verklebung, Verschweißung, Vernietung) gegen Diebstahl gesichert?</b></label>
+        <select name="roof_plant_mechanical_protection" id="roof_plant_mechanical_protection">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic"><b>Traufhöhe (in Meter) des höchsten Gebäudes</b></label>
-    <select name="roof_plant_eaves_height">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)">< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)</option>
-        <option value="≥ 3 m < 15 m">≥ 3 m < 15 m</option>
-        <option value="≥ 15 m">≥ 15 m</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Befindet sich die PV-Anlage auf Dächern von Heuschobern, Tierfarmen oder Lagern mit leichtentzündlichen Waren oder Vorräten?</b></label>
+        <select name="roof_plant_animal_farm" id="roof_plant_animal_farm">>
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)">Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic-twolined"><b>Gebäude mit nicht harter Bedachung (z.B. Holz, Ried, Hartfaserplatten, Kunststoffe, PVC-Folien, etc.)</b></label>
-    <select name="roof_plant_soft_roofing">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja (Nicht harte Bedachung vorhanden)">Ja (Nicht harte Bedachung vorhanden)</option>
-        <option value="Nein (Harte Bedachung vorhanden)">Nein (Harte Bedachung vorhanden)</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Wurden Leitungen durch eine Brandwand oder brandabschnittsbildende Wand verlegt?</b></label>
+        <select name="roof_plant_fire_wall" id="roof_plant_fire_wall"> class="custom-dropdown">
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)">Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+            <option value="Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen">Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen</option>
+            <option value="Ja. Die Leitungen wurden in nicht brennbaren Brandschutzkanälen verlegt">Ja. Die Leitungen wurden in nicht brennbaren Brandschutzkanälen verlegt</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic-twolined"><b>Gebäude mit nicht-massiven Außenwänden (Holz, Kunststoff oder leicht bis normal-entflammbar klassifizierte Sandwich-Paneele)</b></label>
-    <select name="roof_plant_soft_walls">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja (Nicht massive Außenwänden vorhanden)">Ja (Nicht massive Außenwänden vorhanden)</option>
-        <option value="Nein (Außenwände sind massiv)">Nein (Außenwände sind massiv)</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Ist sichergestellt, dass die Dachkonstruktion hinsichtlich Statik für die PV-Anlage ausgelegt ist? (Einsturzrisiko)</b></label>
+        <select name="roof_plant_collapse" id="roof_plant_collapse">>
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic-twolined"><b>Sind die Modulrahmen der Auf-Dachanlage mit mechanischen Sicherungen (z. B. Spezialverschraubung, Verklebung, Verschweißung, Vernietung) gegen Diebstahl gesichert?</b></label>
-    <select name="roof_plant_mechanical_protection">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Sind entsprechend große Durchgänge am Dach vorhanden um eine Schneeräumung der Module - ohne Beschädigung weiterer Module - gewährleisten zu können?</b></label>
+        <select name="roof_plant_snow_removal" id="roof_plant_snow_removal">>
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein (Keine Deckung von Sturm und Schneedruck)">Nein (Keine Deckung von Sturm und Schneedruck)</option>
+        </select>
+        <br><br>
 
-    <label class="label-classic-twolined"><b>Befindet sich die PV-Anlage auf Dächern von Heuschobern, Tierfarmen oder Lagern mit leichtentzündlichen Waren oder Vorräten?</b></label>
-    <select name="roof_plant_animal_farm">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)">Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
+        <label class="label-classic-twolined"><b>Wurde im Zuge der Errichtung der PV-Anlage eine evtl. vorhandene Dach-Bekiesung <u>dauerhaft</u> entfernt?</b></label>
+        <select name="roof_plant_gravel" id="roof_plant_gravel">>
+            <option value="" disabled selected hidden>Bitte wählen</option>
+            <option value="Ja">Ja</option>
+            <option value="Nein">Nein</option>
+            <option value="Es war niemals eine Dach-Bekiesung vorhanden">Es war niemals eine Dach-Bekiesung vorhanden</option>
+        </select>
+        <br><br>
+    </div>
 
-    <label class="label-classic-twolined"><b>Wurden Leitungen durch eine Brandwand oder brandabschnittsbildende Wand verlegt?</b></label>
-    <select name="roof_plant_fire_wall" class="custom-dropdown">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)">Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)</option>
-        <option value="Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen">Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen</option>
-        <option value="Ja. Die Leitungen wurden in nicht brennbaren Brandschutzkanälen verlegt">Ja. Die Leitungen wurden in nicht brennbaren Brandschutzkanälen verlegt</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
-
-    <label class="label-classic-twolined"><b>Ist sichergestellt, dass die Dachkonstruktion hinsichtlich Statik für die PV-Anlage ausgelegt ist? (Einsturzrisiko)</b></label>
-    <select name="roof_plant_collapse">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
-    <br><br>
-
-    <label class="label-classic-twolined"><b>Sind entsprechend große Durchgänge am Dach vorhanden um eine Schneeräumung der Module - ohne Beschädigung weiterer Module - gewährleisten zu können?</b></label>
-    <select name="roof_plant_snow_removal">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein (Keine Deckung von Sturm und Schneedruck)">Nein (Keine Deckung von Sturm und Schneedruck)</option>
-    </select>
-    <br><br>
-
-    <label class="label-classic-twolined"><b>Wurde im Zuge der Errichtung der PV-Anlage eine evtl. vorhandene Dach-Bekiesung <u>dauerhaft</u> entfernt?</b></label>
-    <select name="roof_plant_gravel">
-        <option value="" disabled selected hidden>Bitte wählen</option>
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-        <option value="Es war niemals eine Dach-Bekiesung vorhanden">Es war niemals eine Dach-Bekiesung vorhanden</option>
-    </select>
-
-    <!-- End SPECIAL QUESTIONS PV PLANTS ON THE ROOF -->
-
-    <br><br>
 
     <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
 

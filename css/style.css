@@ -789,3 +789,22 @@ input[type="radio"]:checked+.toggle-label {
 #yes-battery_storage:checked~.toggle-content-battery_storage {
     display: block;
 }
+
+
+.toggle-content-bodenanlage {
+    display: none;
+    margin-top: 10px;
+}
+
+#plant_type_ground:checked~.toggle-content-bodenanlage {
+    display: block;
+}
+
+.toggle-content-dachanlage {
+    display: none;
+    margin-top: 10px;
+}
+
+#plant_type_roof:checked~.toggle-content-dachanlage {
+    display: block;
+}

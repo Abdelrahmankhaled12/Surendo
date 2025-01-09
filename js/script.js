@@ -487,6 +487,22 @@ document.querySelectorAll('input[name="charging_station"]').forEach((radioButton
 });
 
 
+const bodenanlageFields = ['ground_plant_elevated', 'ground_plant_underground'];
+const dachanlageFields = ['roof_plant_contracting', 'roof_plant_amount_buildings', 'roof_plant_usage', 'roof_plant_eaves_height', 'roof_plant_soft_roofing', 'roof_plant_soft_walls', 'roof_plant_mechanical_protection', 'roof_plant_animal_farm', 'roof_plant_fire_wall', 'roof_plant_collapse', 'roof_plant_snow_removal', 'roof_plant_gravel'];
+
+document.querySelectorAll('input[name="plant_type"]').forEach((radioButton) => {
+    radioButton.addEventListener('change', (event) => {
+        const selectedOption = event.target.value;
+        if (selectedOption === 'Bodenanlage') {
+            toggleRequiredAttributes(bodenanlageFields, true);
+            toggleRequiredAttributes(dachanlageFields, false);
+        } else {
+            toggleRequiredAttributes(dachanlageFields, true);
+            toggleRequiredAttributes(bodenanlageFields, false);
+        }
+    });
+});
+
 
 
 if (document.getElementById("closeModel"))
@@ -573,6 +589,40 @@ document.getElementById("save-btn").addEventListener("click", () => {
         'risk_description_official_restriction_details',
 
         'predamage_refusal',
+
+        'age',
+
+        'theft_video',
+
+        'theft_fence',
+
+        'ground_plant_elevated',
+
+        'ground_plant_underground',
+
+        'roof_plant_contracting',
+
+        'roof_plant_amount_buildings',
+
+        'roof_plant_usage',
+
+        'roof_plant_eaves_height',
+
+        'roof_plant_soft_roofing',
+
+        'roof_plant_soft_walls',
+
+        'roof_plant_mechanical_protection',
+
+        'roof_plant_animal_farm',
+
+        'roof_plant_fire_wall',
+
+        'roof_plant_collapse',
+
+        'roof_plant_snow_removal',
+        
+        'roof_plant_gravel'
 
     ]
     fields.forEach((field) => {
