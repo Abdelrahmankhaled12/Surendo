@@ -1,3 +1,10 @@
+<?php
+    if (session_status() === PHP_SESSION_NONE) {
+
+        session_start();
+
+    }
+?>
 <!DOCTYPE html>
 <html lang="de">
 
@@ -12,13 +19,39 @@
 
 <body>
 
-<div class="icons-container">
-    <a href="login.php" class="login-link">
-        <button class="login-btn">
-            <i class="fa-regular fa-user"></i>
-        </button>
-    </a>
-</div>
+<?php  if(
+    isset($_SESSION['logged_in'])
+    &&
+    isset($_SESSION['user_id'])
+    &&
+    isset($_SESSION['email'])
+    ) {
+?>
+    <div class="icons-container">
+        <a href="home.php" class="login-link">
+            <button class="login-btn">
+                <i class="fa-regular fa-user"></i>
+            </button>
+        </a>
+
+        <div class="icons-container">
+            <a href="log-out.php" class="login-link">
+                <button class="login-btn">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </a>
+        </div>
+    </div>
+<?php }else{ ?>
+    <div class="icons-container">
+        <a href="login.php" class="login-link">
+            <button class="login-btn">
+                <i class="fa-regular fa-user"></i>
+            </button>
+        </a>
+    </div>
+<?php } ?>
+
 
 <img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
 <br>
@@ -1037,12 +1070,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         !(isset($_SESSION['is_completed']))
                     ) {
                         $headline = "gespeichert";
-                        $text = isset($_SESSION['email']) && isset($_SESSION['password']) ?
+                        $text = isset($_SESSION['new_email']) && isset($_SESSION['password']) ?
                             "Mit den folgenden Zugangsdaten können Sie offene Projekte wie dieses fortsetzen." . "<br>"
                             : "Durch Login mit Ihren Zugangsdaten können Sie offene Projekte wie dieses fortsetzen." . "<br>";
                     }else{
                         $headline = "abgeschlossen";
-                        $text = isset($_SESSION['email']) && isset($_SESSION['password']) ?
+                        $text = isset($_SESSION['new_email']) && isset($_SESSION['password']) ?
                             "Mit den folgenden Zugangsdaten können Sie neue Projekte erfassen oder offene Projekte fortsetzen." . "<br>"
                             : "";
                     }
@@ -1058,9 +1091,9 @@ if (session_status() === PHP_SESSION_NONE) {
                 ?>
                 <br>
                 <?php echo $text ?>
-                <?php if(isset($_SESSION['email']) && isset($_SESSION['password'])) { ?>
+                <?php if(isset($_SESSION['new_email']) && isset($_SESSION['password'])) { ?>
                     <p><strong>Email: </strong>
-                    <?php echo $_SESSION["email"]; ?>
+                    <?php echo $_SESSION["new_email"]; ?>
                     <br>&nbsp;<br>
                     <strong>Passwort: </strong>
                     <?php echo $_SESSION["password"]; ?>
@@ -1072,7 +1105,7 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
 
 <?php }
-unset($_SESSION["email"], $_SESSION["password"], $_SESSION['is_completed'], $_SESSION['success_message']); ?>
+unset($_SESSION["new_email"], $_SESSION["password"], $_SESSION['is_completed'], $_SESSION['success_message']); ?>
 <!-- Hier binden wir die externe JavaScript-Datei ein -->
 
 <script src="js/script.js?v=2.8"></script>

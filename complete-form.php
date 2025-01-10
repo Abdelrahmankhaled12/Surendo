@@ -50,22 +50,13 @@
 
 <body>
 
-
-
 <div class="icons-container">
-
-    <a href="login.php" class="login-link">
-
+    <a href="log-out.php" class="login-link">
         <button class="login-btn">
-
-            <i class="fa-regular fa-user"></i>
-
+            <i class="fa-solid fa-right-from-bracket"></i>
         </button>
-
     </a>
-
 </div>
-
 
 
 <img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />

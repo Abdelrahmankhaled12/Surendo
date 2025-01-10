@@ -161,6 +161,18 @@ unset($_SESSION["wrong_email"]); ?>
 <?php }
 unset($_SESSION["wrong_password"]); ?>
 
+<?php if (isset($_SESSION["must_login_first"])) { ?>
+    <div class="showPass" id="showPass">
+        <div class="closeModel" id="closeModel"></div>
+        <div class="content">
+            <div class="center">
+                <h1>Sie müssen sich zuerst einloggen.</h1>
+                <button id="closeModelButton">OK</button>
+            </div>
+        </div>
+    </div>
+<?php }
+unset($_SESSION["must_login_first"]); ?>
 
 <script src="js/script.js?v=2.8"></script>
 

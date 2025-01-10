@@ -33,6 +33,13 @@ if (isset($_SESSION["user_id"])) {
     <link rel="stylesheet" href="./css/table.css">
 </head>
 <body>
+<div class="icons-container">
+    <a href="log-out.php" class="login-link">
+        <button class="login-btn">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+    </a>
+</div>
 <img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
 <br>
 <br>
