@@ -959,7 +959,7 @@
     <br>
 
     <label class="label-classic">Ersatz der Umsatzsteuer</label>
-    <select name="indemnify_VAT" class="custom-dropdown" required>
+    <select name="indemnify_VAT" class="custom-dropdown" id="indemnify_VAT" required>
         <option value="" disabled  hidden <?php echo $result['indemnify_VAT'] == '' ? 'selected' : '' ?>>Bitte wählen</option>
         <option value="Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer" <?php echo $result['indemnify_VAT'] == 'Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer' ? 'selected' : '' ?>>Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer</option>
         <option value="Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer" <?php echo $result['indemnify_VAT'] == 'Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer' ? 'selected' : '' ?>>Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer</option>

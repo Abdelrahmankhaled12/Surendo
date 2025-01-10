@@ -27,14 +27,6 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 } // Session starten
-
-// Erfolgsnachricht anzeigen, falls vorhanden
-if (isset($_SESSION['success_message'])) {
-    echo "<div class='center'>"; // Container für die Erfolgsnachricht
-    echo "<p>" . $_SESSION['success_message'] . "</p>";
-    echo "</div>"; // Ende des Containers
-    unset($_SESSION['success_message']); // Lösche die Nachricht nach der Anzeige
-}
 ?>
 <br>
 
@@ -615,7 +607,7 @@ if (isset($_SESSION['success_message'])) {
     <br>
 
     <label class="label-classic">Ersatz der Umsatzsteuer</label>
-    <select name="indemnify_VAT" class="custom-dropdown" required>
+    <select name="indemnify_VAT" class="custom-dropdown" id="indemnify_VAT" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer">Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer</option>
         <option value="Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer">Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer</option>
@@ -1033,27 +1025,54 @@ if (isset($_SESSION['success_message'])) {
         fortsetzen</a>
 </div>
 
-<?php if (isset($_SESSION["password"]) && $_SESSION["email"]) { ?>
+<?php if (isset($_SESSION['success_message'])) { ?>
     <div class="showPass" id="showPass">
         <div class="closeModel" id="closeModel"></div>
         <div class="content">
             <div>
-                <h1>Projekt erfolgreich gespeichert</h1>
+                <?php
+                    $headline = '';
+                    $text = '';
+                    if(
+                        !(isset($_SESSION['is_completed']))
+                    ) {
+                        $headline = "gespeichert";
+                        $text = isset($_SESSION['email']) && isset($_SESSION['password']) ?
+                            "Mit den folgenden Zugangsdaten können Sie offene Projekte wie dieses fortsetzen." . "<br>"
+                            : "Durch Login mit Ihren Zugangsdaten können Sie offene Projekte wie dieses fortsetzen." . "<br>";
+                    }else{
+                        $headline = "abgeschlossen";
+                        $text = isset($_SESSION['email']) && isset($_SESSION['password']) ?
+                            "Mit den folgenden Zugangsdaten können Sie neue Projekte erfassen oder offene Projekte fortsetzen." . "<br>"
+                            : "";
+                    }
+
+                ?>
+                <h1>Projekt erfolgreich <?php echo $headline ?></h1>
                 <br>
-                Mit den folgenden Zugangsdaten können Sie dieses Projekt später fortsetzen.<br>
-                <p><strong>Email: </strong>
+                <?php
+                echo "<div class='center'>"; // Container für die Erfolgsnachricht
+                echo "<p>" . $_SESSION['success_message'] . "</p>";
+                echo "</div>"; // Ende des Containers
+                unset($_SESSION['success_message']); // Lösche die Nachricht nach der Anzeige
+                ?>
+                <br>
+                <?php echo $text ?>
+                <?php if(isset($_SESSION['email']) && isset($_SESSION['password'])) { ?>
+                    <p><strong>Email: </strong>
                     <?php echo $_SESSION["email"]; ?>
                     <br>&nbsp;<br>
                     <strong>Passwort: </strong>
                     <?php echo $_SESSION["password"]; ?>
                 </p>
+                <?php } ?>
                 <button id="closeModelButton">OK</button>
             </div>
         </div>
     </div>
 
 <?php }
-unset($_SESSION["email"], $_SESSION["password"]); ?>
+unset($_SESSION["email"], $_SESSION["password"], $_SESSION['is_completed'], $_SESSION['success_message']); ?>
 <!-- Hier binden wir die externe JavaScript-Datei ein -->
 
 <script src="js/script.js?v=2.8"></script>
