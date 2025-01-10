@@ -101,7 +101,7 @@ if (isset($_SESSION["user_id"])) {
         <div class="content">
             <div class="center">
                 <h1>Projekt erfolgreich abgeschlossen</h1>
-                <br>Mit den folgenden Zugangsdaten können Sie sich einloggen, offene Projekte vervollständigen und abgeschlossene ansehen.<br>&nbsp;<br>
+                <br>Sie haben das Projekt erfolgreich abgeschlossen bzw. die Formulardaten übermittelt.<br>&nbsp;<br>
                 <button id="closeModelButton">OK</button>
             </div>
         </div>
