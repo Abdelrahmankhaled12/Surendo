@@ -568,6 +568,14 @@
         <option value="Gebrauchte Anlage (älter als 3 Jahre)" <?php echo $result['age'] == 'Gebrauchte Anlage (älter als 3 Jahre)' ? 'selected' : ''?>>Gebrauchte Anlage (älter als 3 Jahre)</option>
     </select>
     <br><br>
+
+    <label class="label-classic-twolined"><b>Ist ein DC-Lasttrennschalter ("Feuerwehrschalter") verbaut, durch den die PV-Anlage im Brandfall stromlos geschaltet werden kann?</b></label>
+    <select name="load_break_switch" required>
+        <option value="" <?php echo $result['load_break_switch'] == '' ? 'selected' : '' ?>> Bitte wählen</option>
+        <option value="Ja" <?php echo $result['load_break_switch'] == 'Ja' ? 'selected' : '' ?>>Ja</option>
+        <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['load_break_switch'] == 'Nein (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : '' ?>>Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+    </select>
+    <br><br>
     
     <label class="label-classic-twolined"><b>Ist eine 24/7-Videoüberwachung mit Bewegungsmelder über den gesamten Anlagenbereich vorhanden? Wird zusätzlich ein automatischer Alarm an eine ständig besetzte Stelle (z.B. Polizei oder privater Sicherheitsdienst) ausgelöst?</b></label>
 

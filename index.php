@@ -288,6 +288,14 @@ if (isset($_SESSION['success_message'])) {
     </select>
     <br><br>
 
+    <label class="label-classic-twolined"><b>Ist ein DC-Lasttrennschalter ("Feuerwehrschalter") verbaut, durch den die PV-Anlage im Brandfall stromlos geschaltet werden kann?</b></label>
+    <select name="load_break_switch" required>
+        <option value="" disabled selected hidden>Bitte wählen</option>
+        <option value="Ja">Ja</option>
+        <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)">Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+    </select>
+    <br><br>
+
     <label class="label-classic-twolined"><b>Ist eine 24/7-Videoüberwachung mit Bewegungsmelder über den gesamten Anlagenbereich vorhanden? Wird zusätzlich ein automatischer Alarm an eine ständig besetzte Stelle (z.B. Polizei oder privater Sicherheitsdienst) ausgelöst?</b></label>
     <select name="theft_video"  id="theft_video" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
@@ -403,7 +411,7 @@ if (isset($_SESSION['success_message'])) {
         <br><br>
 
         <label class="label-classic-twolined"><b>Wurden Leitungen durch eine Brandwand oder brandabschnittsbildende Wand verlegt?</b></label>
-        <select name="roof_plant_fire_wall" id="roof_plant_fire_wall"> class="custom-dropdown">
+        <select name="roof_plant_fire_wall" id="roof_plant_fire_wall" class="custom-dropdown">
             <option value="" disabled selected hidden>Bitte wählen</option>
             <option value="Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)">Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)</option>
             <option value="Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen">Ja. Die Leitungen wurden mit Leitungsschotts (UV- und witterungsbeständig für den Außenbereich) versehen</option>
@@ -754,7 +762,7 @@ if (isset($_SESSION['success_message'])) {
     <br><br>
 
     <label class="label-classic-twolined">Befindet sich die PV-Anlage auf oder an Gebäuden oder in der Nachbarschaft (in 30 m Umkreis) von folgenden Betrieben?</label>
-    <select name="risk_description_fire_exposed_area" id="risk_description_fire_exposed_area" required>
+    <select name="risk_description_fire_exposed_area" id="risk_description_fire_exposed_area" class="custom-dropdown" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Nein - kein Betrieb oder Betriebsart ist zutreffend.">Nein - kein Betrieb oder Betriebsart ist zutreffend.</option>
         <option value="Bergbau">Bergbau</option>
