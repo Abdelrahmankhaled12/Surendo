@@ -90,10 +90,19 @@ if (session_status() === PHP_SESSION_NONE) {
     <label class="label-classic">Ort</label>
     <input type="text" name="place" required>
     <br>
-    <label class="label-classic">E-Mail</label>
-    <input type="email" name="applicant_email" required>
-    <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
-    <br>
+    <?php  if(
+    !(isset($_SESSION['logged_in']))
+    &&
+    !(isset($_SESSION['user_id']))
+    &&
+    !(isset($_SESSION['email']))
+    ) {
+    ?>
+        <label class="label-classic">E-Mail</label>
+        <input type="email" name="applicant_email" required>
+        <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
+        <br>
+    <?php } ?>
     <br>
 
     <!-- Radiobutton für Anschrift des Antragstellers (applicant) -->
