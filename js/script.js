@@ -624,7 +624,9 @@ document.getElementById("save-btn").addEventListener("click", () => {
         
         'roof_plant_gravel',
         
-        'load_break_switch'
+        'load_break_switch',
+
+        'indemnify_VAT'
     ]
     fields.forEach((field) => {
         const element = document.getElementById(field);
