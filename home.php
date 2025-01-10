@@ -15,7 +15,9 @@ if (isset($_SESSION["user_id"])) {
     $result = $stmt->get_result();
     $stmt->close();
 } else {
-    die('you must log in first!');
+    $_SESSION["must_login_first"] = true;
+    header("Location: login.php");
+    exit();
 }
 ?>
 
