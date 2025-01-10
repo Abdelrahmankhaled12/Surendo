@@ -606,6 +606,15 @@ if (isset($_SESSION['success_message'])) {
     <div class="subsection"><span id="total"></span></div>
     <br>
 
+    <label class="label-classic">Ersatz der Umsatzsteuer</label>
+    <select name="indemnify_VAT" class="custom-dropdown" required>
+        <option value="" disabled selected hidden>Bitte wählen</option>
+        <option value="Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer">Ja, die angegebenen Versicherungssummen enthalten Umsatzsteuer</option>
+        <option value="Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer">Nein, die angegebenen Versicherungssummen enthalten keine Umsatzsteuer</option>
+        <option value="Teilweise, die Versicherungssummen wurden teilweise inkl. und exkl. Umsatzsteuer angegeben">Teilweise, die Versicherungssummen wurden teilweise inkl. und exkl. Umsatzsteuer angegeben</option>
+    </select>
+    <br>
+
     <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
 
     <!-- ERTRAGSAUSFALL- BZW. BETRIEBSUNTERBRECHUNGSVERSICHERUNG - -->
