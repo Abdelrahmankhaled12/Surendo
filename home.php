@@ -40,6 +40,14 @@ if (isset($_SESSION["user_id"])) {
         </button>
     </a>
 </div>
+<div class="icons-container">
+    <a href="index.php" class="login-link">
+        <button class="login-btn">
+            <i class="fa-sharp fa-solid fa-plus"></i>
+        </button>
+    </a>
+</div>
+
 <img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
 <br>
 <br>
