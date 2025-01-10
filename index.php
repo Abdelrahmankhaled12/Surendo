@@ -289,7 +289,7 @@ if (isset($_SESSION['success_message'])) {
     <br><br>
 
     <label class="label-classic-twolined"><b>Ist ein DC-Lasttrennschalter ("Feuerwehrschalter") verbaut, durch den die PV-Anlage im Brandfall stromlos geschaltet werden kann?</b></label>
-    <select name="load_break_switch" required>
+    <select name="load_break_switch" id="load_break_switch" required>
         <option value="" disabled selected hidden>Bitte wählen</option>
         <option value="Ja">Ja</option>
         <option value="Nein (Keine Deckung für Brand, Blitzschlag, etc.)">Nein (Keine Deckung für Brand, Blitzschlag, etc.)</option>
