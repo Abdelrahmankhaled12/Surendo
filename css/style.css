@@ -605,6 +605,10 @@ input[type="radio"]:checked+.toggle-label {
     /* Größe des Icons */
 }
 
+.home-btn  {
+    margin-right: 8px;
+}
+
 /* Hover-Effekt */
 .login-btn:hover {
     color: #FFF;

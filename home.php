@@ -34,16 +34,14 @@ if (isset($_SESSION["user_id"])) {
 </head>
 <body>
 <div class="icons-container">
+    <a href="index.php" class="login-link  home-btn">
+            <button class="login-btn">
+                <i class="fa-sharp fa-solid fa-plus"></i>
+            </button>
+    </a>
     <a href="log-out.php" class="login-link">
         <button class="login-btn">
             <i class="fa-solid fa-right-from-bracket"></i>
-        </button>
-    </a>
-</div>
-<div class="icons-container">
-    <a href="index.php" class="login-link">
-        <button class="login-btn">
-            <i class="fa-sharp fa-solid fa-plus"></i>
         </button>
     </a>
 </div>

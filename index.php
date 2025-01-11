@@ -29,18 +29,15 @@
 ?>
     <div class="icons-container">
         <a href="home.php" class="login-link">
-            <button class="login-btn">
-                <i class="fa-regular fa-user"></i>
+            <button class="login-btn home-btn">
+                <i class="fa-solid fa-house"></i>
             </button>
         </a>
-
-        <div class="icons-container">
-            <a href="log-out.php" class="login-link">
-                <button class="login-btn">
-                    <i class="fa-solid fa-right-from-bracket"></i>
-                </button>
-            </a>
-        </div>
+        <a href="log-out.php" class="login-link">
+            <button class="login-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+        </a>
     </div>
 <?php }else{ ?>
     <div class="icons-container">
