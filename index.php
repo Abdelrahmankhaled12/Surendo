@@ -88,7 +88,17 @@ if (session_status() === PHP_SESSION_NONE) {
     <input type="text" name="place" required>
     <br>
     <label class="label-classic">E-Mail</label>
-    <input type="email" name="applicant_email" required>
+    <?php if(
+    isset($_SESSION['logged_in'])
+    &&
+    isset($_SESSION['user_id'])
+    &&
+    isset($_SESSION['email'])
+    ) { ?>
+    <input type="email" name="applicant_email" required readonly value="<?php echo $_SESSION['email']; ?>">
+    <?php }else{ ?>
+        <input type="email" name="applicant_email" required>
+    <?php }?>
     <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
     <br>
     <br>
