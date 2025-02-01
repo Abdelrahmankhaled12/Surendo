@@ -992,11 +992,6 @@ if (session_status() === PHP_SESSION_NONE) {
         <label class="label-classic">Ort</label>
         <input type="text" name="hold_place" id="hold_place">
         <br>
-        <label class="label-classic">Kontaktperson</label>
-        <input type="text" name="hold_contact" id="hold_contact">
-        <br>
-        <label class="label-classic">E-Mail</label>
-        <input type="email" name="hold_email" id="hold_email">
         <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
     </div>
 

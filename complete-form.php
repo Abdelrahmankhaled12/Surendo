@@ -1322,11 +1322,6 @@
             <label class="label-classic" for="hold_place">Ort</label>
             <input type="text" name="hold_place" id="hold_place" value=<?php echo $result['hold_place']?>>
             <br>
-            <label class="label-classic" for="hold_contact">Kontaktperson</label>
-            <input type="text" name="hold_contact" id="hold_contact" value=<?php echo $result['hold_contact']?>>
-            <br>
-            <label class="label-classic" for="hold_email">E-Mail</label>
-            <input type="email" name="hold_email" id="hold_email" value=<?php echo $result['hold_email']?>>
             <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
         </div>
 

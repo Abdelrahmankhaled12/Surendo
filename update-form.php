@@ -233,10 +233,6 @@ $hold_postalcode = $_POST['hold_postalcode'] ?? '';
 
 $hold_place = $_POST['hold_place'] ?? '';
 
-$hold_contact = $_POST['hold_contact'] ?? '';
-
-$hold_email = $_POST['hold_email'] ?? '';
-
 $isCompleted = isset($_POST["completed"]) ? '1' : '0';
 
 
@@ -291,7 +287,7 @@ $sql = "UPDATE `pv_plants`
             
             `coinsured_function` = ?, `hold` = ?, `hold_creditor` = ?, `hold_street` = ?,
             
-            `hold_postalcode` = ?, `hold_place` = ?, `hold_contact` = ?, `hold_email` = ?
+            `hold_postalcode` = ?, `hold_place` = ?
 
         WHERE `id` = ?";
 
@@ -311,7 +307,7 @@ if ($stmt === false) {
 
 if (!$stmt->bind_param(
 
-    "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssi",
+    "ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssi",
 
     $applicant,
 

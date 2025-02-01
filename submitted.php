@@ -200,9 +200,6 @@ $hold_postalcode = $_POST['hold_postalcode'] ?? '';
 
 $hold_place = $_POST['hold_place'] ?? '';
 
-$hold_contact = $_POST['hold_contact'] ?? '';
-
-$hold_email = $_POST['hold_email'] ?? '';
 
 //Generate user password
 
@@ -403,7 +400,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     // SQL-Statement erweitern
 
-    $sql = "INSERT INTO pv_plants (applicant, street, postalcode, place, user_id, relation_to_plant, owner_name, owner_street, owner_postalcode, owner_place, operator_name, operator_street, operator_postalcode, operator_place, address_or_coordinates, address_street, address_postalcode, address_place, coordinates, insured_land, name_other_land, applicant_share_50, water, hagelregister, in_operation, shadowed, tracker, ground_condition, panel_manufacturer, panel_type, panel_amount, output_per_panel, output_total, area, inverter_manufacturer, inverter_type, inverter_amount, output_per_inverter, eur_panels, eur_inverter, eur_transformer, eur_supporting_structure, eur_video, eur_fence, eur_miscellaneous, date_commencement, business_interruption, BI_annual_feed, BI_feed_in_tariff, BI_annual_self_consumption, BI_self_consumption_tariff, self_consumption, is_completed, age, theft_video, theft_fence, coinsured, coinsured_company, coinsured_street, coinsured_postalcode, coinsured_place, coinsured_function, hold, hold_creditor, hold_street, hold_postalcode, hold_place, hold_contact, hold_email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ? ,?)";
+    $sql = "INSERT INTO pv_plants (applicant, street, postalcode, place, user_id, relation_to_plant, owner_name, owner_street, owner_postalcode, owner_place, operator_name, operator_street, operator_postalcode, operator_place, address_or_coordinates, address_street, address_postalcode, address_place, coordinates, insured_land, name_other_land, applicant_share_50, water, hagelregister, in_operation, shadowed, tracker, ground_condition, panel_manufacturer, panel_type, panel_amount, output_per_panel, output_total, area, inverter_manufacturer, inverter_type, inverter_amount, output_per_inverter, eur_panels, eur_inverter, eur_transformer, eur_supporting_structure, eur_video, eur_fence, eur_miscellaneous, date_commencement, business_interruption, BI_annual_feed, BI_feed_in_tariff, BI_annual_self_consumption, BI_self_consumption_tariff, self_consumption, is_completed, age, theft_video, theft_fence, coinsured, coinsured_company, coinsured_street, coinsured_postalcode, coinsured_place, coinsured_function, hold, hold_creditor, hold_street, hold_postalcode, hold_place) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
 
@@ -419,7 +416,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!$stmt->bind_param(
 
-        "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+        "sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
 
         $applicant,
 
@@ -553,12 +550,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $hold_postalcode,
 
-        $hold_place,
-
-        $hold_contact,
-
-        $hold_email
-
+        $hold_place
 
     )) {
 
