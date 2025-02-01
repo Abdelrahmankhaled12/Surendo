@@ -6,6 +6,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
+require 'encrypt.php';
 
 if (session_status() === PHP_SESSION_NONE) {
 
@@ -284,8 +285,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
     //Handle user
-
-    $selectUserSql = "SELECT * FROM users WHERE email = ? LIMIT 1";
+    $emailHash = hash("sha256", $applicant_email);
+    $selectUserSql = "SELECT * FROM users WHERE email_hashed = ? LIMIT 1";
 
     $selectUserStmt = $conn->prepare($selectUserSql);
 
@@ -295,7 +296,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     }
 
-    $selectUserStmt->bind_param("s", $_POST['applicant_email']);
+    $selectUserStmt->bind_param("s", $emailHash);
 
     if (!$selectUserStmt->execute()) {
 
@@ -339,9 +340,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
+        $encryptedEmail = encrypt($applicant_email);
 
 
-        $createUserSql = "INSERT INTO `users`(`email`, `password`) VALUES (?,?)";
+        $createUserSql = "INSERT INTO `users`(`email`, `email_hashed`, `iv`,`password`) VALUES (?,?,?,?)";
 
         $createUserStmt = $conn->prepare($createUserSql);
 
@@ -351,7 +353,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         }
 
-        $createUserStmt->bind_param('ss', $_POST['applicant_email'], $hashedPassword);
+        $createUserStmt->bind_param('ssss', $encryptedEmail['encrypted_data'],$emailHash,$encryptedEmail['iv'], $hashedPassword);
 
         if (!$createUserStmt->execute()) {
 

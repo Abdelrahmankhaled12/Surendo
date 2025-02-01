@@ -1,5 +1,6 @@
 <?php
 
+require "encrypt.php";
 if (session_status() === PHP_SESSION_NONE) {
 
     session_start();
@@ -39,8 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         // Query to fetch the user by email
-
-        $sql = "SELECT `id`, `email`, `password` FROM `users` WHERE `email`=?";
+        $emailHash = hash("sha256", $email);
+        $sql = "SELECT `id`, `email`, iv,`password` FROM `users` WHERE `email_hashed`=?";
 
         $stmt = $conn->prepare($sql);
 
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-        $stmt->bind_param('s', $email);
+        $stmt->bind_param('s', $emailHash);
 
         if (!$stmt->execute()) {
 
@@ -74,7 +75,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 $_SESSION['user_id'] = $user['id'];
 
-                $_SESSION['email'] = $user['email'];
+                $decryptedEmail = decrypt($user['email'],$user['iv']);
+
+                $_SESSION['email'] = $decryptedEmail;
 
                 $_SESSION["logged_in"] = true;
 
@@ -82,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 session_write_close();
 
-                header("Location: https://surendo.com//home.php");
+                header("Location: home.php");
 
                 exit();
 

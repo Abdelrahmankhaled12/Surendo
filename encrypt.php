@@ -1,26 +1,22 @@
 <?php
 
+const KEY = "12345678901234567890123456789012"; // 32-byte key for AES-256
+
 /**
  * Encrypts data using AES-256-CBC.
  *
  * @param string $data The data to encrypt.
- * @param string $key The encryption key (must be 32 bytes for AES-256).
  * @return array An array containing the encrypted data and IV in base64 format.
  */
-function encrypt($data, $key)
+function encrypt($data)
 {
-    // Validate key length (must be 32 bytes for AES-256)
-    if (strlen($key) !== 32) {
-        throw new Exception("Key must be 32 bytes long for AES-256 encryption.");
-    }
-
-    // Generate a random initialization vector (IV)
-    $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+    $ivLength = openssl_cipher_iv_length('aes-256-cbc');
+    $iv = openssl_random_pseudo_bytes($ivLength); // Generate a valid IV of the required length
 
     // Encrypt the data
-    $encrypted = openssl_encrypt($data, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
+    $encrypted = openssl_encrypt($data, 'aes-256-cbc', KEY, OPENSSL_RAW_DATA, $iv);
 
-    // Return the encrypted data and IV in base64 format
+    // Return encrypted data and IV, both base64-encoded
     return [
         'encrypted_data' => base64_encode($encrypted),
         'iv' => base64_encode($iv)
@@ -31,23 +27,19 @@ function encrypt($data, $key)
  * Decrypts data using AES-256-CBC.
  *
  * @param string $encryptedData The encrypted data in base64 format.
- * @param string $key The encryption key (must be 32 bytes for AES-256).
  * @param string $iv The initialization vector in base64 format.
  * @return string The decrypted data.
  */
-function decrypt($encryptedData, $key, $iv)
+function decrypt($encryptedData, $iv)
 {
-    // Validate key length (must be 32 bytes for AES-256)
-    if (strlen($key) !== 32) {
-        throw new Exception("Key must be 32 bytes long for AES-256 decryption.");
+    $iv = base64_decode($iv);
+    $encryptedData = base64_decode($encryptedData);
+
+    // Ensure IV is exactly 16 bytes
+    if (strlen($iv) !== openssl_cipher_iv_length('aes-256-cbc')) {
+        throw new Exception("Invalid IV length: expected 16 bytes, got " . strlen($iv));
     }
 
-    // Decode the base64 encoded encrypted data and IV
-    $encryptedData = base64_decode($encryptedData);
-    $iv = base64_decode($iv);
-
     // Decrypt the data
-    $decrypted = openssl_decrypt($encryptedData, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
-
-    return $decrypted;
+    return openssl_decrypt($encryptedData, 'aes-256-cbc', KEY, OPENSSL_RAW_DATA, $iv);
 }

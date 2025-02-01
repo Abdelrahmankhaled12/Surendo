@@ -1,5 +1,6 @@
 <?php
 require "db_connection.php";
+require "encrypt.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -15,20 +16,21 @@ if (session_status() === PHP_SESSION_NONE) {
 if (isset($_POST["email"])) {
     $email = $_POST["email"];
     $mail = new PHPMailer(true);
+    $emailHash = hash("sha256", $email);
 
     // Generate a random 10-character password
     $password = substr(bin2hex(random_bytes(5)), 0, 10);
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Check if the user exists with the given email
-    $sql = 'SELECT * FROM users WHERE `email` = ?';
+    $sql = 'SELECT * FROM users WHERE `email_hashed` = ?';
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
         die("Failed to prepare statement: " . $conn->error);
     }
 
-    $stmt->bind_param("s", $email);
+    $stmt->bind_param("s", $emailHash);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -38,14 +40,14 @@ if (isset($_POST["email"])) {
         exit();
     }
     // User exists, update the password
-    $updateSql = 'UPDATE users SET `password` = ? WHERE `email` = ?';
+    $updateSql = 'UPDATE users SET `password` = ? WHERE `email_hash` = ?';
     $updateStmt = $conn->prepare($updateSql);
 
     if (!$updateStmt) {
         die("Failed to prepare update statement: " . $conn->error);
     }
 
-    $updateStmt->bind_param("ss", $hashedPassword, $email);
+    $updateStmt->bind_param("ss", $hashedPassword, $emailHash);
     if ($updateStmt->execute()) {
 
         $mail->isSMTP();
