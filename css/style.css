@@ -83,7 +83,11 @@ a:hover {
     text-decoration: underline;
 }
 
-/* Formatierung des Containers der Icons ganz oben */
+.logo-surendo {
+    align-items: center;
+}
+
+/* Alle Seiten: Formatierung des Containers der Icons ganz oben */
 .icons-container {
     max-width: 600px;
     /* Begrenzt die maximale Breite des Formulars auf 600 Pixel */
@@ -277,8 +281,26 @@ input[type="date"] {
 }
 
 input[type="date"]:hover {
-    border-color: #0071e3;
-    /* Ändert die Rahmenfarbe */
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+}
+
+input[type="checkbox"] {
+    padding: 15px;
+    margin-right: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    width: 20px;  /* Breite der Checkbox */
+    height: 20px; /* Höhe der Checkbox */
+}
+
+input[type="checkbox"]:hover {
+    border-color: #0071e3; /* Ändert die Rahmenfarbe */
+    background-color: #EEF5F6; /* Ändert den Hintergrund */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #0071e3; /* Hintergrundfarbe bei aktiviertem Zustand */
+    border-color: #0071e3; /* Rahmenfarbe bei aktiviertem Zustand */
 }
 
 /* Formatierung des Haupt-Logos */
@@ -296,6 +318,15 @@ img {
 }
 
 .label-classic-twolined {
+    /* für zweizeilige Titel */
+    text-align: left;
+    /* Text linksbündig ausrichten */
+    line-height: 1.5;
+    /* Vergrößert den Zeilenabstand */
+    margin-bottom: -7px;
+}
+
+.label-classic-twolined_v2 {
     /* für zweizeilige Titel */
     text-align: left;
     /* Text linksbündig ausrichten */
@@ -606,6 +637,10 @@ input[type="radio"]:checked+.toggle-label {
 }
 
 .home-btn  {
+    margin-right: 8px;
+}
+
+.privacy-btn  {
     margin-right: 8px;
 }
 

@@ -27,13 +27,12 @@ if (isset($_SESSION["user_id"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Allrisk-Versicherung Photovoltaikanlagen - Neuer Antrag</title>
+    <title>Allrisk-Versicherung von Photovoltaikanlagen - Loginbereich und Projektübersicht</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=1.1">
     <link rel="stylesheet" href="./css/table.css">
 </head>
 <body>
-<div class="icons-container">
+<div class="icons-container-home">
     <a href="index.php" class="login-link  home-btn">
             <button class="login-btn">
                 <i class="fa-sharp fa-solid fa-plus"></i>
@@ -46,7 +45,9 @@ if (isset($_SESSION["user_id"])) {
     </a>
 </div>
 
-<img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+<div class="center">
+    <a href="index.php" class="logo-surendo"><img src="./gfx/Logo_TM.jpg" alt="Surendo.com" /></a>
+</div>
 <br>
 <br>
 <div>

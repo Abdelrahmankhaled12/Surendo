@@ -17,10 +17,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Allrisk-Versicherung Photovoltaikanlagen - Login</title>
+    <title>Allrisk-Versicherung von Photovoltaikanlagen - Benutzer-Login</title>
 
-    <link rel="stylesheet" href="css/style.css?v=1.1">
-
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -29,13 +28,15 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <div class="icons-container">
 
-    <a href="login.php" class="login-link"><button class="login-btn"><i class="fa-regular fa-user"></i></button></a>
+    <a href="index.php" class="login-link"><button class="login-btn"><i class="fa-solid fa-house"></i></button></a>
 
 </div>
 
 
 
-<img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+<div class="center">
+    <a href="index.php" class="logo-surendo"><img src="./gfx/Logo_TM.jpg" alt="Surendo.com" /></a>
+</div>
 
 <br>
 
@@ -47,9 +48,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 
 
-    <div class="box_headline"><h1>Allrisk- inkl. Ertragsausfallversicherung <br>für Photovoltaikanlagen</h1></div>
-
-
+    <div class="box_headline">
+        
+        <h1>Anmeldebereich und <br>Benutzer-Login</h1>
+    
+    </div>
 
     <br>
 
@@ -103,7 +106,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <div class="center">
 
-    <a href="load.php">Formular leeren</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="index.php">Neuer Antrag</a>
+    <a href="login.php">Formular leeren</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="index.php">Neues Projekt</a>
 
 </div>
 
@@ -174,7 +177,7 @@ unset($_SESSION["wrong_password"]); ?>
 <?php }
 unset($_SESSION["must_login_first"]); ?>
 
-<script src="js/script.js?v=2.8"></script>
+<script src="js/script.js"></script>
 
 </body>
 

@@ -37,7 +37,6 @@ if (isset($_POST["email"])) {
         header('Location: password.php');
         exit();
     }
-    die('out');
     // User exists, update the password
     $updateSql = 'UPDATE users SET `password` = ? WHERE `email` = ?';
     $updateStmt = $conn->prepare($updateSql);
@@ -63,7 +62,7 @@ if (isset($_POST["email"])) {
         // Betreff der E-Mail
         $mail->Subject = 'Surendo.com – Ihr Passwort wurde erfolgreich geändert – Sie können sich jetzt anmelden';
         $mail->Body =
-        // Inhalt der E-Mail
+            // Inhalt der E-Mail
             '
                 <div style="font-family: Arial, sans-serif; background-color: #cfe9ee7c; padding: 20px; border: 0px; border-radius: 12px; max-width: 500px; margin: 0 auto;">
                     <h2 style="color: #113388; text-align: center;">Ihr neues Passwort wurde erfolgreich erstellt</h2>

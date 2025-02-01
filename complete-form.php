@@ -38,7 +38,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Allrisk-Versicherung Photovoltaikanlagen - Neuer Antrag</title>
+    <title>Allrisk-Versicherung von Photovoltaikanlagen - Projekt fertigstellen</title>
 
     <link rel="stylesheet" href="./css/style.css">
 
@@ -51,6 +51,12 @@
 <body>
 
 <div class="icons-container">
+    <a href="home.php" class="login-link">
+            <button class="login-btn home-btn">
+                <i class="fa-solid fa-list"></i>
+            </button>
+    </a>
+
     <a href="log-out.php" class="login-link">
         <button class="login-btn">
             <i class="fa-solid fa-right-from-bracket"></i>
@@ -59,7 +65,7 @@
 </div>
 
 
-<img src="./gfx/Logo_clean_Pfad_Randlos_BIG.jpg" alt="Image" />
+<img src="./gfx/Logo_TM.jpg" alt="Surendo.com" />
 
 <br>
 
@@ -103,7 +109,7 @@
 
     <div class="box_headline">
 
-        <h1>Allrisk- inkl. Ertragsausfallversicherung <br>für Photovoltaikanlagen</h1>
+    <h1>Risikoerfassung – Allriskversicherung <br>von Photovoltaikanlagen</h1>
 
     </div>
 
@@ -148,10 +154,6 @@
     <input type="text" name="place" value="<?php echo $result["place"] ?>" required>
 
     <br>
-
-    <!-- <label class="label-classic">E-Mail</label>
-
-    <input type="email" name="applicant_email" value="" required> -->
 
     <!-- Validierung ob es sich um eine echte E-Mail-Adresse handelt, wird aufgrund HTML5 durchgeführt. -->
 
@@ -419,115 +421,73 @@
 
     <div class="subsection"><b>Sonstige Fragen</b></div>
 
-    <label class="label-classic"><b>Wurde die PV-Anlage in/ auf Gewässern errichtet?</b></label>
+    <label class="label-classic">Wurde die PV-Anlage in/ auf Gewässern errichtet?</label>
 
     <select name="water" required>
 
         <option value="" disabled hidden>Bitte wählen</option>
-
         <option value="Ja" <?php echo $result["water"] == 'Ja' ? 'selected' : '' ?>>Ja</option>
-
         <option value="Nein" <?php echo $result["water"] == 'Nein' ? 'selected' : '' ?>>Nein</option>
 
     </select>
 
     <br><br>
 
-    <label class="label-classic"><b>Sind die PV-Module im österreichischen <a href="https://www.hagelregister.at"
-
-                                                                              target="_blank" rel="noopener noreferrer">Hagelschutzregister</a> eingetragen?</b></label>
+    <label class="label-classic">Sind die PV-Module im österreichischen <a href="https://www.hagelregister.at" target="_blank" rel="noopener noreferrer">Hagelschutzregister</a> eingetragen?</label>
 
     <select name="hagelregister" required>
-
         <option value="" disabled hidden>Bitte wählen</option>
-
         <option value="Ja" <?php echo $result["hagelregister"] == 'Ja' ? 'selected' : '' ?>>Ja</option>
-
         <option value="Nein" <?php echo $result["hagelregister"] == 'Nein' ? 'selected' : '' ?>>Nein</option>
-
         <option value="Ist nicht bekannt" <?php echo $result["hagelregister"] == 'Ist nicht bekannt' ? 'selected' : '' ?>>Ist nicht bekannt</option>
-
     </select>
 
     <br><br>
 
-    <label class="label-classic"><b>Ist die PV-Anlage betriebsfertig?</b></label>
+    <label class="label-classic">Ist die PV-Anlage betriebsfertig?</label>
 
     <select name="in_operation" required>
-
         <option value="" disabled hidden>Bitte wählen</option>
-
         <option value="Ja" <?php echo $result["in_operation"] == 'Ja' ? 'selected' : '' ?>>Ja</option>
-
-        <option value="Nein. Die PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt." <?php echo $result["in_operation"] == 'Nein. Die PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt.' ? 'selected' : '' ?>>Nein. Die
-
-            PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt.</option>
-
+        <option value="Nein. Die PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt." <?php echo $result["in_operation"] == 'Nein. Die PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt.' ? 'selected' : '' ?>>Nein. Die PV-Anlage ist im Bau befindlich bzw. noch nicht fertiggestellt.</option>
     </select>
 
     <br><br>
 
-    <label class="label-classic-twolined"><b>Fällt irgendwo Schatten auf die Module der Anlage? Durch die (Teil)-Verschattung ist die Bildung von Hot-Spots möglich.</b></label>
+    <label class="label-classic-twolined">Fällt irgendwo Schatten auf die Module der Anlage? Durch die (Teil)-Verschattung ist die Bildung von Hot-Spots möglich.</label>
 
     <select name="shadowed" class="custom-dropdown" required>
-
         <option value="" disabled hidden>Bitte wählen</option>
+        <option value="Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result["shadowed"] == 'Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : '' ?>>Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)</option>
+        <option value="Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten können">
 
-        <option value="Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result["shadowed"] == 'Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : '' ?>>
-
-            Ja. Die Anlage ist verschattet oder teilverschattet (Keine Deckung für Brand, Blitzschlag, etc.)
-
-        </option>
-
-        <option
-
-                value="Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten können">
-
-            <?php echo $result["shadowed"] == 'Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten können' ? 'selected' : '' ?>
-
-            Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten
-
-            können</option>
-
+            <?php echo $result["shadowed"] == 'Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten können' ? 'selected' : '' ?>Ja. Die Anlage ist verschattet oder teilverschattet, wobei technologisch keine Hot-Spots auftreten können</option>
         <option value="Nein" <?php echo $result["shadowed"] == 'Nein' ? 'selected' : '' ?>>Nein</option>
-
     </select>
 
     <br><br>
 
-    <label class="label-classic"><b>Sind die Module sonnenstandsnachgeführt? ("Tracker")?</b></label>
+    <label class="label-classic">ind die Module sonnenstandsnachgeführt? ("Tracker")?</label>
 
     <select name="tracker" required>
-
         <option value="" disabled hidden>Bitte wählen</option>
-
         <option value="Ja" <?php echo $result["tracker"] == 'Ja' ? 'selected' : '' ?>>Ja</option>
-
         <option value="Nein" <?php echo $result["tracker"] == 'Nein' ? 'selected' : '' ?>>Nein</option>
-
     </select>
 
     <br><br>
 
-    <label class="label-classic-twolined"><b>Ist der Zustand des Untergrunds der PV-Anlage (Dachflächen, Grund und Boden) frei von bekannten Schäden, Mängeln, Schadstoffen oder Umwelt-Altlasten?</b></label>
+    <label class="label-classic-twolined">Ist der Zustand des Untergrunds der PV-Anlage (Dachflächen, Grund und Boden) frei von bekannten Schäden, Mängeln, Schadstoffen oder Umwelt-Altlasten?</label>
 
     <select name="ground_condition" required>
-
         <option value="" disabled hidden>Bitte wählen</option>
-
         <option value="Ja" <?php echo $result["ground_condition"] == 'Ja' ? 'selected' : '' ?>>Ja</option>
-
         <option value="Nein" <?php echo $result["ground_condition"] == 'Nein' ? 'selected' : '' ?>>Nein</option>
-
     </select>
 
     <br><br>
 
-
-
     <hr class="blue-line"> <!-- Blaue Linie eingefügt -->
-
-    <!-- VERSICHERTE SACHE - -->
 
     <!-- VERSICHERTE SACHE - -->
     <div>
@@ -551,7 +511,7 @@
 
     <div class="subsection"><b>Allgemeine Fragen</b></div>
 
-    <label class="label-classic-twolined"><b>Alter der Anlage (bei älteren Anlagen ist das Schaden-Rendement des Vorversicherers zu übermitteln)</b></label>
+    <label class="label-classic-twolined">Alter der Anlage (bei älteren Anlagen ist das Schaden-Rendement des Vorversicherers zu übermitteln)</label>
     <select name="age" id="age"  required>
         <option value="" <?php echo $result['age'] == '' ? 'selected' : ''?>>Bitte wählen</option>
         <option value="Neue Anlage mit erstmaliger Inbetriebnahme" <?php echo $result['age'] == 'Neue Anlage mit erstmaliger Inbetriebnahme' ? 'selected' : ''?>>Neue Anlage mit erstmaliger Inbetriebnahme</option>
@@ -560,7 +520,7 @@
     </select>
     <br><br>
 
-    <label class="label-classic-twolined"><b>Ist ein DC-Lasttrennschalter ("Feuerwehrschalter") verbaut, durch den die PV-Anlage im Brandfall stromlos geschaltet werden kann?</b></label>
+    <label class="label-classic-twolined">Ist ein DC-Lasttrennschalter ("Feuerwehrschalter") verbaut, durch den die PV-Anlage im Brandfall stromlos geschaltet werden kann?</label>
     <select name="load_break_switch"  id="load_break_switch" required>
         <option value="" <?php echo $result['load_break_switch'] == '' ? 'selected' : '' ?>> Bitte wählen</option>
         <option value="Ja" <?php echo $result['load_break_switch'] == 'Ja' ? 'selected' : '' ?>>Ja</option>
@@ -568,7 +528,7 @@
     </select>
     <br><br>
     
-    <label class="label-classic-twolined"><b>Ist eine 24/7-Videoüberwachung mit Bewegungsmelder über den gesamten Anlagenbereich vorhanden? Wird zusätzlich ein automatischer Alarm an eine ständig besetzte Stelle (z.B. Polizei oder privater Sicherheitsdienst) ausgelöst?</b></label>
+    <label class="label-classic-twolined">Ist eine 24/7-Videoüberwachung mit Bewegungsmelder über den gesamten Anlagenbereich vorhanden? Wird zusätzlich ein automatischer Alarm an eine ständig besetzte Stelle (z.B. Polizei oder privater Sicherheitsdienst) ausgelöst?</label>
 
     <select name="theft_video"  id="theft_video" required>
         <option value="" <?php echo $result['theft_video'] == '' ? 'selected' : ''?>>Bitte wählen</option>
@@ -577,7 +537,7 @@
     </select>
     <br><br>
 
-    <label class="label-classic-twolined"><b>Wird der Versicherungsort vollständig mit einem lückenlosen und standsicheren, mind. 1,8 m hohen Zaun (kein Mobilzaun) mit Übersteigschutz eingegrenzt und sind sämtliche Zugänge versperrt?</b></label>
+    <label class="label-classic-twolined">Wird der Versicherungsort vollständig mit einem lückenlosen und standsicheren, mind. 1,8 m hohen Zaun (kein Mobilzaun) mit Übersteigschutz eingegrenzt und sind sämtliche Zugänge versperrt?</label>
     <select name="theft_fence" id="theft_fence" required>
         <option value="" <?php echo $result['theft_fence'] == '' ? 'selected' : ''?>>Bitte wählen</option>
         <option value="Ja - oder mit Hochstellung von max. 20cm über der Geländeorberkante" <?php echo $result['theft_fence'] == 'Ja - oder mit Hochstellung von max. 20cm über der Geländeorberkante' ? 'selected' : ''?>>Ja - oder mit Hochstellung von max. 20cm über der Geländeorberkante</option>
@@ -589,7 +549,7 @@
     <!-- Begin SPECIAL QUESTIONS PV PLANTS ON THE GROUND -->
     <div class="toggle-content-bodenanlage">
         <div class="subsection"><b>Spezielle Fragen zur Bodenanlage</b></div>
-        <label class="label-classic"><b>Ist die Bodenanlage aufgeständert?</b></label>
+        <label class="label-classic">Ist die Bodenanlage aufgeständert?</label>
         <select name="ground_plant_elevated" id="ground_plant_elevated">
             <option value="" <?php echo $result['ground_plant_elevated'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['ground_plant_elevated'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -597,7 +557,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Ist die Anlage auf setzungsempfindlichem Untergrund (z.B. Deponie, Tagebau, Halde, Sumpf- und Torfgebiet, etc.) gebaut und/ oder befindet sich in einer Hanglage (> 30 % Hangneigung)?</b></label>
+        <label class="label-classic-twolined">Ist die Anlage auf setzungsempfindlichem Untergrund (z.B. Deponie, Tagebau, Halde, Sumpf- und Torfgebiet, etc.) gebaut und/ oder befindet sich in einer Hanglage (> 30 % Hangneigung)?</label>
         <select name="ground_plant_underground" id="ground_plant_underground">
             <option value="" <?php echo $result['ground_plant_underground'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['ground_plant_underground'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -609,7 +569,7 @@
     <!-- End SPECIAL QUESTIONS PV PLANTS ON THE GROUND -->
     <div class="toggle-content-dachanlage">
         <div class="subsection"><b>Spezielle Fragen zur Auf-Dachanlage</b></div>
-        <label class="label-classic-twolined"><b>"Contracting" (Die Anlage befindet sich auf dem Gebäude eines Dritten)</b></label>
+        <label class="label-classic-twolined">"Contracting" (Die Anlage befindet sich auf dem Gebäude eines Dritten)</label>
         <select name="roof_plant_contracting" id="roof_plant_contracting">
             <option value="" <?php echo $result['roof_plant_contracting'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['roof_plant_contracting'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -617,7 +577,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic"><b>Auf wievielen Gebäuden befinden sich PV-Module?</b></label>
+        <label class="label-classic">Auf wievielen Gebäuden befinden sich PV-Module?</label>
         <select name="roof_plant_amount_buildings" id="roof_plant_amount_buildings">
             <option value="" <?php echo $result['roof_plant_amount_buildings'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="1" <?php echo $result['roof_plant_amount_buildings'] == '1' ? 'selected' : ''?>>1</option>
@@ -642,7 +602,7 @@
         <input type="text" name="roof_plant_usage" id="roof_plant_usage" maxlength="250" value="<?= $result["roof_plant_usage"] ?>" >
         <br><br>
 
-        <label class="label-classic"><b>Traufhöhe (in Meter) des höchsten Gebäudes</b></label>
+        <label class="label-classic">Traufhöhe (in Meter) des höchsten Gebäudes</label>
         <select name="roof_plant_eaves_height" id="roof_plant_eaves_height">
             <option value="" <?php echo $result['roof_plant_eaves_height'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)" <?php echo $result['roof_plant_eaves_height'] == '< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)' ? 'selected' : ''?>>< 3 m (Weitere Sicherungen notwendig für ED- & Diebstahl-Deckung)</option>
@@ -651,7 +611,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Gebäude mit nicht harter Bedachung (z.B. Holz, Ried, Hartfaserplatten, Kunststoffe, PVC-Folien, etc.)</b></label>
+        <label class="label-classic-twolined">Gebäude mit nicht harter Bedachung (z.B. Holz, Ried, Hartfaserplatten, Kunststoffe, PVC-Folien, etc.)</label>
         <select name="roof_plant_soft_roofing" id="roof_plant_soft_roofing">
             <option value="" <?php echo $result['roof_plant_soft_roofing'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja (Nicht harte Bedachung vorhanden)" <?php echo $result['roof_plant_soft_roofing'] == 'Ja (Nicht harte Bedachung vorhanden)' ? 'selected' : ''?>>Ja (Nicht harte Bedachung vorhanden)</option>
@@ -659,7 +619,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Gebäude mit nicht-massiven Außenwänden (Holz, Kunststoff oder leicht bis normal-entflammbar klassifizierte Sandwich-Paneele)</b></label>
+        <label class="label-classic-twolined">Gebäude mit nicht-massiven Außenwänden (Holz, Kunststoff oder leicht bis normal-entflammbar klassifizierte Sandwich-Paneele)</label>
         <select name="roof_plant_soft_walls" id="roof_plant_soft_walls">
             <option value="" <?php echo $result['roof_plant_soft_walls'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja (Nicht massive Außenwänden vorhanden)" <?php echo $result['roof_plant_soft_walls'] == 'Ja (Nicht massive Außenwänden vorhanden)' ? 'selected' : ''?>>Ja (Nicht massive Außenwänden vorhanden)</option>
@@ -667,7 +627,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Sind die Modulrahmen der Auf-Dachanlage mit mechanischen Sicherungen (z. B. Spezialverschraubung, Verklebung, Verschweißung, Vernietung) gegen Diebstahl gesichert?</b></label>
+        <label class="label-classic-twolined">Sind die Modulrahmen der Auf-Dachanlage mit mechanischen Sicherungen (z. B. Spezialverschraubung, Verklebung, Verschweißung, Vernietung) gegen Diebstahl gesichert?</label>
         <select name="roof_plant_mechanical_protection" id="roof_plant_mechanical_protection">
             <option value="" <?php echo $result['roof_plant_mechanical_protection'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['roof_plant_mechanical_protection'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -675,7 +635,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Befindet sich die PV-Anlage auf Dächern von Heuschobern, Tierfarmen oder Lagern mit leichtentzündlichen Waren oder Vorräten?</b></label>
+        <label class="label-classic-twolined">Befindet sich die PV-Anlage auf Dächern von Heuschobern, Tierfarmen oder Lagern mit leichtentzündlichen Waren oder Vorräten?</label>
         <select name="roof_plant_animal_farm" id="roof_plant_animal_farm">>
             <option value="" <?php echo $result['roof_plant_animal_farm'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['roof_plant_animal_farm'] == 'Ja (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja (Keine Deckung für Brand, Blitzschlag, etc.)</option>
@@ -683,7 +643,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Wurden Leitungen durch eine Brandwand oder brandabschnittsbildende Wand verlegt?</b></label>
+        <label class="label-classic-twolined">Wurden Leitungen durch eine Brandwand oder brandabschnittsbildende Wand verlegt?</label>
         <select name="roof_plant_fire_wall" id="roof_plant_fire_wall"> class="custom-dropdown">
             <option value="" <?php echo $result['roof_plant_fire_wall'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)" <?php echo $result['roof_plant_fire_wall'] == 'Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)' ? 'selected' : ''?>>Ja, aber ohne geeignete Leitungsschotts oder Brandschutzkanäle (Keine Deckung für Brand, Blitzschlag, etc.)</option>
@@ -693,7 +653,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Ist sichergestellt, dass die Dachkonstruktion hinsichtlich Statik für die PV-Anlage ausgelegt ist? (Einsturzrisiko)</b></label>
+        <label class="label-classic-twolined">Ist sichergestellt, dass die Dachkonstruktion hinsichtlich Statik für die PV-Anlage ausgelegt ist? (Einsturzrisiko)</label>
         <select name="roof_plant_collapse" id="roof_plant_collapse">>
             <option value="" <?php echo $result['roof_plant_collapse'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['roof_plant_collapse'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -701,7 +661,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Sind entsprechend große Durchgänge am Dach vorhanden um eine Schneeräumung der Module - ohne Beschädigung weiterer Module - gewährleisten zu können?</b></label>
+        <label class="label-classic-twolined">Sind entsprechend große Durchgänge am Dach vorhanden um eine Schneeräumung der Module - ohne Beschädigung weiterer Module - gewährleisten zu können?</label>
         <select name="roof_plant_snow_removal" id="roof_plant_snow_removal">>
             <option value="" <?php echo $result['roof_plant_snow_removal'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['roof_plant_snow_removal'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -709,7 +669,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic-twolined"><b>Wurde im Zuge der Errichtung der PV-Anlage eine evtl. vorhandene Dach-Bekiesung <u>dauerhaft</u> entfernt?</b></label>
+        <label class="label-classic-twolined">Wurde im Zuge der Errichtung der PV-Anlage eine evtl. vorhandene Dach-Bekiesung <u>dauerhaft</u> entfernt?</label>
         <select name="roof_plant_gravel" id="roof_plant_gravel">>
             <option value="" <?php echo $result['roof_plant_gravel'] == '' ? 'selected' : ''?>>Bitte wählen</option>
             <option value="Ja" <?php echo $result['roof_plant_gravel'] == 'Ja' ? 'selected' : ''?>>Ja</option>
@@ -733,7 +693,7 @@
 
     <div class="form-container"> <!-- Container damit Input-Felder Date linksbündig angeordnet wird -->
 
-        <label class="label-classic" for="date_commencement">Versicherungsbeginn (keine Deckung vor Eingang des Antrags beim Versicherer):</label>
+        <label class="label-classic" for="date_commencement">Versicherungsbeginn (das Datum darf nicht in der Vergangenheit liegen):</label>
 
         <br>
 
@@ -753,9 +713,7 @@
 
     <div class="subsection-save">
 
-            <span class="small-text">Sichern Sie den aktuellen Stand Ihrer Eingaben, z.B. um zu einem späteren Zeitpunkt
-
-                damit fortzufahren.</span>
+            <span class="small-text">Sichern Sie den aktuellen Stand Ihrer Eingaben, z.B. um zu einem späteren Zeitpunkt damit fortzufahren.</span>
 
         <button class="save-btn" id="save-btn">Speichern</button>
 
@@ -1101,7 +1059,7 @@
 
         <!-- BEGIN SECTION RISK DESCRIPTION -->
         <div>
-            <h2>Risikobeschreibung</h2>
+            <h2>7. Risikobeschreibung</h2>
         </div>
 
         <label class="label-classic-twolined">Wurde die Anlage von einem Fachbetrieb nach den anerkannten Regeln der Technik installiert und gesamtheitlich abgenommen (keine Selbstmontage)?</label>
@@ -1137,7 +1095,7 @@
         <br><br>
 
         <label class="label-classic-twolined_v2">Sind der/ die Wechselrichter durch Überdachung, Bauart (oder da im Gebäude-Inneren befindlich) vor Witterungseinflüssen (z.B. Sturm, Hagel, Regen, Sonne, Schnee und Eis) geschützt?</label>
-        
+        <br><br>
         <!-- Begin Buttons, but without Toggle-function -->
         <input type="radio" id="yes-risk_description_inverter_protection" name="risk_description_inverter_protection" value="Ja" <?php echo $result['risk_description_inverter_protection'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-risk_description_inverter_protection" class="toggle-label">Ja</label>
@@ -1204,7 +1162,7 @@
         </select>
         <br><br>
 
-        <label class="label-classic_v2"><b>Gibt es behördliche Wiederaufbau- oder Betriebsbeschränkungen?</b></label>
+        <label class="label-classic_v2">Gibt es behördliche Wiederaufbau- oder Betriebsbeschränkungen?</label>
         <input type="radio" id="yes-restriction" name="risk_description_official_restriction" value="Ja" <?php echo $result['risk_description_official_restriction'] == 'Ja' ? 'checked' : ''?>>
         <label for="yes-restriction" class="toggle-label">Ja</label>
         <input type="radio" id="no-restriction" name="risk_description_official_restriction" value="Nein" <?php echo $result['risk_description_official_restriction'] == 'Nein' ? 'checked' : ''?>>
@@ -1301,7 +1259,7 @@
 
         <!-- BEGIN SECTION PREDAMAGE -->
         <div>
-            <h2>Vorschäden/ Sonstige</h2>
+            <h2>8. Vorschäden/ Sonstige</h2>
         </div>
 
         <label class="label-classic_v2"><b>Gab es Schäden in den letzten fünf Jahren?</b></label>
@@ -1338,7 +1296,7 @@
 
         <!-- BEGIN SECTION HOLD -->
         <div>
-            <h2>Sperrschein</h2>
+            <h2>9. Sperrschein</h2>
         </div>
 
         <label class="label-classic_v2"><b>Wird eine Vinkulierung (Sperrschein) benötigt?</b><br></label>
@@ -1378,7 +1336,7 @@
 
         <!-- BEGIN SECTION COINSURED COMPANY -->
         <div>
-            <h2>Mitversichertes Unternehmen</h2>
+            <h2>10. Mitversichertes Unternehmen</h2>
         </div>
 
         <label class="label-classic_v2"><b>Wird die Mitversicherung eines Unternehmens gewünscht?</b><br></label>
@@ -1434,15 +1392,6 @@
 
 </form>
 
-
-
-<div class="center">
-
-    <a href="index.php">Formular leeren</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="load.php">Gespeicherten Antrag
-
-        forsetzen</a>
-
-</div>
 
 
 
