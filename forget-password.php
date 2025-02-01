@@ -40,7 +40,7 @@ if (isset($_POST["email"])) {
         exit();
     }
     // User exists, update the password
-    $updateSql = 'UPDATE users SET `password` = ? WHERE `email_hash` = ?';
+    $updateSql = 'UPDATE users SET `password` = ? WHERE `email_hashed` = ?';
     $updateStmt = $conn->prepare($updateSql);
 
     if (!$updateStmt) {
