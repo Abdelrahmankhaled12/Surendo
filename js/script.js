@@ -626,7 +626,13 @@ document.getElementById("save-btn").addEventListener("click", () => {
         
         'load_break_switch',
 
-        'indemnify_VAT'
+        'indemnify_VAT',
+        
+        'no-hold',
+        'hold_creditor',
+        'hold_street',
+        'hold_postalcode',
+        'hold_place'
     ]
     fields.forEach((field) => {
         const element = document.getElementById(field);
