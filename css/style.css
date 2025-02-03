@@ -99,6 +99,7 @@ a:hover {
     /* Elemente nach rechts ausrichten */
     text-align: unset;
     /* Verhindert, dass text-align den Flex-Layout beeinflusst */
+    gap: 10px;
 }
 
 /* Formatierung des Formulars */
