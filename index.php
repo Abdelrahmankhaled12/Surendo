@@ -106,6 +106,22 @@ if (session_status() === PHP_SESSION_NONE) {
     <br>
     <br>
 
+    <!-- BEGINN Beginn Einwilligungserklärung/ Datenschutz -->
+    
+    <div class="subsection"><b>Ihre persönlichen Daten sind geschützt</b>
+    </div>
+
+    <div class="privacy_approval">
+        Durch Speichern oder Absenden dieses Formulars erklären Sie sich damit einverstanden, dass Ihre E-Mail-Adresse zum Zweck der Erstellung eines Benutzerkontos sowie zur Projektkommunikation, verschlüsselt gespeichert und verwendet wird. 
+        Es erfolgt keine Weitergabe an Dritte. In bestimmten Fällen gelten Firmenname und Geschäftsanschrift als persönliche Daten - zum Zweck der Risikoprüfung und Angebotserstellung dürfen diese Daten an Versicherungsunternehmen weitergegeben werden.
+    
+        <div class="checkbox-wrapper">
+            <input type="checkbox" name="privacy-dsgvo" id="privacy-dsgvo" required>
+            <label><b>Sie haben die <a href="privacy.php">Datenschutzerklärung</a> zur Kenntnis genommen und stimmen dieser zu. Diese Einwilligung kann jederzeit bei <a href="mailto:service@surendo.com">service@surendo.com</a> widerrufen werden, um die E-Mail-Adresse löschen zu lassen.</b></label>
+        </div>
+    </div>
+    <!-- ENDE Einwilligungserklärung/ Datenschutz -->
+
     <!-- Radiobutton für Anschrift des Antragstellers (applicant) -->
     <div class="subsection"><b>Antragsteller/in im Verhältnis zur Anlage</b></div>
 
