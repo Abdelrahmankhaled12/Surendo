@@ -38,6 +38,16 @@
                 <i class="fa-solid fa-right-from-bracket"></i>
             </button>
         </a>
+        <a href="privacy.php">
+        <button class="login-btn">
+            <i class="fa-solid fa-shield"></i>
+        </button>
+        </a>
+        <a href="imprint.php">
+        <button class="login-btn">
+            <i class="fa-solid fa-circle-info"></i>
+        </button>
+        </a>
     </div>
 <?php }else{ ?>
     <div class="icons-container">
@@ -45,6 +55,16 @@
             <button class="login-btn">
                 <i class="fa-regular fa-user"></i>
             </button>
+        </a>
+        <a href="privacy.php">
+        <button class="login-btn">
+            <i class="fa-solid fa-shield"></i>
+        </button>
+        </a>
+        <a href="imprint.php">
+        <button class="login-btn">
+            <i class="fa-solid fa-circle-info"></i>
+        </button>
         </a>
     </div>
 <?php } ?>
