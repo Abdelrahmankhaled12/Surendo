@@ -441,10 +441,6 @@ if (!$stmt->bind_param(
 
     $hold_place,
 
-    $hold_contact,
-
-    $hold_email,
-
     $id
 
 )) {
